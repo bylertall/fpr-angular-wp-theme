@@ -26,6 +26,8 @@ function my_scripts() {
 		array( 'angularjs', 'angularjs-ui-router', 'angularjs-sanitize' )
 	);
 
+	wp_enqueue_style( 'style.css', get_stylesheet_uri() );
+
 	wp_localize_script(
 		'my-scripts',
 		'WPAPI',

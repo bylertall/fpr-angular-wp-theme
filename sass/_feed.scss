@@ -1,0 +1,52 @@
+.feed {
+  @include outer-container(100%);
+  color: #FFF;
+}
+
+.post-header {
+  max-width: em(1550);
+  height: em(400);
+  margin: 0 auto;
+  @include linear-gradient(-45deg, $accent-color, #EBD0CF);
+  background-position: center;
+  position: relative;
+
+  .post-title-link {
+    @include size(100% 100%);
+    display: block;
+
+    .post-title-header {
+      @include center-y-align(relative);
+      @include word-wrap(normal);
+      font-family: $font-ubuntu;
+      font-size: em(60);
+      font-weight: 300;
+      text-align: center;
+      color: #FFF;
+    }
+  }
+
+  .date-widget {
+    @include size(em(72));
+    position: absolute;
+    left: 1em;
+    top: 1em;
+    text-align: center;
+    border: 1px solid #FFF;
+
+    .date-container {
+      @include center-y-align(relative);
+      font-family: $font-lato;
+      font-weight: 100;
+      line-height: em(30);
+      
+      .month {
+        font-size: em(28);
+      }
+      
+      .day {
+        font-size: em(26);
+      }
+    }
+  }
+}

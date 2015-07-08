@@ -1,0 +1,29 @@
+{
+  "name": "fpr-blog",
+  "version": "0.0.0",
+  "homepage": "https://github.com/bylertall/fpr-angular-wp-theme",
+  "authors": [
+    "bylertall <tball88@gmail.com>"
+  ],
+  "description": "Wordpress blog theme built on AngularJS",
+  "main": [
+    "js/scripts.js",
+    "sass/input.scss"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-sanitize": "~1.4.1",
+    "angular-ui-router": "~0.2.15",
+    "bourbon": "~4.2.3",
+    "angular": "~1.4.2",
+    "neat": "~1.7.2",
+    "normalize-scss": "~3.0.3"
+  }
+}

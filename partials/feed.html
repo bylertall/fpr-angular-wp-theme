@@ -1,5 +1,14 @@
-<ul>
-    <li ng-repeat="post in feed.posts">
-        <a href="{{post.slug}}" ng-bind-html="post.title"></a>
-    </li>
-</ul>
+<article class="feed" ng-repeat="post in feed.posts">
+    <header class="post-header" ng-style="post.acf.hasOwnProperty('featured-image') && {'background-image': 'url(' + post.acf['featured-image'] + ')'}">
+        <div class="date-widget">
+            <div class="date-container">
+                <div class="month">{{post.date | date: 'MMM' | uppercase}}</div>
+                <div class="day">{{post.date | date: 'd'}}</div>
+            </div>
+        </div>
+
+        <a class="post-title-link" ng-href="{{::post.link}}">
+            <h2 class="post-title-header" ng-bind-html="::post.title | uppercase"></h2>
+        </a>
+    </header>
+</article>
