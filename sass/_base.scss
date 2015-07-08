@@ -42,6 +42,7 @@ $accent-color: rgba(206, 142, 140, 0.8);
 body {
   font-family: $font-lato;
   font-weight: 300;
+  @include size(100%);
 }
 
 a {

@@ -384,7 +384,9 @@ Version: 1.0
 */
 body {
   font-family: "Lato", sans-serif;
-  font-weight: 300; }
+  font-weight: 300;
+  height: 100%;
+  width: 100%; }
 
 a {
   text-decoration: none;
@@ -394,7 +396,8 @@ a {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  color: #FFF; }
+  color: #FFF;
+  margin-bottom: 1.5625em; }
   .feed::after {
     clear: both;
     content: "";
@@ -408,7 +411,8 @@ a {
   background-image: -webkit-linear-gradient(-225deg, rgba(206, 142, 140, 0.8), #EBD0CF);
   background-image: linear-gradient(-45deg,rgba(206, 142, 140, 0.8), #EBD0CF);
   background-position: center;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   .post-header .post-title-link {
     height: 100%;
     width: 100%;

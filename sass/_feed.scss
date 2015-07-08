@@ -1,6 +1,7 @@
 .feed {
   @include outer-container(100%);
   color: #FFF;
+  margin-bottom: em(25);
 }
 
 .post-header {
@@ -10,9 +11,10 @@
   @include linear-gradient(-45deg, $accent-color, #EBD0CF);
   background-position: center;
   position: relative;
+  overflow: hidden;
 
   .post-title-link {
-    @include size(100% 100%);
+    @include size(100%);
     display: block;
 
     .post-title-header {
