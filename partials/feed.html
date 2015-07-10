@@ -1,6 +1,6 @@
 <article class="feed" ng-repeat="post in feed.posts">
     <header class="post-header" ng-style="post.acf.hasOwnProperty('featured-image') && {'background-image': 'url(' + post.acf['featured-image'] + ')'}">
-        <div post-date="{{post.date}}"></div>
+        <div post-date="{{::post.date}}"></div>
 
         <a class="post-title-link" ng-href="{{::post.link}}">
             <h2 class="post-title" ng-bind-html="::post.title | uppercase"></h2>

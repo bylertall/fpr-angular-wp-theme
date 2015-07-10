@@ -1,7 +1,7 @@
 <article>
 
-    <header class="post-header" ng-style="{'background-image': 'url(' + content.post.acf['featured-image'] + ')'}">
-        <div post-date="{{content.post.date}}"></div>
+    <header class="post-header" ng-style="content.post.acf.hasOwnProperty('featured-image') && {'background-image': 'url(' + content.post.acf['featured-image'] + ')'}">
+        <div post-date="{{::content.post.date}}"></div>
 
         <h1 class="post-title" ng-bind-html="::content.post.title | uppercase"></h1>
     </header>

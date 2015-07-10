@@ -28,6 +28,8 @@ angular.module('fprApp', ['ui.router', 'ngSanitize'])
             console.log(vm.posts);
         });
 
+        document.querySelector('title').innerHTML = 'The Fancy Pants Report | A San Francisco Style Blog by Kate Ogata';
+
     })
 
 .controller('Content', function($http, $stateParams) {
@@ -37,6 +39,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize'])
             // filter returns an array of posts, only 1 should return
             vm.post = res[0];
 
+            document.querySelector('title').innerHTML = vm.post.title + ' | The Fancy Pants Report';
             console.log(vm.post);
         });
 

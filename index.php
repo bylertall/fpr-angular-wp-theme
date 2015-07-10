@@ -11,7 +11,9 @@
 
 	<body>
 		<div class="angular-wrapper" ng-app="fprApp">
-			<header>INSTA AND NAV WILL GO HERE</header>
+			<header>INSTA AND NAV WILL GO HERE
+				<div><a href='/'>FPR</a></div>
+			</header>
 			<main ui-view></main>
 			<footer>
 				&copy; <?php echo date( 'Y' ); ?>
