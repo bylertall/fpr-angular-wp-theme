@@ -1,35 +1,73 @@
+
+
+/* NEED TO FIX COLLAPSING MARGINS FOR HEADER, OVERFLOW HIDDEN SCREWS UP POST TITLE POSITION */
+
 .feed {
-  @include outer-container(100%);
-  color: #FFF;
-  margin-bottom: em(25);
+  margin-bottom: em(15);
 }
 
 .post-header {
-  max-width: em(1550);
+  $max-width: em(1550);
   height: em(400);
-  margin: 0 auto;
   @include linear-gradient(-45deg, $accent-color, #EBD0CF);
   background-position: center;
   position: relative;
-  overflow: hidden;
 
   .post-title-link {
     @include size(100%);
     display: block;
+    text-decoration: none;
 
-    .post-title-header {
-      @include center-y-align(relative);
-      @include word-wrap(normal);
-      font-family: $font-ubuntu;
-      font-size: em(60);
-      font-weight: 300;
-      text-align: center;
+    &:hover .read-more-button {
+      opacity: 1;
+    }
+
+    .read-more-button {
+      @include center-x-align(absolute);
+      max-height: em(75);
+      opacity: 0;
+      bottom: em(20);
+      background-color: transparent;
+      border: 1px solid #FFF;
+      padding: 15px 15px;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
       color: #FFF;
+      text-transform: uppercase;
+      @include transition(all, 250ms, linear);
+
+      &:hover {
+        background-color: rgba(75, 75, 75, 0.25);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      h4 {
+        font-size: em(18);
+        font-weight: 300;
+        margin: 0;
+      }
     }
   }
 
+  .post-title {
+    @include center-y-align(absolute);
+    width: 100%;
+    margin: 0;
+    padding: em(15);
+    display: inline-block;
+    font-family: $font-ubuntu;
+    font-size: em(60);
+    font-weight: 300;
+    text-align: center;
+    color: #FFF;
+  }
+
   .date-widget {
-    @include size(em(72));
+    @include size(em(68));
     position: absolute;
     left: 1em;
     top: 1em;
@@ -41,6 +79,7 @@
       font-family: $font-lato;
       font-weight: 100;
       line-height: em(30);
+      color: #FFF;
       
       .month {
         font-size: em(28);

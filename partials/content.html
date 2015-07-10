@@ -1,9 +1,10 @@
 <article>
 
-    <header ng-style="{'background-image': 'url(' + content.post.acf['featured-image'] + ')'}">
-        <h1 ng-bind-html="::content.post.title"></h1>
+    <header class="post-header" ng-style="{'background-image': 'url(' + content.post.acf['featured-image'] + ')'}">
+        <div post-date="{{content.post.date}}"></div>
+
+        <h1 class="post-title" ng-bind-html="::content.post.title | uppercase"></h1>
     </header>
-    <section ng-bind-html="::content.post.acf['post-images']"></section>
-    <section ng-bind-html="::content.post.acf['outfit-details']"></section>
-    <section ng-bind-html="::content.post.acf['main-copy']"></section>
+    <section class="post-content" ng-bind-html="::content.post.content"></section>
+
 </article>

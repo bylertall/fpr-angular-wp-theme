@@ -41,17 +41,19 @@ angular.module('fprApp', ['ui.router', 'ngSanitize'])
         });
 
     })
-//
-//.directive('headerBackground', function() {
-//        return function(scope, element, attrs) {
-//            attrs.$observe('headerBackground', function(url) {
-//                element.css({
-//                    'background-image': 'url(' + url + ')',
-//                    'background-size': 'cover'
-//                });
-//            });
-//
-//
-//        };
-//
-//    })
+
+.directive('postDate', function() {
+        return {
+                scope: {
+                    postDate: '@'
+                },
+                template: '<div class="date-widget">\
+                             <div class="date-container">\
+                               <div class="month">{{postDate | date: "MMM" | uppercase}}</div>\
+                               <div class="day">{{postDate | date: "d"}}</div>\
+                             </div>\
+                           </div>'
+        };
+
+
+    })
