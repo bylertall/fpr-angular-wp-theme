@@ -20,10 +20,21 @@ function my_scripts() {
 		array(), null, false
 	);
 
+	wp_register_script(
+		'angular-smooth-scroll',
+		get_template_directory_uri() . '/bower_components/ngSmoothScroll/angular-smooth-scroll.min.js',
+		array(), null, false
+	);
+
 	wp_enqueue_script(
 		'my-scripts',
 		get_template_directory_uri() . '/js/scripts.js',
-		array( 'angularjs', 'angularjs-ui-router', 'angularjs-sanitize' )
+		array( 'angularjs', 'angularjs-ui-router', 'angularjs-sanitize', 'angular-smooth-scroll' )
+	);
+
+	wp_enqueue_script(
+		'wp-service',
+		get_stylesheet_directory_uri() . '/js/WPService.js'
 	);
 
 	wp_enqueue_style( 'style.css', get_stylesheet_uri() );

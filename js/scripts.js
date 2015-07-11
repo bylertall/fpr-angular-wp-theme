@@ -1,4 +1,6 @@
-angular.module('fprApp', ['ui.router', 'ngSanitize'])
+'use strict';
+
+angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
 
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
@@ -6,42 +8,56 @@ angular.module('fprApp', ['ui.router', 'ngSanitize'])
         //$urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('feed', {
+            .state('main', {
+                abstract: true,
+                templateUrl: WPAPI.partials_url + 'main.html',
+                controller: 'Main as main'
+            })
+            .state('main.feed', {
                 url: '/',
                 templateUrl: WPAPI.partials_url + 'feed.html',
-                controller: 'Feed as feed'
+                controller: 'Feed as feed',
+                resolve: {
+                    dataFeed: function(WPService) {
+                        return WPService.getAllPosts();
+                    }
+                }
 
             })
 
-            .state('content', {
+            .state('main.content', {
                 url: '/:year/:month/:day/:slug/',
                 templateUrl: WPAPI.partials_url + 'content.html',
-                controller: 'Content as content'
+                controller: 'Content as content',
+                resolve: {
+                    dataPost: function(WPService, $stateParams) {
+                        return WPService.singlePost($stateParams.slug);
+                    }
+                },
+                onEnter: function(smoothScroll) {
+                    var header = document.getElementById('main-header');
+                    smoothScroll(header);
+                }
             })
     })
 
-.controller('Feed', function($http) {
-        var vm = this;
-
-        $http.get(WPAPI.api_url + '/posts').success(function(res) {
-            vm.posts = res;
-            console.log(vm.posts);
-        });
-
-        document.querySelector('title').innerHTML = 'The Fancy Pants Report | A San Francisco Style Blog by Kate Ogata';
+.controller('Main', function() {
 
     })
 
-.controller('Content', function($http, $stateParams) {
+.controller('Feed', function(WPService) {
         var vm = this;
 
-        $http.get(WPAPI.api_url + '/posts/?filter[name]=' + $stateParams.slug).success(function(res) {
-            // filter returns an array of posts, only 1 should return
-            vm.post = res[0];
+        vm.posts = WPService.feed;
 
-            document.querySelector('title').innerHTML = vm.post.title + ' | The Fancy Pants Report';
-            console.log(vm.post);
-        });
+    })
+
+.controller('Content', function(WPService) {
+        var vm = this;
+
+        vm.post = WPService.post;
+
+        document.querySelector('title').innerHTML = vm.post.title + ' | The Fancy Pants Report';
 
     })
 
@@ -50,13 +66,17 @@ angular.module('fprApp', ['ui.router', 'ngSanitize'])
                 scope: {
                     postDate: '@'
                 },
-                template: '<div class="date-widget">\
-                             <div class="date-container">\
-                               <div class="month">{{postDate | date: "MMM" | uppercase}}</div>\
-                               <div class="day">{{postDate | date: "d"}}</div>\
-                             </div>\
-                           </div>'
+                templateUrl: WPAPI.partials_url + 'post-date-widget.html'
         };
 
 
     })
+
+
+// ------------------ Come back to pagination ------------------
+//.directive('postsNavLink', function() {
+//        return {
+//            restrict: 'EA',
+//            templateUrl: WPAPI.partials_api + 'posts-nav-link.html'
+//        }
+//    })
