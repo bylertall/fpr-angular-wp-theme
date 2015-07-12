@@ -1,5 +1,6 @@
 .insta-widget {
   @include row(table);
+  margin-bottom: em(-3);
 }
 
 .insta-tile {

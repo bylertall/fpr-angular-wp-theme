@@ -1,0 +1,59 @@
+.main-nav {
+  @include outer-container;
+  height: em(65);
+}
+
+.blog-logo-container {
+  @include shift(0.25);
+  @include span-columns(2.75, block-collapse);
+  height: 100%;
+
+  .blog-logo-link {
+  }
+
+  .blog-logo {
+    height: 100%;
+  }
+}
+
+.nav-list {
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    @include center-y-align(relative);
+    display: inline-block;
+    text-align: center;
+  }
+}
+
+.nav-site {
+  @include span-columns(6, block-collapse);
+  height: 100%;
+
+  .nav-list {
+    max-width: em(450);
+
+    li {
+      margin: 0 em(7);
+      text-transform: uppercase;
+    }
+  }
+}
+
+.nav-social {
+  @include span-columns(2.5, block-collapse);
+  height: 100%;
+
+  li {
+    @include center-y-align(relative);
+    @include span-columns(2 of 12, block-collapse);
+    margin: 0;
+  }
+
+  .social-icon {
+    @include size(em(16));
+  }
+}

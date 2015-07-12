@@ -11,7 +11,12 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
             .state('main', {
                 abstract: true,
                 templateUrl: WPAPI.partials_url + 'main.html',
-                controller: 'Main as main'
+                controller: 'Main as main',
+                resolve: {
+                    dataInsta: function(InstaService) {
+                        return InstaService.getInstaFeed();
+                    }
+                }
             })
             .state('main.feed', {
                 url: '/',
@@ -65,10 +70,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
 .controller('InstaWidget', function(InstaService) {
         var vm = this;
 
-        InstaService.getInstaFeed()
-            .then(function() {
-                vm.feed = InstaService.feed;
-        });
+        vm.feed = InstaService.feed;
     })
 
 .directive('postDate', function() {
@@ -87,6 +89,14 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
             restrict: 'EA',
             controller: 'InstaWidget as insta',
             templateUrl: WPAPI.partials_url + 'insta-widget.html'
+        }
+    })
+
+.directive('fprNav', function() {
+        return {
+            restrict: 'EA',
+            replace: true,
+            templateUrl: WPAPI.partials_url + 'navigation.html'
         }
     })
 
