@@ -43,5 +43,4 @@ $max-width: em(1550);
 body {
   font-family: $font-lato;
   font-weight: 300;
-  @include outer-container;
 }

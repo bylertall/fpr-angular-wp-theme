@@ -384,14 +384,7 @@ Version: 1.0
 */
 body {
   font-family: "Lato", sans-serif;
-  font-weight: 300;
-  max-width: 96.875em;
-  margin-left: auto;
-  margin-right: auto; }
-  body::after {
-    clear: both;
-    content: "";
-    display: table; }
+  font-weight: 300; }
 
 .insta-widget {
   display: table;
@@ -494,16 +487,19 @@ body {
       .post-header .date-widget .date-container .day {
         font-size: 1.625em; }
 
-.post-content p {
+.single-post .post-header {
+  height: 31.25em; }
+
+.post-content {
   max-width: 46.875em;
   margin-left: auto;
-  margin-right: auto;
-  margin: 0.625em auto; }
-  .post-content p::after {
+  margin-right: auto; }
+  .post-content::after {
     clear: both;
     content: "";
     display: table; }
   .post-content p img {
-    margin: 0 auto; }
+    margin: 0.625em auto;
+    display: block; }
 
 /*# sourceMappingURL=style.css.map */

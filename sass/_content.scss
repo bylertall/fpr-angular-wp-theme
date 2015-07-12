@@ -1,10 +1,15 @@
-.post-content {
-  p {
-    @include outer-container(em(750));
-    margin: em(10) auto;
+.single-post {
+  .post-header {
+    height: em(500);
+  }
+}
 
+.post-content {
+  @include outer-container(em(750));
+  p {
     img {
-      margin: 0 auto;
+      margin: em(10) auto;
+      display: block;
     }
   }
 }

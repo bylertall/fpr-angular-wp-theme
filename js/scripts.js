@@ -56,6 +56,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
         var vm = this;
 
         vm.post = WPService.post;
+        vm.postContent = WPService.trustedPostContent;
 
         document.querySelector('title').innerHTML = vm.post.title + ' | The Fancy Pants Report';
 
@@ -65,7 +66,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
         var vm = this;
 
         InstaService.getInstaFeed()
-            .success(function() {
+            .then(function() {
                 vm.feed = InstaService.feed;
         });
     })
