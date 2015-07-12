@@ -1,13 +1,9 @@
-
-
-/* NEED TO FIX COLLAPSING MARGINS FOR HEADER, OVERFLOW HIDDEN SCREWS UP POST TITLE POSITION */
-
 .feed {
+  @include outer-container;
   margin-bottom: em(15);
 }
 
 .post-header {
-  $max-width: em(1550);
   height: em(400);
   @include linear-gradient(-45deg, $accent-color, #EBD0CF);
   background-position: center;

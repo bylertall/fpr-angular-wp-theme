@@ -1,0 +1,5 @@
+<div class="insta-widget">
+    <div class="insta-tile" ng-repeat="photo in insta.feed | limitTo: 6">
+        <img ng-src="{{photo.images.low_resolution.url}}" />
+    </div>
+</div>

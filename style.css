@@ -385,12 +385,34 @@ Version: 1.0
 body {
   font-family: "Lato", sans-serif;
   font-weight: 300;
-  height: 100%;
-  width: 100%; }
+  max-width: 96.875em;
+  margin-left: auto;
+  margin-right: auto; }
+  body::after {
+    clear: both;
+    content: "";
+    display: table; }
 
-/* NEED TO FIX COLLAPSING MARGINS FOR HEADER, OVERFLOW HIDDEN SCREWS UP POST TITLE POSITION */
+.insta-widget {
+  display: table;
+  width: 100%;
+  table-layout: fixed; }
+
+.insta-tile {
+  display: table-cell;
+  width: 16.66667%; }
+  .insta-tile img {
+    width: 100%; }
+
 .feed {
+  max-width: 96.875em;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: 0.9375em; }
+  .feed::after {
+    clear: both;
+    content: "";
+    display: table; }
 
 .post-header {
   height: 25em;
@@ -473,8 +495,14 @@ body {
         font-size: 1.625em; }
 
 .post-content p {
-  max-width: 750px;
+  max-width: 46.875em;
+  margin-left: auto;
+  margin-right: auto;
   margin: 0.625em auto; }
+  .post-content p::after {
+    clear: both;
+    content: "";
+    display: table; }
   .post-content p img {
     margin: 0 auto; }
 

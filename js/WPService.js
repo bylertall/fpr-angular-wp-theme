@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fprApp').factory('WPService', function ($http, $stateParams) {
+angular.module('fprApp').factory('WPService', function ($http) {
     var WPService = {
         feed: [],
         post: [],
@@ -10,7 +10,7 @@ angular.module('fprApp').factory('WPService', function ($http, $stateParams) {
     };
 
     WPService.getAllPosts = function() {
-
+        // only get if feed is empty
         if (!WPService.feed.length) {
             return $http.get(WPAPI.api_url + '/posts')
                 .success(function(res) {

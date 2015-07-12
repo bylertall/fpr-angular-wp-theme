@@ -1,6 +1,6 @@
 .post-content {
   p {
-    max-width: 750px;
+    @include outer-container(em(750));
     margin: em(10) auto;
 
     img {

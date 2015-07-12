@@ -37,6 +37,11 @@ function my_scripts() {
 		get_stylesheet_directory_uri() . '/js/WPService.js'
 	);
 
+	wp_enqueue_script(
+		'insta-service',
+		get_stylesheet_directory_uri() . '/js/InstaService.js'
+	);
+
 	wp_enqueue_style( 'style.css', get_stylesheet_uri() );
 
 	wp_localize_script(

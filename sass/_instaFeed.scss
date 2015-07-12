@@ -1,0 +1,11 @@
+.insta-widget {
+  @include row(table);
+}
+
+.insta-tile {
+  @include span-columns(2, block-collapse);
+
+  img {
+    @include fill-parent;
+  }
+}

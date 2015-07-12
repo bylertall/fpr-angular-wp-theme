@@ -61,6 +61,15 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
 
     })
 
+.controller('InstaWidget', function(InstaService) {
+        var vm = this;
+
+        InstaService.getInstaFeed()
+            .success(function() {
+                vm.feed = InstaService.feed;
+        });
+    })
+
 .directive('postDate', function() {
         return {
                 scope: {
@@ -70,6 +79,14 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
         };
 
 
+    })
+
+.directive('instaWidget', function() {
+        return {
+            restrict: 'EA',
+            controller: 'InstaWidget as insta',
+            templateUrl: WPAPI.partials_url + 'insta-widget.html'
+        }
     })
 
 
