@@ -15,6 +15,7 @@ angular.module('fprApp').factory('InstaService', function($http) {
                 }
             }).success(function(res) {
                InstaService.feed = res.data;
+                console.log(InstaService.feed);
             });
         }
         return;

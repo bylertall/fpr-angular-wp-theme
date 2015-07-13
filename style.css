@@ -466,12 +466,64 @@ body {
   width: 100%;
   table-layout: fixed;
   margin-bottom: -0.1875em; }
+  .insta-widget .insta-tile {
+    display: table-cell;
+    width: 16.66667%;
+    position: relative; }
+    .insta-widget .insta-tile img {
+      width: 100%; }
+    .insta-widget .insta-tile a {
+      color: #000; }
 
-.insta-tile {
-  display: table-cell;
-  width: 16.66667%; }
-  .insta-tile img {
-    width: 100%; }
+.insta-caption-container {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(250, 250, 250, 0.6);
+  -webkit-transition: opacity, 250ms, ease;
+  -moz-transition: opacity, 250ms, ease;
+  transition: opacity, 250ms, ease; }
+  .insta-caption-container:hover {
+    opacity: 1; }
+  .insta-caption-container .icon-instagram {
+    position: absolute;
+    top: 0.625em;
+    right: 0.625em;
+    height: 2.1875em;
+    width: 2.1875em; }
+  .insta-caption-container .insta-caption-icon {
+    opacity: 0.5; }
+  .insta-caption-container .insta-caption {
+    opacity: 0.5;
+    position: absolute;
+    bottom: 15%; }
+    .insta-caption-container .insta-caption span {
+      display: block;
+      text-align: center;
+      font-family: "Oswald", sans-serif;
+      font-size: 1.75em;
+      font-weight: 300; }
+    .insta-caption-container .insta-caption .icon-heart, .insta-caption-container .insta-caption .icon-comment {
+      height: 1.5em;
+      width: 1.5em;
+      position: relative;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%); }
+  .insta-caption-container .insta-likes {
+    left: 15%; }
+    @media screen and (min-width: 992px) {
+      .insta-caption-container .insta-likes {
+        left: 25%; } }
+  .insta-caption-container .insta-comments {
+    right: 15%; }
+    @media screen and (min-width: 992px) {
+      .insta-caption-container .insta-comments {
+        right: 25%; } }
 
 .feed {
   max-width: 96.875em;

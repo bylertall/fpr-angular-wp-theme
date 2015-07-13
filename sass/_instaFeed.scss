@@ -1,12 +1,82 @@
 .insta-widget {
   @include row(table);
   margin-bottom: em(-3);
+
+  .insta-tile {
+    @include span-columns(2, block-collapse);
+    position: relative;
+
+    img {
+      @include fill-parent;
+    }
+
+    a {
+      color: #000;
+    }
+  }
 }
 
-.insta-tile {
-  @include span-columns(2, block-collapse);
+.insta-caption-container {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(250, 250, 250, 0.6);
+  @include transition(opacity, 250ms, ease);
 
-  img {
-    @include fill-parent;
+  &:hover {
+    opacity: 1;
   }
+
+  .icon-instagram {
+    position: absolute;
+    top: em(10);
+    right: em(10);
+    @include size(em(35));
+  }
+
+  .insta-caption-icon {
+    opacity: 0.5;
+  }
+
+  .insta-caption {
+    opacity: 0.5;
+    position: absolute;
+    bottom: 15%;
+
+
+
+    span {
+      display: block;
+      text-align: center;
+      font-family: $font-oswald;
+      font-size: em(28);
+      font-weight: 300;
+    }
+
+    .icon-heart, .icon-comment {
+      @include size(em(24));
+      @include center-x-align(relative);
+    }
+  }
+
+  .insta-likes {
+    left: 15%;
+
+    @include media(min-width 992px) {
+      left: 25%;
+    }
+  }
+
+  .insta-comments {
+    right: 15%;
+
+    @include media(min-width 992px) {
+      right: 25%;
+    }
+  }
+
+
 }
