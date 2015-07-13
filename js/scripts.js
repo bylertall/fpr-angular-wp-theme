@@ -87,6 +87,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
 .directive('instaWidget', function() {
         return {
             restrict: 'EA',
+            replace: true,
             controller: 'InstaWidget as insta',
             templateUrl: WPAPI.partials_url + 'insta-widget.html'
         }

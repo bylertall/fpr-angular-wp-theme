@@ -37,23 +37,28 @@
     max-width: em(450);
 
     li {
-      margin: 0 em(7);
+      @include span-columns(1.2 of 6);
       text-transform: uppercase;
+      font-size: em(14);
     }
   }
 }
 
 .nav-social {
-  @include span-columns(2.5, block-collapse);
+  @include span-columns(2.7, block-collapse);
   height: 100%;
 
   li {
-    @include center-y-align(relative);
     @include span-columns(2 of 12, block-collapse);
-    margin: 0;
+
+    a {
+      padding: em(13);
+      margin: em(3);
+    }
   }
 
   .social-icon {
-    @include size(em(16));
+    @include size(em(21));
+    padding-top: em(2);
   }
 }

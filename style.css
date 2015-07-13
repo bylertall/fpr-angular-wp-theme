@@ -431,31 +431,35 @@ body {
   .nav-site .nav-list {
     max-width: 28.125em; }
     .nav-site .nav-list li {
-      margin: 0 0.4375em;
-      text-transform: uppercase; }
+      float: left;
+      display: block;
+      margin-right: 4.82916%;
+      width: 16.13667%;
+      text-transform: uppercase;
+      font-size: 0.875em; }
+      .nav-site .nav-list li:last-child {
+        margin-right: 0; }
 
 .nav-social {
   float: left;
   display: block;
-  width: 21.32451%;
+  width: 23.03047%;
   height: 100%; }
   .nav-social:last-child {
-    width: 18.96686%; }
+    width: 20.67282%; }
   .nav-social li {
-    position: relative;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
     float: left;
     display: block;
-    width: 17.05961%;
-    margin: 0; }
+    width: 17.05961%; }
     .nav-social li:last-child {
       width: 14.70196%; }
+    .nav-social li a {
+      padding: 0.8125em;
+      margin: 0.1875em; }
   .nav-social .social-icon {
-    height: 1em;
-    width: 1em; }
+    height: 1.3125em;
+    width: 1.3125em;
+    padding-top: 0.125em; }
 
 .insta-widget {
   display: table;
