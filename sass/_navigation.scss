@@ -1,6 +1,7 @@
 .main-nav {
   @include outer-container;
   height: rem(65);
+  position: relative;
 }
 
 .blog-logo-container {
@@ -21,13 +22,12 @@
 
   li {
     @include center-y-align(relative);
-    display: inline-block;
     text-align: center;
   }
 }
 
 .nav-site {
-  @include span-columns(6, block-collapse);
+  @include span-columns(6);
   height: 100%;
 
   .nav-list {
@@ -42,15 +42,16 @@
 }
 
 .nav-social {
-  @include span-columns(2.7, block-collapse);
+  @include span-columns(2.7);
   height: 100%;
 
   li {
-    @include span-columns(2 of 12, block-collapse);
+    @include span-columns(2 of 12);
 
     a {
       padding: rem(13);
       margin: rem(3);
+      display: inline-block;
     }
   }
 
