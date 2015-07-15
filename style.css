@@ -1,3 +1,10 @@
+/*!
+Theme Name: Angular-FPR
+Author: Tyler Ball
+Author URI: http://tyler-ball.com
+Description: A theme for The Fancy Pants Report, built with AngularJS
+Version: 1.0
+*/
 /* ==========================================================================
    Normalize.scss settings
    ========================================================================== */
@@ -375,22 +382,21 @@ html {
 *, *::after, *::before {
   box-sizing: inherit; }
 
-/*!
-Theme Name: Angular-FPR
-Author: Tyler Ball
-Author URI: http://tyler-ball.com
-Description: A theme for The Fancy Pants Report, built with AngularJS
-Version: 1.0
-*/
 body {
   font-family: "Lato", sans-serif;
   font-weight: 300; }
+  @media screen and (max-width: 992px) {
+    body {
+      font-size: 0.9em; } }
+  @media screen and (max-width: 768px) {
+    body {
+      font-size: 0.75em; } }
 
 .main-nav {
   max-width: 96.875em;
   margin-left: auto;
   margin-right: auto;
-  height: 4.0625em; }
+  height: 4.0625rem; }
   .main-nav::after {
     clear: both;
     content: "";
@@ -429,14 +435,14 @@ body {
   .nav-site:last-child {
     width: 48.82117%; }
   .nav-site .nav-list {
-    max-width: 28.125em; }
+    max-width: 28.125rem; }
     .nav-site .nav-list li {
       float: left;
       display: block;
       margin-right: 4.82916%;
       width: 16.13667%;
       text-transform: uppercase;
-      font-size: 0.875em; }
+      font-size: 1em; }
       .nav-site .nav-list li:last-child {
         margin-right: 0; }
 
@@ -454,26 +460,35 @@ body {
     .nav-social li:last-child {
       width: 14.70196%; }
     .nav-social li a {
-      padding: 0.8125em;
-      margin: 0.1875em; }
+      padding: 0.8125rem;
+      margin: 0.1875rem; }
   .nav-social .social-icon {
-    height: 1.3125em;
-    width: 1.3125em;
-    padding-top: 0.125em; }
+    height: 1.333em;
+    width: 1.333em;
+    padding-top: 0.125rem; }
 
 .insta-widget {
-  display: table;
-  width: 100%;
-  table-layout: fixed;
-  margin-bottom: -0.1875em; }
+  max-width: 96.875em;
+  margin-left: auto;
+  margin-right: auto; }
+  .insta-widget::after {
+    clear: both;
+    content: "";
+    display: table; }
   .insta-widget .insta-tile {
-    display: table-cell;
-    width: 16.66667%;
+    width: 33.33333333333%;
+    display: block;
+    float: left;
     position: relative; }
-    .insta-widget .insta-tile img {
-      width: 100%; }
+    @media screen and (min-width: 768px) {
+      .insta-widget .insta-tile {
+        display: table-cell;
+        width: 16.66667%; } }
     .insta-widget .insta-tile a {
       color: #000; }
+    .insta-widget .insta-tile .insta-image {
+      width: 100%;
+      display: block; }
 
 .insta-caption-container {
   opacity: 0;
@@ -490,12 +505,11 @@ body {
     opacity: 1; }
   .insta-caption-container .icon-instagram {
     position: absolute;
-    top: 0.625em;
-    right: 0.625em;
-    height: 2.1875em;
-    width: 2.1875em; }
-  .insta-caption-container .insta-caption-icon {
-    opacity: 0.5; }
+    opacity: 0.75;
+    top: 0.8em;
+    right: 0.8em;
+    height: 2.44141em;
+    width: 2.44141em; }
   .insta-caption-container .insta-caption {
     opacity: 0.5;
     position: absolute;
@@ -504,23 +518,23 @@ body {
       display: block;
       text-align: center;
       font-family: "Oswald", sans-serif;
-      font-size: 1.75em;
+      font-size: 1.95313em;
       font-weight: 300; }
     .insta-caption-container .insta-caption .icon-heart, .insta-caption-container .insta-caption .icon-comment {
-      height: 1.5em;
-      width: 1.5em;
+      height: 1.5625em;
+      width: 1.5625em;
       position: relative;
       left: 50%;
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%); }
   .insta-caption-container .insta-likes {
-    left: 15%; }
+    left: 18%; }
     @media screen and (min-width: 992px) {
       .insta-caption-container .insta-likes {
         left: 25%; } }
   .insta-caption-container .insta-comments {
-    right: 15%; }
+    right: 18%; }
     @media screen and (min-width: 992px) {
       .insta-caption-container .insta-comments {
         right: 25%; } }
@@ -529,14 +543,14 @@ body {
   max-width: 96.875em;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 0.9375em; }
+  margin-bottom: 1em; }
   .feed::after {
     clear: both;
     content: "";
     display: table; }
 
 .post-header {
-  height: 25em;
+  height: 22.73737em;
   background-color: rgba(206, 142, 140, 0.8);
   background-image: -webkit-linear-gradient(-225deg, rgba(206, 142, 140, 0.8), #EBD0CF);
   background-image: linear-gradient(-45deg,rgba(206, 142, 140, 0.8), #EBD0CF);
@@ -555,17 +569,14 @@ body {
       -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
       transform: translateX(-50%);
-      max-height: 4.6875em;
       opacity: 0;
-      bottom: 1.25em;
+      bottom: 1.5625em;
       background-color: transparent;
       border: 1px solid #FFF;
-      padding: 15px 15px;
+      padding: 1em;
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       box-shadow: none;
-      color: #FFF;
-      text-transform: uppercase;
       -webkit-transition: all, 250ms, linear;
       -moz-transition: all, 250ms, linear;
       transition: all, 250ms, linear; }
@@ -574,9 +585,11 @@ body {
       .post-header .post-title-link .read-more-button:focus {
         outline: none; }
       .post-header .post-title-link .read-more-button h4 {
-        font-size: 1.125em;
-        font-weight: 300;
-        margin: 0; }
+        margin: 0;
+        font-size: 1em;
+        font-weight: 100;
+        color: #FFF;
+        text-transform: uppercase; }
   .post-header .post-title {
     position: absolute;
     top: 50%;
@@ -587,14 +600,14 @@ body {
     margin: 0;
     padding: 0.9375em;
     display: inline-block;
-    font-family: "Ubuntu", sans-serif;
-    font-size: 3.75em;
+    font-family: "Lato", sans-serif;
+    font-size: 3.8147em;
     font-weight: 300;
     text-align: center;
     color: #FFF; }
   .post-header .date-widget {
-    height: 4.25em;
-    width: 4.25em;
+    height: 4.76837em;
+    width: 4.76837em;
     position: absolute;
     left: 1em;
     top: 1em;
@@ -608,26 +621,34 @@ body {
       transform: translateY(-50%);
       font-family: "Lato", sans-serif;
       font-weight: 100;
-      line-height: 1.875em;
+      line-height: 1.95313em;
       color: #FFF; }
       .post-header .date-widget .date-container .month {
-        font-size: 1.75em; }
+        font-size: 1.95313em; }
       .post-header .date-widget .date-container .day {
-        font-size: 1.625em; }
+        font-size: 1.5625em; }
 
 .single-post .post-header {
-  height: 31.25em; }
+  height: 28.42171em; }
+.single-post .post-title {
+  font-size: 4.76837em; }
 
 .post-content {
-  max-width: 46.875em;
+  max-width: 96.875em;
   margin-left: auto;
   margin-right: auto; }
   .post-content::after {
     clear: both;
     content: "";
     display: table; }
-  .post-content p img {
-    margin: 0.625em auto;
-    display: block; }
+  .post-content p {
+    max-width: 46.875rem;
+    margin: 0 auto;
+    padding: 0.3125rem 0.625rem;
+    font-size: 1.125em; }
+    .post-content p img {
+      height: 100%;
+      width: 100%;
+      margin: 0.3125rem 0; }
 
 /*# sourceMappingURL=style.css.map */

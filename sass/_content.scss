@@ -1,15 +1,24 @@
 .single-post {
   .post-header {
-    height: em(500);
+    height: modular-scale(15);
+  }
+
+  .post-title {
+    font-size: modular-scale(7);
   }
 }
 
 .post-content {
-  @include outer-container(em(750));
+  @include outer-container;
   p {
+    max-width: rem(750);
+    margin: 0 auto;
+    padding: rem(5) rem(10);
+    font-size: modular-scale(1, 1em, $major-second);
+
     img {
-      margin: em(10) auto;
-      display: block;
+      @include size(100%);
+      margin: rem(5) 0;
     }
   }
 }

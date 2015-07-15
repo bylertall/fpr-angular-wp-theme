@@ -1,17 +1,23 @@
 .insta-widget {
-  @include row(table);
-  margin-bottom: em(-3);
+  @include outer-container;
 
   .insta-tile {
-    @include span-columns(2, block-collapse);
+    width: 33.33333333333%;
+    display: block;
+    float: left;
     position: relative;
 
-    img {
-      @include fill-parent;
+    @include media(min-width 768px){
+      @include span-columns(2, table);
     }
 
     a {
       color: #000;
+    }
+
+    .insta-image {
+      @include fill-parent;
+      display: block;
     }
   }
 }
@@ -32,13 +38,10 @@
 
   .icon-instagram {
     position: absolute;
-    top: em(10);
-    right: em(10);
-    @include size(em(35));
-  }
-
-  .insta-caption-icon {
-    opacity: 0.5;
+    opacity: 0.75;
+    top: modular-scale(-1);
+    right: modular-scale(-1);
+    @include size(modular-scale(4));
   }
 
   .insta-caption {
@@ -52,18 +55,18 @@
       display: block;
       text-align: center;
       font-family: $font-oswald;
-      font-size: em(28);
+      font-size: modular-scale(3);
       font-weight: 300;
     }
 
     .icon-heart, .icon-comment {
-      @include size(em(24));
+      @include size(modular-scale(2));
       @include center-x-align(relative);
     }
   }
 
   .insta-likes {
-    left: 15%;
+    left: 18%;
 
     @include media(min-width 992px) {
       left: 25%;
@@ -71,7 +74,7 @@
   }
 
   .insta-comments {
-    right: 15%;
+    right: 18%;
 
     @include media(min-width 992px) {
       right: 25%;

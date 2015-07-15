@@ -1,10 +1,10 @@
 .feed {
   @include outer-container;
-  margin-bottom: em(15);
+  margin-bottom: modular-scale(0);
 }
 
 .post-header {
-  height: em(400);
+  height: modular-scale(14);
   @include linear-gradient(-45deg, $accent-color, #EBD0CF);
   background-position: center;
   position: relative;
@@ -20,17 +20,14 @@
 
     .read-more-button {
       @include center-x-align(absolute);
-      max-height: em(75);
       opacity: 0;
-      bottom: em(20);
+      bottom: modular-scale(2);
       background-color: transparent;
       border: 1px solid #FFF;
-      padding: 15px 15px;
+      padding: modular-scale(0);
       -webkit-box-shadow: none;
       -moz-box-shadow: none;
       box-shadow: none;
-      color: #FFF;
-      text-transform: uppercase;
       @include transition(all, 250ms, linear);
 
       &:hover {
@@ -42,9 +39,11 @@
       }
 
       h4 {
-        font-size: em(18);
-        font-weight: 300;
         margin: 0;
+        font-size: modular-scale(0);
+        font-weight: 100;
+        color: #FFF;
+        text-transform: uppercase;
       }
     }
   }
@@ -55,18 +54,18 @@
     margin: 0;
     padding: em(15);
     display: inline-block;
-    font-family: $font-ubuntu;
-    font-size: em(60);
+    font-family: $font-lato;
+    font-size: modular-scale(6);
     font-weight: 300;
     text-align: center;
     color: #FFF;
   }
 
   .date-widget {
-    @include size(em(68));
+    @include size(modular-scale(7));
     position: absolute;
-    left: 1em;
-    top: 1em;
+    left: modular-scale(0);
+    top: modular-scale(0);
     text-align: center;
     border: 1px solid #FFF;
 
@@ -74,15 +73,15 @@
       @include center-y-align(relative);
       font-family: $font-lato;
       font-weight: 100;
-      line-height: em(30);
+      line-height: modular-scale(3);
       color: #FFF;
       
       .month {
-        font-size: em(28);
+        font-size: modular-scale(3);
       }
       
       .day {
-        font-size: em(26);
+        font-size: modular-scale(2);
       }
     }
   }

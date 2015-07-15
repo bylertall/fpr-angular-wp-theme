@@ -1,12 +1,3 @@
-/*!
-Theme Name: Angular-FPR
-Author: Tyler Ball
-Author URI: http://tyler-ball.com
-Description: A theme for The Fancy Pants Report, built with AngularJS
-Version: 1.0
-*/
-
-
 @import url(http://fonts.googleapis.com/css?family=Lato:100,300,700|Ubuntu:300,400,500|Oswald:400,300);
 
 
@@ -39,8 +30,17 @@ $font-ubuntu: 'Ubuntu', sans-serif;
 $font-oswald: 'Oswald', sans-serif;
 $accent-color: rgba(206, 142, 140, 0.8);
 $max-width: em(1550);
+$modular-scale-ratio: $major-third;
 
 body {
   font-family: $font-lato;
   font-weight: 300;
+
+  @include media(max-width 992px) {
+    font-size: 0.9em;
+  }
+
+  @include media(max-width  768px) {
+    font-size: 0.75em;
+  }
 }

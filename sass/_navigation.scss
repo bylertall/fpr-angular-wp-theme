@@ -1,15 +1,12 @@
 .main-nav {
   @include outer-container;
-  height: em(65);
+  height: rem(65);
 }
 
 .blog-logo-container {
   @include shift(0.25);
   @include span-columns(2.75, block-collapse);
   height: 100%;
-
-  .blog-logo-link {
-  }
 
   .blog-logo {
     height: 100%;
@@ -34,12 +31,12 @@
   height: 100%;
 
   .nav-list {
-    max-width: em(450);
+    max-width: rem(450);
 
     li {
       @include span-columns(1.2 of 6);
       text-transform: uppercase;
-      font-size: em(14);
+      font-size: modular-scale(0);
     }
   }
 }
@@ -52,13 +49,13 @@
     @include span-columns(2 of 12, block-collapse);
 
     a {
-      padding: em(13);
-      margin: em(3);
+      padding: rem(13);
+      margin: rem(3);
     }
   }
 
   .social-icon {
-    @include size(em(21));
-    padding-top: em(2);
+    @include size(modular-scale(1, 1em, $perfect-fourth));
+    padding-top: rem(2);
   }
 }

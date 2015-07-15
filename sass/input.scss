@@ -1,37 +1,39 @@
+/*!
+Theme Name: Angular-FPR
+Author: Tyler Ball
+Author URI: http://tyler-ball.com
+Description: A theme for The Fancy Pants Report, built with AngularJS
+Version: 1.0
+*/
+
 //
 // Normalize
 // --------------------------------------------------
 @import "../bower_components/normalize-scss/normalize";
 
 
-
 //
 // Bourbon, Neat
 // --------------------------------------------------
-
 @import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
 @import "../bower_components/neat/app/assets/stylesheets/neat";
+
 
 //
 // Base
 // --------------------------------------------------
-
 @import "base";
-
-
-
-//
-// Componenets
-// --------------------------------------------------
-
-@import "navigation";
-@import "instaFeed";
-
 
 
 //
 // Components
 // --------------------------------------------------
+@import "navigation";
+@import "instaFeed";
 
+
+//
+// Components
+// --------------------------------------------------
 @import "feed";
 @import "content";
