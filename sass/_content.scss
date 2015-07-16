@@ -1,4 +1,6 @@
 .single-post {
+  @include outer-container;
+
   .post-header {
     height: modular-scale(15);
   }
@@ -9,7 +11,6 @@
 }
 
 .post-content {
-  @include outer-container;
   p {
     max-width: rem(750);
     margin: 0 auto;

@@ -3,7 +3,7 @@
 angular.module('fprApp').factory('WPService', function ($http, $sce) {
     var WPService = {
         feed: [],
-        post: [],
+        post: {},
         trustedPostContent: undefined,
         categories: [],
         currentPage: 1,
@@ -57,6 +57,14 @@ angular.module('fprApp').factory('WPService', function ($http, $sce) {
                 WPService.categories = res;
             });
 
+    };
+
+    WPService.isFormatted = function(post) {
+        if (post.acf['main-copy'] == '') {
+            return false;
+        }
+
+        return true;
     };
 
     return WPService;

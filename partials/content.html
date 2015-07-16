@@ -1,8 +1,25 @@
 <article class="single-post">
-    <header class="post-header" ng-style="content.post.acf.hasOwnProperty('featured-image') && {'background-image': 'url(' + content.post.acf['featured-image'] + ')'}">
+    <header class="post-header" ng-style="content.post.acf['featured-image'] && {'background-image': 'url(' + content.post.acf['featured-image'] + ')'}">
         <div post-date="{{::content.post.date}}"></div>
 
         <h1 class="post-title" ng-bind-html="::content.post.title | uppercase"></h1>
     </header>
-    <section class="post-content" ng-bind-html="::content.postContent"></section>
+
+    <!-- if OLD post format -->
+    <section ng-if="!content.isFormatted" class="post-content" ng-bind-html="::content.postContent"></section>
+
+
+    <!-- if NEW post format -->
+    <section ng-if="content.isFormatted" class="post-content">
+        <div>TEST TEST TEST</div>
+        <div class="post-images" ng-bind-html="::content.postContent"></div>
+        <div class="outfit-details" ng-bind-html="::content.post.acf['outfit-details']"></div>
+        <div class="main-copy" ng-bind-html="::content.post.acf['main-copy']"></div>
+
+        <div class="blog-lovin">
+            <a href="http://www.bloglovin.com/en/blog/3440067/the-fancy-pants-report/follow" target="_blank">
+                <img src="/wp-content/uploads/2014/11/bloglovin-button.jpg" alt="The Fancy Pants Report on Bloglovin'"/>
+            </a>
+        </div>
+    </section>
 </article>

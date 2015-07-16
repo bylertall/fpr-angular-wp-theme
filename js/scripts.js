@@ -26,6 +26,9 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
                     dataFeed: function(WPService) {
                         return WPService.getAllPosts();
                     }
+                },
+                onEnter: function() {
+                    document.querySelector('title').innerHTML = 'The Fancy Pants Report | A San Francisco Style Blog by Kate Ogata';
                 }
 
             })
@@ -39,9 +42,11 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
                         return WPService.singlePost($stateParams.slug);
                     }
                 },
-                onEnter: function(smoothScroll) {
+                onEnter: function(smoothScroll, WPService) {
                     var header = document.getElementById('main-header');
                     smoothScroll(header);
+
+                    document.querySelector('title').innerHTML = WPService.post.title + ' | The Fancy Pants Report';
                 }
             })
     })
@@ -62,8 +67,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
 
         vm.post = WPService.post;
         vm.postContent = WPService.trustedPostContent;
-
-        document.querySelector('title').innerHTML = vm.post.title + ' | The Fancy Pants Report';
+        vm.isFormatted = WPService.isFormatted(vm.post);
 
     })
 

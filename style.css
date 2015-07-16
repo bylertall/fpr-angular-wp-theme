@@ -632,27 +632,27 @@ body {
       .post-header .date-widget .date-container .day {
         font-size: 1.5625em; }
 
-.single-post .post-header {
-  height: 28.42171em; }
-.single-post .post-title {
-  font-size: 4.76837em; }
-
-.post-content {
+.single-post {
   max-width: 96.875em;
   margin-left: auto;
   margin-right: auto; }
-  .post-content::after {
+  .single-post::after {
     clear: both;
     content: "";
     display: table; }
-  .post-content p {
-    max-width: 46.875rem;
-    margin: 0 auto;
-    padding: 0.3125rem 0.625rem;
-    font-size: 1.125em; }
-    .post-content p img {
-      height: 100%;
-      width: 100%;
-      margin: 0.3125rem 0; }
+  .single-post .post-header {
+    height: 28.42171em; }
+  .single-post .post-title {
+    font-size: 4.76837em; }
+
+.post-content p {
+  max-width: 46.875rem;
+  margin: 0 auto;
+  padding: 0.3125rem 0.625rem;
+  font-size: 1.125em; }
+  .post-content p img {
+    height: 100%;
+    width: 100%;
+    margin: 0.3125rem 0; }
 
 /*# sourceMappingURL=style.css.map */
