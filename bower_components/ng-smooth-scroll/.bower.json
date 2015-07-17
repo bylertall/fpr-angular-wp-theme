@@ -1,0 +1,34 @@
+{
+  "name": "Angular Carousel",
+  "authors": [
+    "Peter Piekarczyk <peterpiekarczyk@gmail.com>"
+  ],
+  "description": "An AngularJS directive for getting a simple carousel running in your application.",
+  "main": "angular-carousel.js",
+  "license": "Apache",
+  "dependencies": {
+    "angular": null,
+    "jquery": null
+  },
+  "keywors": [
+    "carousel",
+    "slider"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/ppiekarczyk/ng-smooth-scroll",
+  "_release": "41e9b9a7ef",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "41e9b9a7ef492b67aefbcd9961fe41b58ad0639f"
+  },
+  "_source": "git://github.com/ppiekarczyk/ng-smooth-scroll.git",
+  "_target": "*",
+  "_originalSource": "ng-smooth-scroll"
+}

@@ -655,4 +655,7 @@ body {
     width: 100%;
     margin: 0.3125rem 0; }
 
+.featured-post p img {
+  width: 31.25rem; }
+
 /*# sourceMappingURL=style.css.map */

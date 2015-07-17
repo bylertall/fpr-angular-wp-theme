@@ -1,0 +1,25 @@
+{
+  "name": "Angular Carousel",
+  "version": "0.9.0",
+  "authors": [
+    "Peter Piekarczyk <peterpiekarczyk@gmail.com>"
+  ],
+  "description": "An AngularJS directive for getting a simple carousel running in your application.",
+  "main": "angular-carousel.js",
+  "license": "Apache",
+  "dependencies" : {
+    "angular" : null,
+    "jquery" : null
+  },
+  "keywors" : [
+    "carousel",
+    "slider"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

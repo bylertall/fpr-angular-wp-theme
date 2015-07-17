@@ -12,5 +12,16 @@
         </a>
     </header>
 
-    <!--<section ng-if="post.acf['is-featured']" class="post-content" ng-bind-html="::post.content"></section>-->
+    <!-- if FEATURED post -->
+    <section ng-if="post.acf['is-featured']" class="post-content featured-post">
+        <div class="post-images" ng-bind-html="::post.content"></div>
+        <div class="outfit-details" ng-bind-html="::post.acf['outfit-details']"></div>
+        <div class="main-copy" ng-bind-html="::post.acf['main-copy']"></div>
+
+        <div class="blog-lovin">
+            <a href="http://www.bloglovin.com/en/blog/3440067/the-fancy-pants-report/follow" target="_blank">
+                <img src="/wp-content/uploads/2014/11/bloglovin-button.jpg" alt="The Fancy Pants Report on Bloglovin'"/>
+            </a>
+        </div>
+    </section>
 </article>
