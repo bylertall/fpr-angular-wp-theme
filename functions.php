@@ -12,7 +12,7 @@ function my_scripts() {
 		'angularjs-ui-router',
         get_template_directory_uri() . '/bower_components/angular-ui-router/release/angular-ui-router.min.js',
         array(), null, false
-	);d
+	);
 
 	wp_register_script(
 		'angularjs-sanitize',
@@ -63,4 +63,3 @@ function cc_mime_types($mimes) {
   return $mimes;
 }
 add_filter('upload_mimes', 'cc_mime_types');
-?>

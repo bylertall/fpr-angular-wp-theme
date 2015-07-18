@@ -1,0 +1,24 @@
+{
+  "name": "ngSmoothScroll",
+  "version": "0.2.0",
+  "authors": [
+    "Arnaud Pichon <arnaud@onesime.fr>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "main": "./build/ng-smoothscroll.js",
+  "dependencies": {
+    "angular": "~1.2"
+  },
+  "devDependencies": {
+    "angular-scenario": "~1.2.12",
+    "angular-mocks": "~1.2.12",
+    "should": "~3.1.2"
+  }
+}

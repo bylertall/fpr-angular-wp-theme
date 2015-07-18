@@ -5,7 +5,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
 
-        //$urlRouterProvider.otherwise('/');
+        $urlRouterProvider.otherwise('/');
 
         $stateProvider
             .state('main', {
