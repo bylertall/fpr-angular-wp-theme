@@ -6,7 +6,8 @@
 .post-header {
   height: modular-scale(14);
   @include linear-gradient(-45deg, $accent-color, #EBD0CF);
-  background-position: center;
+  background-size: cover;
+  background-position: 25% 30%;
   position: relative;
 
   .post-title-link {

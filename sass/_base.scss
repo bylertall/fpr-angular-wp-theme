@@ -33,6 +33,7 @@ $max-width: em(1550);
 $modular-scale-ratio: $major-third;
 
 body {
+  overflow-x: hidden;
   font-family: $font-lato;
   font-weight: 300;
 

@@ -60,7 +60,7 @@ angular.module('fprApp').factory('WPService', function ($http, $sce) {
     };
 
     WPService.isFormatted = function(post) {
-        if (post.acf['main-copy'] == '') {
+        if (post.acf['main_copy'] == '') {
             return false;
         }
 
