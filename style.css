@@ -685,6 +685,7 @@ body {
       width: 100%; }
 
 .featured-post p img {
-  width: 31.25rem; }
+  width: 100%;
+  max-width: 46.875rem; }
 
 /*# sourceMappingURL=style.css.map */

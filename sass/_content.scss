@@ -68,7 +68,8 @@
 .featured-post {
   p {
     img {
-      width: rem(500);
+      width: 100%;
+      max-width: rem(750);
     }
   }
 }

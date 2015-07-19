@@ -1,12 +1,11 @@
 <article class="feed" ng-repeat="post in feed.posts">
-    <header class="post-header" ng-style="post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
+    <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
         <div post-date="{{::post.date}}"></div>
 
         <a class="post-title-link" ng-href="{{::post.link}}">
             <h2 class="post-title" ng-bind-html="::post.title | uppercase"></h2>
 
-            <!-- add this to button when ready to hide button for featured post: ng-if="!post.acf['is_featured']"-->
-            <button type="button" class="read-more-button">
+            <button type="button" class="read-more-button" ng-if="post.acf['is_featured']">
                 <h4>Read More</h4>
             </button>
         </a>

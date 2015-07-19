@@ -24,7 +24,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
                 controller: 'Feed as feed',
                 resolve: {
                     dataFeed: function(WPService) {
-                        return WPService.getAllPosts();
+                        return WPService.getAllPosts(1);
                     }
                 },
                 onEnter: function() {
@@ -55,7 +55,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
 
     })
 
-.controller('Feed', function(WPService) {
+.controller('Feed', function($sce, WPService) {
         var vm = this;
 
         vm.posts = WPService.feed;
@@ -66,8 +66,8 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
         var vm = this;
 
         vm.post = WPService.post;
-        vm.postContent = WPService.trustedPostContent;
-        vm.isFormatted = WPService.isFormatted(vm.post);
+        vm.isFormatted = WPService.isFormatted;
+        vm.oldFormatContent = WPService.trustedPostContent;
 
     })
 
