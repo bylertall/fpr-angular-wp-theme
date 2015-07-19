@@ -56,7 +56,7 @@
   }
 
   .social-icon {
-    @include size(modular-scale(1, 1em, $perfect-fourth));
+    @include size(modular-scale(1, rem(15), $perfect-fourth));
     padding-top: rem(2);
   }
 }

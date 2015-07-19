@@ -52,7 +52,10 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
     })
 
 .controller('Main', function() {
+        var vm = this;
 
+        var thisDate = new Date();
+        vm.currentYear = thisDate.getFullYear();
     })
 
 .controller('Feed', function($sce, WPService) {
@@ -66,8 +69,14 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
         var vm = this;
 
         vm.post = WPService.post;
+        vm.categories = WPService.post.terms['category'];
+        vm.tags = WPService.post.terms['post_tag'];
+
         vm.isFormatted = WPService.isFormatted;
         vm.oldFormatContent = WPService.trustedPostContent;
+
+        console.log(vm.categories);
+        console.log(vm.tags);
 
     })
 

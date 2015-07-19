@@ -5,7 +5,7 @@
         <a class="post-title-link" ng-href="{{::post.link}}">
             <h2 class="post-title" ng-bind-html="::post.title | uppercase"></h2>
 
-            <button type="button" class="read-more-button" ng-if="post.acf['is_featured']">
+            <button type="button" class="read-more-button" ng-if="!post.acf['is_featured']">
                 <h4>Read More</h4>
             </button>
         </a>

@@ -21,4 +21,23 @@
             </a>
         </div>
     </section>
+
+    <div class="post-footer">
+        <span ng-bind-html="::content.post.title"></span> |
+        <time datetime="{{::content.post.date | date: 'yyyy-MM-dd'}}">{{::content.post.date | date: 'MMM d, yyyy'}}</time>
+
+        <div class="post-terms">
+            <span class="post-categories">Categories:</span>
+            <span ng-repeat="category in content.categories">
+                <a ng-href="{{category.link}}">{{category.name | lowercase}}</a><span ng-if="!$last">, </span>
+                <span ng-if="$last"> | </span>
+            </span>
+
+            <span class="post-tag">Tags:</span>
+            <span ng-repeat="tag in content.tags">
+                <a ng-href="{{tag.link}}">{{tag.name | lowercase}}</a><span ng-if="!$last">, </span>
+            </span>
+
+        </div>
+    </div>
 </article>

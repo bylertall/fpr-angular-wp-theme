@@ -16,16 +16,8 @@
   margin: 0 auto;
 
   p {
-    font-size: modular-scale(1, 1em, $major-second);
+    font-size: modular-scale(1, rem(16), $minor-second);
     margin: 0;
-
-    @include media(max-width 992px) {
-      font-size: modular-scale(2, 1em, $minor-second);
-    }
-
-    @include media(max-width 768px) {
-      font-size: modular-scale(2, 1.15em, $major-second);
-    }
 
     img {
       @include size(100%);
@@ -40,6 +32,7 @@
     p {
       margin: rem(5.5) 0 rem(7.5);
       line-height: rem(20);
+      font-size: modular-scale(1, rem(14), $minor-second);
     }
   }
 
@@ -71,5 +64,19 @@
       width: 100%;
       max-width: rem(750);
     }
+  }
+}
+
+.post-footer {
+  width: 95%;
+  max-width: rem(750);
+  margin: 0 auto rem(30);
+  padding: rem(10);
+  border: 0;
+  border-bottom: 1px solid #EEE;
+  font-size: modular-scale(0, rem(14));
+
+  .post-terms {
+    font-size: modular-scale(0, rem(13));
   }
 }

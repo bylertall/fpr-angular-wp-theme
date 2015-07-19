@@ -38,10 +38,14 @@ body {
   font-weight: 300;
 
   @include media(max-width 992px) {
-    font-size: 0.9em;
+    font-size: em(14);
   }
 
-  @include media(max-width  768px) {
-    font-size: 0.75em;
+  @include media(max-width 768px) {
+    font-size: em(12);
+  }
+
+  @include media(max-width 500px) {
+    font-size: em(10);
   }
 }

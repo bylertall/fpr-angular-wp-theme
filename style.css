@@ -388,10 +388,13 @@ body {
   font-weight: 300; }
   @media screen and (max-width: 992px) {
     body {
-      font-size: 0.9em; } }
+      font-size: 0.875em; } }
   @media screen and (max-width: 768px) {
     body {
       font-size: 0.75em; } }
+  @media screen and (max-width: 500px) {
+    body {
+      font-size: 0.625em; } }
 
 .main-nav {
   max-width: 96.875em;
@@ -468,8 +471,8 @@ body {
       margin: 0.1875rem;
       display: inline-block; }
   .nav-social .social-icon {
-    height: 1.333em;
-    width: 1.333em;
+    height: 1.24969rem;
+    width: 1.24969rem;
     padding-top: 0.125rem; }
 
 .insta-widget {
@@ -565,7 +568,7 @@ body {
       display: inline-block;
       padding: 0 0.625rem;
       z-index: 1;
-      font-size: 0.93721em;
+      font-size: 0.875rem;
       background-color: #FFF; }
   .main-footer .nav-social {
     float: none;
@@ -591,7 +594,7 @@ body {
     display: table; }
 
 .post-header {
-  height: 22.73737em;
+  height: 31.76851em;
   background-color: rgba(206, 142, 140, 0.8);
   background-image: -webkit-linear-gradient(-225deg, rgba(206, 142, 140, 0.8), #EBD0CF);
   background-image: linear-gradient(-45deg,rgba(206, 142, 140, 0.8), #EBD0CF);
@@ -688,14 +691,8 @@ body {
   max-width: 46.875rem;
   margin: 0 auto; }
   .post-content p {
-    font-size: 1.125em;
+    font-size: 1.067rem;
     margin: 0; }
-    @media screen and (max-width: 992px) {
-      .post-content p {
-        font-size: 1.13849em; } }
-    @media screen and (max-width: 768px) {
-      .post-content p {
-        font-size: 1.45547em; } }
     .post-content p img {
       height: 100%;
       width: 100%;
@@ -705,7 +702,8 @@ body {
     margin-bottom: 1.25rem; }
     .post-content .outfit-details p {
       margin: 0.34375rem 0 0.46875rem;
-      line-height: 1.25rem; }
+      line-height: 1.25rem;
+      font-size: 0.93362rem; }
   .post-content .main-copy {
     text-align: justify;
     margin-bottom: 1.5625rem; }
@@ -723,5 +721,16 @@ body {
 .featured-post p img {
   width: 100%;
   max-width: 46.875rem; }
+
+.post-footer {
+  width: 95%;
+  max-width: 46.875rem;
+  margin: 0 auto 1.875rem;
+  padding: 0.625rem;
+  border: 0;
+  border-bottom: 1px solid #EEE;
+  font-size: 0.875rem; }
+  .post-footer .post-terms {
+    font-size: 0.8125rem; }
 
 /*# sourceMappingURL=style.css.map */
