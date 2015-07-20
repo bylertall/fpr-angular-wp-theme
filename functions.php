@@ -26,10 +26,22 @@ function my_scripts() {
 		array(), null, false
 	);
 
+	wp_register_script(
+		'angular-strap',
+		get_template_directory_uri() . '/bower_components/angular-strap/dist/angular-strap.js',
+		array(), null, false
+	);
+
+	wp_register_script(
+		'angular-strap-tpl',
+		get_template_directory_uri() . '/bower_components/angular-strap/dist/angular-strap.tpl.min.js',
+		array(), null, false
+	);
+
 	wp_enqueue_script(
 		'my-scripts',
 		get_template_directory_uri() . '/js/scripts.js',
-		array( 'angularjs', 'angularjs-ui-router', 'angularjs-sanitize', 'angular-smooth-scroll' )
+		array( 'angularjs', 'angularjs-ui-router', 'angularjs-sanitize', 'angular-smooth-scroll', 'angular-strap', 'angular-strap-tpl' )
 	);
 
 	wp_enqueue_script(
@@ -43,6 +55,8 @@ function my_scripts() {
 	);
 
 	wp_enqueue_style( 'flaticon.css', get_stylesheet_directory_uri() . '/assets/icons/flaticon.css' );
+
+	wp_enqueue_style( 'angular-motion.css', get_stylesheet_directory_uri() . '/bower_components/angular-motion/dist/angular-motion.min.css' );
 
 	wp_enqueue_style( 'style.css', get_stylesheet_uri() );
 

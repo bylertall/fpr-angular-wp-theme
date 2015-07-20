@@ -407,6 +407,16 @@ body {
     content: "";
     display: table; }
 
+.nav-container {
+  height: 4.0625rem;
+  z-index: 5;
+  background-color: rgba(250, 250, 250, 0.4);
+  -webkit-transition: background-color 250ms ease;
+  -moz-transition: background-color 250ms ease;
+  transition: background-color 250ms ease; }
+  .nav-container:hover {
+    background-color: #FFF; }
+
 .blog-logo-container {
   margin-left: 2.13245%;
   float: left;
@@ -417,6 +427,8 @@ body {
     width: 21.09931%; }
   .blog-logo-container .blog-logo {
     height: 100%; }
+  .blog-logo-container .blog-logo-link {
+    background-color: transparent; }
 
 .nav-list {
   height: 100%;

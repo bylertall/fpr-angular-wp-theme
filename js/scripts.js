@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
+angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll', 'mgcrea.ngStrap'])
 
 .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
@@ -107,11 +107,25 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
         }
     })
 
-.directive('fprNav', function() {
+.directive('fprNav', function($window, $timeout, $affix) {
         return {
             restrict: 'EA',
             replace: true,
-            templateUrl: WPAPI.partials_url + 'navigation.html'
+            templateUrl: WPAPI.partials_url + 'navigation.html',
+            link: function(scope, elem, attrs) {
+                var navContainer = elem.children(),
+                    window = angular.element($window);
+
+                $timeout(function() {
+                    var offset = elem[0].offsetTop.toString();
+
+                    $affix(navContainer, {
+                        offsetTop: offset,
+                        offsetParent: '0',
+                        target: window
+                    });
+                }, 250);
+            }
         }
     })
 
