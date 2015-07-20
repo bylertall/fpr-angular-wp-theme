@@ -2,7 +2,8 @@
   @include outer-container;
 
   .post-header {
-    height: modular-scale(15, 2em, $minor-third);
+    height: modular-scale(15, 2.25em, $minor-third);
+    background-attachment: fixed;
   }
 
   .post-title {
@@ -67,6 +68,53 @@
   }
 }
 
+.share {
+  width: 95%;
+  max-width: rem(750);
+  margin: 0 auto;
+  padding: rem(10);
+
+  h4 {
+    margin: 0 0 rem(10);
+    font-weight: 300;
+  }
+
+  a {
+    @include size(rem(40));
+    display: inline-block;
+    position: relative;
+    padding: rem(5);
+    text-decoration: none;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+
+    .social-icon {
+      @include fill-parent;
+      color: #FFF;
+
+      &:before {
+        margin-left: 0;
+        position: absolute;
+        top: rem(8);
+        left: rem(10);
+      }
+    }
+  }
+
+  .icon-twitter {
+    background-color: #1AB4EF;
+  }
+
+  .icon-facebook {
+    background-color: #4F69A2;
+  }
+
+  .icon-tumblr {
+    background-color: #415972;
+  }
+}
+
 .post-footer {
   width: 95%;
   max-width: rem(750);
@@ -74,9 +122,19 @@
   padding: rem(10);
   border: 0;
   border-bottom: 1px solid #EEE;
-  font-size: modular-scale(0, rem(14));
+  font-size: modular-scale(0, rem(14.5));
 
   .post-terms {
-    font-size: modular-scale(0, rem(13));
+    font-size: modular-scale(0, rem(13.5));
+    
+    h4 {
+      display: inline-block;
+      font-weight: 300;
+      margin: 0;
+    }
   }
+}
+
+.pipe-divider {
+  padding: 0 rem(5);
 }

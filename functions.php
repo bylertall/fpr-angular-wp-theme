@@ -42,6 +42,8 @@ function my_scripts() {
 		get_stylesheet_directory_uri() . '/js/InstaService.js'
 	);
 
+	wp_enqueue_style( 'flaticon.css', get_stylesheet_directory_uri() . '/assets/icons/flaticon.css' );
+
 	wp_enqueue_style( 'style.css', get_stylesheet_uri() );
 
 	wp_localize_script(

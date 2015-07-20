@@ -467,13 +467,12 @@ body {
     .nav-social li:last-child {
       margin-right: 0; }
     .nav-social li a {
-      padding: 0.8125rem;
-      margin: 0.1875rem;
-      display: inline-block; }
+      text-decoration: none; }
   .nav-social .social-icon {
-    height: 1.24969rem;
-    width: 1.24969rem;
-    padding-top: 0.125rem; }
+    color: #000;
+    padding: 0.8125rem; }
+    .nav-social .social-icon:before {
+      margin: 0; }
 
 .insta-widget {
   max-width: 96.875em;
@@ -575,7 +574,7 @@ body {
     width: 100%; }
     .main-footer .nav-social .nav-list {
       height: 4.1875rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 2.5rem;
       padding: 0.625rem;
       border: 0.0625rem solid #000; }
   .main-footer .footer-disclaimer {
@@ -682,7 +681,8 @@ body {
     content: "";
     display: table; }
   .single-post .post-header {
-    height: 30.81404em; }
+    height: 34.6658em;
+    background-attachment: fixed; }
   .single-post .post-title {
     font-size: 4.76837em; }
 
@@ -722,6 +722,39 @@ body {
   width: 100%;
   max-width: 46.875rem; }
 
+.share {
+  width: 95%;
+  max-width: 46.875rem;
+  margin: 0 auto;
+  padding: 0.625rem; }
+  .share h4 {
+    margin: 0 0 0.625rem;
+    font-weight: 300; }
+  .share a {
+    height: 2.5rem;
+    width: 2.5rem;
+    display: inline-block;
+    position: relative;
+    padding: 0.3125rem;
+    text-decoration: none;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%; }
+    .share a .social-icon {
+      width: 100%;
+      color: #FFF; }
+      .share a .social-icon:before {
+        margin-left: 0;
+        position: absolute;
+        top: 0.5rem;
+        left: 0.625rem; }
+  .share .icon-twitter {
+    background-color: #1AB4EF; }
+  .share .icon-facebook {
+    background-color: #4F69A2; }
+  .share .icon-tumblr {
+    background-color: #415972; }
+
 .post-footer {
   width: 95%;
   max-width: 46.875rem;
@@ -729,8 +762,15 @@ body {
   padding: 0.625rem;
   border: 0;
   border-bottom: 1px solid #EEE;
-  font-size: 0.875rem; }
+  font-size: 0.90625rem; }
   .post-footer .post-terms {
-    font-size: 0.8125rem; }
+    font-size: 0.84375rem; }
+    .post-footer .post-terms h4 {
+      display: inline-block;
+      font-weight: 300;
+      margin: 0; }
+
+.pipe-divider {
+  padding: 0 0.3125rem; }
 
 /*# sourceMappingURL=style.css.map */

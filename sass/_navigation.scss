@@ -47,16 +47,18 @@
 
   li {
     @include span-columns(2 of 12);
-
     a {
-      padding: rem(13);
-      margin: rem(3);
-      display: inline-block;
+      //@include size(modular-scale(1, rem(15), $perfect-fourth));
+      text-decoration: none;
     }
   }
 
   .social-icon {
-    @include size(modular-scale(1, rem(15), $perfect-fourth));
-    padding-top: rem(2);
+    color: #000;
+    padding: rem(13);
+
+    &:before {
+      margin: 0;
+    }
   }
 }

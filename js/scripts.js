@@ -58,7 +58,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
         vm.currentYear = thisDate.getFullYear();
     })
 
-.controller('Feed', function($sce, WPService) {
+.controller('Feed', function(WPService) {
         var vm = this;
 
         vm.posts = WPService.feed;
@@ -74,10 +74,6 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
 
         vm.isFormatted = WPService.isFormatted;
         vm.oldFormatContent = WPService.trustedPostContent;
-
-        console.log(vm.categories);
-        console.log(vm.tags);
-
     })
 
 .controller('InstaWidget', function(InstaService) {
