@@ -1,13 +1,13 @@
+<view-title page-title="{{::content.post.title}}"></view-title>
+
 <article class="single-post">
     <header class="post-header" ng-style="::content.post.acf['featured_image'] && {'background-image': 'url(' + content.post.acf['featured_image'] + ')'}">
         <div post-date="{{::content.post.date}}"></div>
-
         <h1 class="post-title" ng-bind-html="::content.post.title | uppercase"></h1>
     </header>
 
     <!-- if OLD post format -->
     <section ng-if="!content.isFormatted" class="post-content" ng-bind-html="::content.oldFormatContent"></section>
-
 
     <!-- if NEW post format -->
     <section ng-if="content.isFormatted" class="post-content">

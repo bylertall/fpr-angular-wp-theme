@@ -26,11 +26,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
                     dataFeed: function(WPService) {
                         return WPService.getAllPosts(1);
                     }
-                },
-                onEnter: function() {
-                    document.querySelector('title').innerHTML = 'The Fancy Pants Report | A San Francisco Style Blog by Kate Ogata';
                 }
-
             })
 
             .state('main.content', {
@@ -42,20 +38,20 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
                         return WPService.singlePost($stateParams.slug);
                     }
                 },
-                onEnter: function(smoothScroll, WPService) {
+                onEnter: function(smoothScroll) {
                     var header = document.getElementById('main-header');
                     smoothScroll(header);
-
-                    document.querySelector('title').innerHTML = WPService.post.title + ' | The Fancy Pants Report';
                 }
             })
     })
 
 .controller('Main', function() {
-        var vm = this;
+        var vm = this,
+            thisDate = new Date();
 
-        var thisDate = new Date();
         vm.currentYear = thisDate.getFullYear();
+
+
     })
 
 .controller('Feed', function(WPService) {
@@ -76,10 +72,18 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
         vm.oldFormatContent = WPService.trustedPostContent;
     })
 
-.controller('InstaWidget', function(InstaService) {
+.controller('InstaWidget', function($rootScope, InstaService) {
         var vm = this;
 
         vm.feed = InstaService.feed;
+        vm.isFeedView = true;
+
+        $rootScope.$on('$stateChangeStart', function(event, toState) {
+            if (toState.name == 'main.content') {
+                return vm.isFeedView = false;
+            }
+            return vm.isFeedView = true;
+        })
     })
 
 .directive('postDate', function() {
@@ -108,6 +112,23 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
             replace: true,
             templateUrl: WPAPI.partials_url + 'navigation.html'
         }
+    })
+
+.directive('viewTitle', function() {
+        var title = document.querySelector('title'),
+            defaultTitle = "The Fancy Pants Report | A San Francisco Style Blog by Kate Ogata";
+
+        return {
+            restrict: 'EA',
+            link: function(scope, elem, attrs) {
+
+                if (attrs.pageTitle) {
+                    return title.innerHTML = attrs.pageTitle + ' | The Fancy Pants Report';
+                }
+                return title.innerHTML = defaultTitle;
+            }
+
+        };
     })
 
 
