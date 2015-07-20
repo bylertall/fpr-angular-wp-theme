@@ -26,6 +26,9 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
                     dataFeed: function(WPService) {
                         return WPService.getAllPosts(1);
                     }
+                },
+                data: {
+                    isFeedView: true
                 }
             })
 
@@ -37,6 +40,9 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
                     dataPost: function(WPService, $stateParams) {
                         return WPService.singlePost($stateParams.slug);
                     }
+                },
+                data: {
+                    isFeedView: false
                 },
                 onEnter: function(smoothScroll) {
                     var header = document.getElementById('main-header');
@@ -72,13 +78,13 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll'])
         vm.oldFormatContent = WPService.trustedPostContent;
     })
 
-.controller('InstaWidget', function($rootScope, InstaService) {
+.controller('InstaWidget', function($state, $rootScope, InstaService) {
         var vm = this;
 
         vm.feed = InstaService.feed;
-        vm.isFeedView = true;
+        vm.isFeedView = $state.current.data.isFeedView;
 
-        $rootScope.$on('$stateChangeStart', function(event, toState) {
+        $rootScope.$on('$stateChangeSuccess', function(event, toState) {
             if (toState.name == 'main.content') {
                 return vm.isFeedView = false;
             }

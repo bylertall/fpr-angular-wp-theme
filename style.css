@@ -388,13 +388,13 @@ body {
   font-weight: 300; }
   @media screen and (max-width: 992px) {
     body {
-      font-size: 0.875em; } }
+      font-size: 0.83333em; } }
   @media screen and (max-width: 768px) {
     body {
-      font-size: 0.75em; } }
+      font-size: 0.69444em; } }
   @media screen and (max-width: 500px) {
     body {
-      font-size: 0.625em; } }
+      font-size: 0.5787em; } }
 
 .main-nav {
   max-width: 96.875em;
@@ -513,10 +513,10 @@ body {
   .insta-caption-container .icon-instagram {
     position: absolute;
     opacity: 0.75;
-    top: 0.8em;
-    right: 0.8em;
-    height: 2.44141em;
-    width: 2.44141em; }
+    top: 0.83333em;
+    right: 0.83333em;
+    height: 2.0736em;
+    width: 2.0736em; }
   .insta-caption-container .insta-caption {
     opacity: 0.5;
     position: absolute;
@@ -525,11 +525,11 @@ body {
       display: block;
       text-align: center;
       font-family: "Oswald", sans-serif;
-      font-size: 1.95313em;
+      font-size: 1.728em;
       font-weight: 300; }
     .insta-caption-container .insta-caption .icon-heart, .insta-caption-container .insta-caption .icon-comment {
-      height: 1.5625em;
-      width: 1.5625em;
+      height: 1.44em;
+      width: 1.44em;
       position: relative;
       left: 50%;
       -webkit-transform: translateX(-50%);
@@ -579,7 +579,7 @@ body {
       border: 0.0625rem solid #000; }
   .main-footer .footer-disclaimer {
     clear: both;
-    font-size: 0.8em;
+    font-size: 0.83333em;
     text-align: center; }
 
 .feed {
@@ -614,7 +614,7 @@ body {
       -ms-transform: translateX(-50%);
       transform: translateX(-50%);
       opacity: 0;
-      bottom: 1.5625em;
+      bottom: 1.44em;
       background-color: transparent;
       border: 1px solid #FFF;
       padding: 1em;
@@ -645,13 +645,13 @@ body {
     padding: 0.9375em;
     display: inline-block;
     font-family: "Lato", sans-serif;
-    font-size: 3.8147em;
+    font-size: 2.98598em;
     font-weight: 300;
     text-align: center;
     color: #FFF; }
   .post-header .date-widget {
-    height: 4.76837em;
-    width: 4.76837em;
+    height: 3.58318em;
+    width: 3.58318em;
     position: absolute;
     left: 1em;
     top: 1em;
@@ -665,12 +665,12 @@ body {
       transform: translateY(-50%);
       font-family: "Lato", sans-serif;
       font-weight: 100;
-      line-height: 1.95313em;
+      line-height: 1.728em;
       color: #FFF; }
       .post-header .date-widget .date-container .month {
-        font-size: 1.95313em; }
+        font-size: 1.728em; }
       .post-header .date-widget .date-container .day {
-        font-size: 1.5625em; }
+        font-size: 1.44em; }
 
 .single-post {
   max-width: 96.875em;
@@ -683,8 +683,11 @@ body {
   .single-post .post-header {
     height: 34.6658em;
     background-attachment: fixed; }
+    @media screen and (max-width: 992px) {
+      .single-post .post-header {
+        background-attachment: scroll; } }
   .single-post .post-title {
-    font-size: 4.76837em; }
+    font-size: 3.58318em; }
 
 .post-content {
   padding: 0.625rem;
@@ -729,7 +732,8 @@ body {
   padding: 0.625rem; }
   .share h4 {
     margin: 0 0 0.625rem;
-    font-weight: 300; }
+    font-weight: 300;
+    font-size: 0.9375rem; }
   .share a {
     height: 2.5rem;
     width: 2.5rem;

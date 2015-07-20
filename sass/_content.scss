@@ -4,6 +4,10 @@
   .post-header {
     height: modular-scale(15, 2.25em, $minor-third);
     background-attachment: fixed;
+
+    @include media(max-width 992px) {
+      background-attachment: scroll;
+    }
   }
 
   .post-title {
@@ -77,6 +81,7 @@
   h4 {
     margin: 0 0 rem(10);
     font-weight: 300;
+    font-size: modular-scale(0, rem(15), $minor-second);
   }
 
   a {

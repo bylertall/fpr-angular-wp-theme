@@ -30,7 +30,7 @@ $font-ubuntu: 'Ubuntu', sans-serif;
 $font-oswald: 'Oswald', sans-serif;
 $accent-color: rgba(206, 142, 140, 0.8);
 $max-width: em(1550);
-$modular-scale-ratio: $major-third;
+$modular-scale-ratio: $minor-third;
 
 body {
   overflow-x: hidden;
@@ -38,14 +38,14 @@ body {
   font-weight: 300;
 
   @include media(max-width 992px) {
-    font-size: em(14);
+    font-size: modular-scale(-1);
   }
 
   @include media(max-width 768px) {
-    font-size: em(12);
+    font-size: modular-scale(-2);
   }
 
   @include media(max-width 500px) {
-    font-size: em(10);
+    font-size: modular-scale(-3);
   }
 }
