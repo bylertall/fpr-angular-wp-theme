@@ -1,3 +1,12 @@
+a {
+  text-decoration: none;
+  @include transition(all 250ms ease);
+
+  &:hover {
+    color: $accent-color;
+  }
+}
+
 .main-nav {
   @include outer-container;
   height: rem(65);
@@ -62,17 +71,47 @@
 
   li {
     @include span-columns(2 of 12);
-    a {
-      text-decoration: none;
-    }
   }
 
   .social-icon {
     color: #000;
     padding: rem(13);
+    @include transition(all 250ms ease);
 
     &:before {
       margin: 0;
     }
+
+    &:hover {
+      color: $accent-color;
+    }
   }
 }
+
+.scroll-top.affix{
+  z-index: 5;
+  top: initial !important;
+  bottom: rem(20);
+  right: rem(20);
+
+  .flaticon-chevron10{
+    color: #FFF;
+    position: relative;
+
+    &:before {
+      margin: 0 0 rem(5) 0;
+      padding: rem(9);
+      font-size: rem(18);
+      @include transition(background-color 250ms ease);
+      @include fill-parent;
+      background-color: $accent-color;
+      border: rem(2) solid #FFF;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      border-radius: 100%;
+      position: relative;
+      bottom: 3px;
+    }
+  }
+}
+

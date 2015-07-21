@@ -396,6 +396,14 @@ body {
     body {
       font-size: 0.5787em; } }
 
+a {
+  text-decoration: none;
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  transition: all 250ms ease; }
+  a:hover {
+    color: #EFBACC; }
+
 .main-nav {
   max-width: 96.875em;
   margin-left: auto;
@@ -478,13 +486,40 @@ body {
     width: 14.70196%; }
     .nav-social li:last-child {
       margin-right: 0; }
-    .nav-social li a {
-      text-decoration: none; }
   .nav-social .social-icon {
     color: #000;
-    padding: 0.8125rem; }
+    padding: 0.8125rem;
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    transition: all 250ms ease; }
     .nav-social .social-icon:before {
       margin: 0; }
+    .nav-social .social-icon:hover {
+      color: #EFBACC; }
+
+.scroll-top.affix {
+  z-index: 5;
+  top: initial !important;
+  bottom: 1.25rem;
+  right: 1.25rem; }
+  .scroll-top.affix .flaticon-chevron10 {
+    color: #FFF;
+    position: relative; }
+    .scroll-top.affix .flaticon-chevron10:before {
+      margin: 0 0 0.3125rem 0;
+      padding: 0.5625rem;
+      font-size: 1.125rem;
+      -webkit-transition: background-color 250ms ease;
+      -moz-transition: background-color 250ms ease;
+      transition: background-color 250ms ease;
+      width: 100%;
+      background-color: #EFBACC;
+      border: 0.125rem solid #FFF;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      border-radius: 100%;
+      position: relative;
+      bottom: 3px; }
 
 .insta-widget {
   max-width: 96.875em;
@@ -606,9 +641,9 @@ body {
 
 .post-header {
   height: 31.76851em;
-  background-color: rgba(206, 142, 140, 0.8);
-  background-image: -webkit-linear-gradient(-225deg, rgba(206, 142, 140, 0.8), #EBD0CF);
-  background-image: linear-gradient(-45deg,rgba(206, 142, 140, 0.8), #EBD0CF);
+  background-color: #EFBACC;
+  background-image: -webkit-linear-gradient(-225deg, #EFBACC, #EBD0CF);
+  background-image: linear-gradient(-45deg,#EFBACC, #EBD0CF);
   background-size: cover;
   background-position: 25% 30%;
   position: relative; }
