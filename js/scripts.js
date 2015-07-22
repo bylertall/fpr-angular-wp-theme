@@ -107,24 +107,35 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll', 'mgcrea.ngS
         }
     })
 
-.directive('fprNav', function($window, $timeout, $affix) {
+.directive('fprNav', function($rootScope, $window, $timeout, $affix) {
+        function _setAffix(elem) {
+            $timeout(function() {
+                var navContainer = elem.children(),
+                    window = angular.element($window),
+                    offset = 0;
+
+                offset = elem[0].offsetTop.toString();
+
+                console.log(offset);
+
+                $affix(navContainer, {
+                    offsetTop: offset,
+                    offsetParent: '0',
+                    target: window
+                });
+            }, 250);
+        }
+
         return {
             restrict: 'EA',
             replace: true,
             templateUrl: WPAPI.partials_url + 'navigation.html',
             link: function(scope, elem, attrs) {
-                var navContainer = elem.children(),
-                    window = angular.element($window);
+                _setAffix(elem);
 
-                $timeout(function() {
-                    var offset = elem[0].offsetTop.toString();
-
-                    $affix(navContainer, {
-                        offsetTop: offset,
-                        offsetParent: '0',
-                        target: window
-                    });
-                }, 250);
+                $rootScope.$on('$stateChangeSuccess', function() {
+                    _setAffix(elem);
+                })
             }
         }
     })

@@ -13,6 +13,11 @@ a {
   position: relative;
 }
 
+.nav-container.affix {
+  @include transition(all 250 ease);
+  width: 100%;
+}
+
 .nav-container {
   height: rem(65);
   z-index: 5;

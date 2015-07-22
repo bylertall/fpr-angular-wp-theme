@@ -415,6 +415,12 @@ a {
     content: "";
     display: table; }
 
+.nav-container.affix {
+  -webkit-transition: all 250 ease;
+  -moz-transition: all 250 ease;
+  transition: all 250 ease;
+  width: 100%; }
+
 .nav-container {
   height: 4.0625rem;
   z-index: 5;

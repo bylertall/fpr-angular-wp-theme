@@ -21,7 +21,7 @@
         var options = angular.extend({}, defaults, config);
         var targetEl = options.target;
         var reset = 'affix affix-top affix-bottom', setWidth = false, initialAffixTop = 0, initialOffsetTop = 0, offsetTop = 0, offsetBottom = 0, affixed = null, unpin = null;
-        var parent = element.parent();
+        var parent = element.parent;
         if (options.offsetParent) {
           if (options.offsetParent.match(/^\d+$/)) {
             for (var i = 0; i < options.offsetParent * 1 - 1; i++) {
@@ -1796,8 +1796,8 @@
         var match, displayFn, valueName, keyName, groupByFn, valueFn, valuesFn;
         $parseOptions.init = function() {
           $parseOptions.$match = match = attr.match(options.regexp);
-          displayFn = $parse(match[2] || match[1]), valueName = match[4] || match[6], keyName = match[5], 
-          groupByFn = $parse(match[3] || ''), valueFn = $parse(match[2] ? match[1] : valueName), 
+          displayFn = $parse(match[2] || match[1]), valueName = match[4] || match[6], keyName = match[5],
+          groupByFn = $parse(match[3] || ''), valueFn = $parse(match[2] ? match[1] : valueName),
           valuesFn = $parse(match[7]);
         };
         $parseOptions.valuesFn = function(scope, controller) {
