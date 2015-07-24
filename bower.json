@@ -25,8 +25,8 @@
     "angular": "~1.4.2",
     "neat": "~1.7.2",
     "normalize-scss": "~3.0.3",
-    "angular-strap": "~2.3.1",
-    "angular-motion": "~0.4.2"
+    "angular-motion": "~0.4.2",
+    "angular-strap": "~2.3.1"
   },
   "resolutions": {
     "angular": "~1.4.2"

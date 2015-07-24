@@ -45,20 +45,27 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll', 'mgcrea.ngS
             })
     })
 
-.controller('Main', function() {
+.controller('Main', function($state, $scope) {
         var vm = this,
-            thisDate = new Date();
+            thisDate = new Date(),
+            currentState = $state.current.name;
 
         vm.currentYear = thisDate.getFullYear();
 
+        vm.isFeedView = (currentState === 'main.feed');
 
+        $scope.$on('$stateChangeSuccess', function(event, toState) {
+            if (toState.name === 'main.content') {
+                return vm.isFeedView = false;
+            }
+            return vm.isFeedView = true;
+        });
     })
 
 .controller('Feed', function(WPService) {
         var vm = this;
 
         vm.posts = WPService.feed;
-
     })
 
 .controller('Content', function(WPService) {
@@ -72,19 +79,10 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll', 'mgcrea.ngS
         vm.oldFormatContent = WPService.trustedPostContent;
     })
 
-.controller('InstaWidget', function($state, $rootScope, InstaService) {
-        var vm = this,
-            currentState = $state.current.name;
+.controller('InstaWidget', function(InstaService) {
+        var vm = this;
 
         vm.feed = InstaService.feed;
-        vm.isFeedView = currentState === 'main.feed';
-
-        $rootScope.$on('$stateChangeSuccess', function(event, toState) {
-            if (toState.name == 'main.content') {
-                return vm.isFeedView = false;
-            }
-            return vm.isFeedView = true;
-        })
     })
 
 .directive('postDate', function() {
@@ -103,40 +101,16 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll', 'mgcrea.ngS
             restrict: 'EA',
             replace: true,
             controller: 'InstaWidget as insta',
-            templateUrl: WPAPI.partials_url + 'insta-widget.html'
+            templateUrl: WPAPI.partials_url + 'insta-widget.html',
         }
+
     })
 
-.directive('fprNav', function($rootScope, $window, $timeout, $affix) {
-        function _setAffix(elem) {
-            $timeout(function() {
-                var navContainer = elem.children(),
-                    window = angular.element($window),
-                    offset = 0;
-
-                offset = elem[0].offsetTop.toString();
-
-                console.log(offset);
-
-                $affix(navContainer, {
-                    offsetTop: offset,
-                    offsetParent: '0',
-                    target: window
-                });
-            }, 250);
-        }
-
+.directive('fprNav', function() {
         return {
             restrict: 'EA',
             replace: true,
-            templateUrl: WPAPI.partials_url + 'navigation.html',
-            link: function(scope, elem, attrs) {
-                _setAffix(elem);
-
-                $rootScope.$on('$stateChangeSuccess', function() {
-                    _setAffix(elem);
-                })
-            }
+            templateUrl: WPAPI.partials_url + 'navigation.html'
         }
     })
 
@@ -154,7 +128,7 @@ angular.module('fprApp', ['ui.router', 'ngSanitize', 'smoothScroll', 'mgcrea.ngS
                 return title.innerHTML = defaultTitle;
             }
 
-        };
+        }
     })
 
 
