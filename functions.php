@@ -28,7 +28,7 @@ function my_scripts() {
 
 	wp_register_script(
 		'angular-strap',
-		get_template_directory_uri() . '/bower_components/angular-strap/dist/angular-strap.js',
+		get_template_directory_uri() . '/bower_components/angular-strap/dist/angular-strap.min.js',
 		array(), null, false
 	);
 

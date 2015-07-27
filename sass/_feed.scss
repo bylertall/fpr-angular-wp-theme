@@ -4,7 +4,7 @@
 }
 
 .post-header {
-  height: modular-scale(3, 7.5em, $golden);
+  height: modular-scale(3, 7em, $golden);
   @include linear-gradient(-45deg, $accent-color, #EBD0CF);
   background-size: cover;
   background-position: 25% 30%;

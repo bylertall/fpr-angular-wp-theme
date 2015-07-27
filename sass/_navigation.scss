@@ -13,9 +13,11 @@ a {
   position: relative;
 }
 
-.nav-container.affix {
-  @include transition(all 250 ease);
-  width: 100%;
+.nav-container.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .nav-container {
@@ -96,8 +98,12 @@ a {
 .scroll-top.affix{
   z-index: 5;
   top: initial !important;
-  bottom: rem(20);
-  right: rem(20);
+  bottom: rem(30);
+  right: rem(30);
+
+  @include media(max-width 768px) {
+    display: none;
+  }
 
   .flaticon-chevron10{
     color: #FFF;

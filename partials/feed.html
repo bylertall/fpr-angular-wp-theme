@@ -1,6 +1,6 @@
 <view-title default-title></view-title>
 
-<article class="feed" ng-repeat="post in feed.posts">
+<article class="feed" ng-repeat="post in ::feed.posts">
     <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
         <div post-date="{{::post.date}}"></div>
 

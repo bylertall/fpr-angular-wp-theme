@@ -415,11 +415,11 @@ a {
     content: "";
     display: table; }
 
-.nav-container.affix {
-  -webkit-transition: all 250 ease;
-  -moz-transition: all 250 ease;
-  transition: all 250 ease;
-  width: 100%; }
+.nav-container.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; }
 
 .nav-container {
   height: 4.0625rem;
@@ -506,8 +506,11 @@ a {
 .scroll-top.affix {
   z-index: 5;
   top: initial !important;
-  bottom: 1.25rem;
-  right: 1.25rem; }
+  bottom: 1.875rem;
+  right: 1.875rem; }
+  @media screen and (max-width: 768px) {
+    .scroll-top.affix {
+      display: none; } }
   .scroll-top.affix .flaticon-chevron10 {
     color: #FFF;
     position: relative; }
@@ -646,7 +649,7 @@ a {
     display: table; }
 
 .post-header {
-  height: 31.76851em;
+  height: 29.65061em;
   background-color: #EFBACC;
   background-image: -webkit-linear-gradient(-225deg, #EFBACC, #EBD0CF);
   background-image: linear-gradient(-45deg,#EFBACC, #EBD0CF);
