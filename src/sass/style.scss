@@ -6,17 +6,19 @@ Description: A theme for The Fancy Pants Report, built with AngularJS
 Version: 1.0
 */
 
+
+/* Use gulp bower to inject normalize, bourbon & neat? */
 //
 // Normalize
 // --------------------------------------------------
-@import "../bower_components/normalize-scss/normalize";
+//@import "../../bower_components/normalize-scss/normalize";
 
 
 //
 // Bourbon, Neat
 // --------------------------------------------------
-@import "../bower_components/bourbon/app/assets/stylesheets/bourbon";
-@import "../bower_components/neat/app/assets/stylesheets/neat";
+@import "../../bower_components/bourbon/app/assets/stylesheets/bourbon";
+@import "../../bower_components/neat/app/assets/stylesheets/neat";
 
 
 //
