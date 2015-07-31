@@ -5,11 +5,11 @@
         .module('fprApp')
         .controller('InstaWidget', InstaWidget);
 
-    InstaWidget.$inject = ['InstaService'];
+    InstaWidget.$inject = ['instaService'];
 
-    function InstaWidget(InstaService) {
+    function InstaWidget(instaService) {
         var vm = this;
 
-        vm.feed = InstaService.feed;
+        vm.feed = instaService.feed;
     }
 })();

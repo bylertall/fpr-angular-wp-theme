@@ -10,7 +10,7 @@
             scope: {
                 postDate: '@'
             },
-            templateUrl: WPAPI.partials_url + 'post-date-widget.html'
+            templateUrl: WPAPI.partials_url + 'components/postdate-widget/postdate-widget.html'
         };
 
         return directive;

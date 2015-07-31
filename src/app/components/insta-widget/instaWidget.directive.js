@@ -10,7 +10,7 @@
             restrict: 'EA',
             replace: true,
             controller: 'InstaWidget as insta',
-            templateUrl: WPAPI.partials_url + 'insta-widget.html'
+            templateUrl: WPAPI.partials_url + 'components/insta-widget/insta-widget.html'
         }
     }
 })();

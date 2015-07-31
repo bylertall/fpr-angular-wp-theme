@@ -1,0 +1,19 @@
+<div class="insta-widget">
+    <div class="insta-tile" ng-repeat="photo in insta.feed | limitTo: 6">
+        <a href="http://instagram.com/hey_im_kate" target="_blank">
+            <div class="insta-caption-container">
+                <img class="icon-instagram" src="/wp-content/uploads/2015/07/instagram12.svg" />
+                <div class="insta-likes insta-caption">
+                    <img class="icon-heart insta-caption-icon" src="/wp-content/uploads/2015/07/favorite21.svg" />
+                    <span>{{::photo.likes.count}}</span>
+                </div>
+                <div class="insta-comments insta-caption">
+                    <img class="icon-comment insta-caption-icon" src="/wp-content/uploads/2015/07/speech-bubble17.svg" />
+                    <span>{{::photo.comments.count}}</span>
+                </div>
+            </div>
+        </a>
+        <img fpr-insta-loaded class="insta-image" ng-src="{{photo.images.low_resolution.url}}" />
+
+    </div>
+</div>

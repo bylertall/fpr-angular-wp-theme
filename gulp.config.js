@@ -1,9 +1,9 @@
 module.exports = function() {
     var stylePath = './src/sass/';
-    var jsPath = './src/app/';
+    var appPath = './src/app/';
 
     var config = {
-        temp: './tmp',
+        temp: './tmp/',
 
         /**
          * File Paths
@@ -15,10 +15,13 @@ module.exports = function() {
         all_style: stylePath + '*.scss',
         main_style: stylePath + 'style.scss',
 
-        all_js: jsPath + '**/*.js',
+        component_js: appPath + '/**/*.js',
+        main_js: './src/app.js',
+        
+        all_html: appPath + '**/*.html',
 
         // wordpress theme directory
-        wp_theme: '../../wordpress/wp-content/themes/fpr-blog'
+        wp_theme: './../../wordpress/wp-content/themes/fpr-blog/'
     };
 
     return config;

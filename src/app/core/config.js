@@ -18,29 +18,25 @@
                 templateUrl: WPAPI.partials_url + 'main.html',
                 controller: 'Main as main',
                 resolve: {
-                    dataInsta: function(InstaService) {
-                        return InstaService.getInstaFeed();
-                    }
+                    instaPrepService: instaPrepService
                 }
             })
             .state('main.feed', {
                 url: '/',
-                templateUrl: WPAPI.partials_url + 'feed.html',
+                templateUrl: WPAPI.partials_url + 'layout/feed/feed.html',
                 controller: 'Feed as feed',
                 resolve: {
-                    dataFeed: function(WPService) {
-                        return WPService.getAllPosts(1);
-                    }
+                    postPrepService: postPrepService
                 }
             })
 
             .state('main.content', {
                 url: '/:year/:month/:day/:slug/',
-                templateUrl: WPAPI.partials_url + 'content.html',
+                templateUrl: WPAPI.partials_url + 'layout/content/content.html',
                 controller: 'Content as content',
                 resolve: {
-                    dataPost: function(WPService, $stateParams) {
-                        return WPService.singlePost($stateParams.slug);
+                    dataPost: function(wpService, $stateParams) {
+                        return wpService.singlePost($stateParams.slug);
                     }
                 },
                 onEnter: function(smoothScroll) {
@@ -49,9 +45,15 @@
                 }
             });
     }
+
+    instaPrepService.$inject = ['instaService'];
+    function instaPrepService (instaService) {
+        return instaService.getInstaFeed();
+    }
+
+    postPrepService.$inject = ['wpService'];
+    function postPrepService (wpService) {
+        console.log('Post prep service!');
+        return wpService.getAllPosts(1);
+    }
 })();
-
-
-.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
-
-})

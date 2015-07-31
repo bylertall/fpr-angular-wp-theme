@@ -5,10 +5,10 @@
         .module('fprApp')
         .controller('Feed', Feed);
 
-    Feed.$inject = ['WPService'];
+    Feed.$inject = ['wpService'];
 
-    function Feed(WPService) {
+    function Feed(wpService) {
         var vm = this;
-        vm.posts = WPService.feed;
+        vm.posts = wpService.feed;
     }
 })();
