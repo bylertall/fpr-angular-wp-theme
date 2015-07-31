@@ -8,7 +8,7 @@
     function fprPostDate() {
         var directive = {
             scope: {
-                postDate: '@'
+                fprPostDate: '@'
             },
             templateUrl: WPAPI.partials_url + 'components/postdate-widget/postdate-widget.html'
         };
