@@ -1,10 +1,6 @@
-(function() {
-    'use strict';
-
-    angular.module('fprApp', [
-        'ui.router',
-        'ngSanitize',
-        'smoothScroll',
-        'mgcrea.ngStrap'
-    ]);
-})();
+angular.module('fprApp', [
+    'ui.router',
+    'ngSanitize',
+    'smoothScroll',
+    'mgcrea.ngStrap'
+]);

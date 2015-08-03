@@ -1,20 +1,16 @@
-(function() {
-    'use strict';
+angular
+    .module('fprApp')
+    .controller('Content', Content);
 
-    angular
-        .module('fprApp')
-        .controller('Content', Content);
+Content.$inject = ['wpService'];
 
-    Content.$inject = ['wpService'];
+function Content(wpService) {
+    var vm = this;
 
-    function Content(wpService) {
-        var vm = this;
+    vm.post = wpService.post;
+    vm.categories = wpService.post.terms['category'];
+    vm.tags = wpService.post.terms['post_tag'];
 
-        vm.post = wpService.post;
-        vm.categories = wpService.post.terms['category'];
-        vm.tags = wpService.post.terms['post_tag'];
-
-        vm.isFormatted = wpService.isFormatted;
-        vm.oldFormatContent = wpService.trustedPostContent;
-    }
-})();
+    vm.isFormatted = wpService.isFormatted;
+    vm.oldFormatContent = wpService.trustedPostContent;
+}

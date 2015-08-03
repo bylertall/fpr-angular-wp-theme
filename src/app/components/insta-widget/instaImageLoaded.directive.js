@@ -1,21 +1,17 @@
-(function() {
-    'use strict';
+angular
+    .module('fprApp')
+    .directive('fprInstaLoaded', fprInstaLoaded);
 
-    angular
-        .module('fprApp')
-        .directive('fprInstaLoaded', fprInstaLoaded);
-
-    function fprInstaLoaded() {
-        return {
-            link: link
-        }
+function fprInstaLoaded() {
+    return {
+        link: link
     }
+}
 
-    function link(scope, elem, attrs) {
-        if (scope.$first){
-            elem.on('load', function() {
-                scope.$emit('instaWidgetLoaded');
-            });
-        }
+function link(scope, elem, attrs) {
+    if (scope.$first){
+        elem.on('load', function() {
+            scope.$emit('instaWidgetLoaded');
+        });
     }
-})();
+}

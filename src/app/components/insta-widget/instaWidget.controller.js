@@ -1,15 +1,11 @@
-(function() {
-    'use strict';
+angular
+    .module('fprApp')
+    .controller('InstaWidget', InstaWidget);
 
-    angular
-        .module('fprApp')
-        .controller('InstaWidget', InstaWidget);
+InstaWidget.$inject = ['instaService'];
 
-    InstaWidget.$inject = ['instaService'];
+function InstaWidget(instaService) {
+    var vm = this;
 
-    function InstaWidget(instaService) {
-        var vm = this;
-
-        vm.feed = instaService.feed;
-    }
-})();
+    vm.feed = instaService.feed;
+}

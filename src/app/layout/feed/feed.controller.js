@@ -1,14 +1,10 @@
-(function() {
-    'use strict';
+angular
+    .module('fprApp')
+    .controller('Feed', Feed);
 
-    angular
-        .module('fprApp')
-        .controller('Feed', Feed);
+Feed.$inject = ['wpService'];
 
-    Feed.$inject = ['wpService'];
-
-    function Feed(wpService) {
-        var vm = this;
-        vm.posts = wpService.feed;
-    }
-})();
+function Feed(wpService) {
+    var vm = this;
+    vm.posts = wpService.feed;
+}
