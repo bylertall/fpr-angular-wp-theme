@@ -22,6 +22,9 @@
         </div>
     </section>
 
+    <!-- Reward style widget -->
+    <div reward-style="{{::content.post.acf['rewardstyle_id']}}"></div>
+
     <section class="share">
         <h4>Share this post</h4>
         <a class="icon-twitter" ng-href="https://twitter.com/share?text=Love%20this%20post%20from%20The%20Fancy%20Pants%20Report!&amp;url={{content.post.link}}"
@@ -48,14 +51,14 @@
         <time datetime="{{::content.post.date | date: 'yyyy-MM-dd'}}">{{::content.post.date | date: 'MMM d, yyyy'}}</time>
 
         <div class="post-terms">
-            <h4 class="post-categories">Categories:</h4>
+            <h4 class="post-categories">Categories: </h4>
             <span ng-repeat="category in content.categories">
                 <a ng-href="{{category.link}}">{{category.name | lowercase}}</a><span ng-if="!$last">, </span>
             </span>
 
             <span class="pipe-divider"> | </span>
 
-            <h4 class="post-tag">Tags:</h4>
+            <h4 class="post-tag">Tags: </h4>
             <span ng-repeat="tag in content.tags">
                 <a ng-href="{{tag.link}}">{{tag.name | lowercase}}</a><span ng-if="!$last">, </span>
             </span>

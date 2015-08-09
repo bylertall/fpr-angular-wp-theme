@@ -38,10 +38,16 @@ function my_scripts() {
 		array(), null, false
 	);
 
+	wp_register_script(
+		'reward-style',
+		'http://widgets.rewardstyle.com/js/shopthepost.js',
+		array(), null, false
+	);
+
 	wp_enqueue_script(
 		'my-scripts',
 		get_template_directory_uri() . '/js/app.js',
-		array( 'angularjs', 'angularjs-ui-router', 'angularjs-sanitize', 'angular-smooth-scroll', 'angular-strap', 'angular-strap-tpl')
+		array( 'angularjs', 'angularjs-ui-router', 'angularjs-sanitize', 'angular-smooth-scroll', 'angular-strap', 'angular-strap-tpl', 'reward-style')
 	);
 
 	wp_enqueue_style( 'flaticon.css', get_template_directory_uri() . '/assets/icons/flaticon.css' );

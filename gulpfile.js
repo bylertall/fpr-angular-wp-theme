@@ -117,9 +117,14 @@ gulp.task('js-watcher', function() {
 gulp.task('templatecache', ['clean-templatecache'], function() {
     log('Creating an AngularJS $templateCache');
 
+    var minifyOptions = {
+        empty: true,
+        loose: true
+    };
+
     return gulp
         .src(config.htmltemplates)
-        .pipe($.minifyHtml({empty: true}))
+        .pipe($.minifyHtml(minifyOptions))
         .pipe($.angularTemplatecache(
             config.templateCache.file,
             config.templateCache.options
@@ -155,7 +160,7 @@ gulp.task('clean-partials', function(done) {
 });
 
 // Build tasks
-gulp.task('dev', ['copy-assets', 'copy-bower', 'copy-php', 'style', 'js', 'copy-partials', 'style-watcher', 'js-watcher'], function() {
+gulp.task('dev', ['copy-assets', 'copy-bower', 'copy-php', 'style', 'js', 'copy-partials', 'style-watcher', 'html-watcher', 'js-watcher'], function() {
     log('Dev Build Complete, watching js, css, html...');
 });
 
