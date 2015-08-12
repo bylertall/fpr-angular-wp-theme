@@ -88,8 +88,10 @@ function wpService ($http, $sce) {
                 if (wpService.postsByCategory.length) {
                     wpService.postsByCategory = [];
                 }
-                console.log(wpService.postsByCategory);
-                return wpService.postsByCategory = res;
+
+                wpService.postsByCategory = res;
+                console.log("Posts by category: " + wpService.postsByCategory);
+                console.log("number of category posts: " + wpService.postsByCategory.length);
 
             });
     };

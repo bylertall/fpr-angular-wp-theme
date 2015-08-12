@@ -95,7 +95,9 @@ a {
   }
 }
 
-.scroll-top.affix{
+
+.scroll-top {
+  visibility: hidden;
   z-index: 5;
   top: initial !important;
   bottom: rem(30);
@@ -126,3 +128,6 @@ a {
   }
 }
 
+.scroll-top.affix{
+  visibility: visible;
+}
