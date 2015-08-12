@@ -13,4 +13,6 @@ function Content(wpService) {
 
     vm.isFormatted = wpService.isFormatted;
     vm.oldFormatContent = wpService.trustedPostContent;
+
+    vm.hasRewardStyleId = wpService.post.acf['rewardstyle_id'];
 }

@@ -23,7 +23,7 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
             templateUrl: 'layout/feed/feed.html',
             controller: 'Feed as feed',
             resolve: {
-                postPrepService: postPrepService
+                feedPrepService: feedPrepService
             }
         })
 
@@ -32,26 +32,45 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
             templateUrl: 'layout/content/content.html',
             controller: 'Content as content',
             resolve: {
-                dataPost: function(wpService, $stateParams) {
-                    return wpService.singlePost($stateParams.slug);
-                }
+                singlePostPrepService: singlePostPrepService
             },
             onEnter: function(smoothScroll) {
                 var header = document.getElementById('main-header');
-                smoothScroll(header, {duration: 800});
+                smoothScroll(header, {duration: 100});
+            }
+        })
+
+        .state('main.category', {
+            url: '/category/:category/',
+            templateUrl: 'layout/category/category.html',
+            controller: 'Category as category',
+            resolve: {
+                categoryPrepService: categoryPrepService
             }
         });
 }
 
 instaPrepService.$inject = ['instaService'];
 
-function instaPrepService (instaService) {
+function instaPrepService(instaService) {
     return instaService.getInstaFeed();
 }
 
-postPrepService.$inject = ['wpService'];
+feedPrepService.$inject = ['wpService'];
 
-function postPrepService (wpService) {
-    console.log('Post prep service!');
+function feedPrepService(wpService) {
     return wpService.getAllPosts(1);
+}
+
+singlePostPrepService.$inject = ['wpService', '$stateParams'];
+
+function singlePostPrepService(wpService, $stateParams) {
+    return wpService.getSinglePost($stateParams.slug);
+}
+
+categoryPrepService.$inject = ['wpService', '$stateParams'];
+
+function categoryPrepService(wpService, $stateParams) {
+    console.log('Category service!');
+    return wpService.getPostsByCategory($stateParams.category);
 }

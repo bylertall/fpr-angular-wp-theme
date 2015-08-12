@@ -5,15 +5,19 @@ angular
 wpService.$inject = ['$http', '$sce'];
 
 function wpService ($http, $sce) {
-    var wpService = {
-        feed: [],
-        post: {},
-        isFormatted: false,
-        trustedPostContent: undefined,
-        categories: [],
-        currentPage: 1,
-        totalPages: 1
-    };
+    var apiUrl = WPAPI.api_url,
+        wpService = {
+            feed: [],
+            post: {},
+            isFormatted: false,
+            trustedPostContent: undefined,
+            categories: [],
+            postsByCategory: [],
+            currentCategoryName: '',
+            currentCategorySlug: '',
+            currentPage: 1,
+            totalPages: 1
+        };
 
     function _isFormatted(post) {
         // check if WP-ACF is set for post
@@ -27,12 +31,21 @@ function wpService ($http, $sce) {
         return wpService.isFormatted = false;
     }
 
+    // get category taxonomy info
+    function _getCategory(category) {
+        return $http.get(apiUrl + '/taxonomies/category/terms/?filter[slug]=' + category)
+            .success(function(res) {
+                wpService.currentCategorySlug = category;
+                wpService.currentCategoryName = res[0].name;
+            });
+    }
+
     wpService.getAllPosts = function(page) {
         var postArrayLength = wpService.feed.length;
 
         // only get if feed is empty
         if (!postArrayLength) {
-            return $http.get(WPAPI.api_url + '/posts/?page=' + page + '?post_format=image')
+            return $http.get(apiUrl + '/posts/?page=' + page + '?post_format=image')
                 .success(function(res) {
                     wpService.feed = res;
                     console.log(wpService.feed);
@@ -40,7 +53,7 @@ function wpService ($http, $sce) {
         }
     };
 
-    wpService.singlePost = function(slug) {
+    wpService.getSinglePost = function(slug) {
         var i,
             postArrayLength = wpService.feed.length;
 
@@ -53,7 +66,7 @@ function wpService ($http, $sce) {
             }
         }
 
-        return $http.get(WPAPI.api_url + '/posts/?filter[name]=' + slug)
+        return $http.get(apiUrl + '/posts/?filter[name]=' + slug)
             .success(function(res) {
                 // filter returns an array of posts, only 1 should return
                 wpService.post = res[0];
@@ -63,17 +76,23 @@ function wpService ($http, $sce) {
 
     };
 
-    //wpService.getAllCategories = function() {
-    //    if (wpService.categories.length) {
-    //        return;
-    //    }
-    //
-    //    return $http.get(WPAPI.api_url + '/taxonomies/categories/terms')
-    //        .success(function(res) {
-    //            wpService.categories = res;
-    //        });
-    //
-    //};
+    wpService.getPostsByCategory = function(category) {
+        if (wpService.currentCategorySlug === category) {
+            return;
+        }
+
+        _getCategory(category);
+
+        return $http.get(apiUrl + '/posts/?filter[category_name]=' + category)
+            .success(function(res) {
+                if (wpService.postsByCategory.length) {
+                    wpService.postsByCategory = [];
+                }
+                console.log(wpService.postsByCategory);
+                return wpService.postsByCategory = res;
+
+            });
+    };
 
     return wpService;
 }

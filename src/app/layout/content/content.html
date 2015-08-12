@@ -1,6 +1,4 @@
-<fpr-page-title page-title="{{::content.post.title}}"></fpr-page-title>
-
-<article class="single-post">
+<article class="single-post" fpr-page-title="{{::content.post.title}}">
     <header class="post-header" ng-style="::content.post.acf['featured_image'] && {'background-image': 'url(' + content.post.acf['featured_image'] + ')'}">
         <div fpr-post-date="{{::content.post.date}}"></div>
         <h1 class="post-title" ng-bind-html="::content.post.title | uppercase"></h1>
@@ -23,8 +21,9 @@
     </section>
 
     <!-- Reward style widget -->
-    <div reward-style="{{::content.post.acf['rewardstyle_id']}}"></div>
+    <div ng-if="content.hasRewardStyleId" reward-style="{{::content.post.acf['rewardstyle_id']}}"></div>
 
+    <!-- Share buttons -->
     <section class="share">
         <h4>Share this post</h4>
         <a class="icon-twitter" ng-href="https://twitter.com/share?text=Love%20this%20post%20from%20The%20Fancy%20Pants%20Report!&amp;url={{content.post.link}}"

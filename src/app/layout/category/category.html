@@ -1,0 +1,17 @@
+<div>
+    <h2>Category Archives for: {{::category.currentCategory}}</h2>
+</div>
+
+<article class="feed category" ng-repeat="post in ::category.posts" fpr-page-title>
+    <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
+        <div fpr-post-date="{{::post.date}}"></div>
+
+        <a class="post-title-link" ng-href="{{::post.link}}">
+            <h2 class="post-title" ng-bind-html="::post.title | uppercase"></h2>
+
+            <button type="button" class="read-more-button" ng-if="!post.acf['is_featured']">
+                <h4>Read More</h4>
+            </button>
+        </a>
+    </header>
+</article>
