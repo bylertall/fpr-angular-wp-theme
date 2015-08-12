@@ -1,18 +1,19 @@
 .terms-header-border {
-  margin: 0 rem(45%) rem(70px);
+  margin: 0 auto rem(70px);
   border-bottom: 1px solid #000;
-  height: 50px;
+  height: 100%;
+  max-width: 80%;
 }
 
 .terms-header {
   @include center-x-align(relative);
-  top: rem(15px);
+  top: rem(30px);
   display: inline-block;
   background: #FFF;
   text-align: center;
   text-transform: uppercase;
   font-weight: 300;
-  font-size: modular-scale(2);
+  font-size: rem(20);
   font-family: $font-oswald;
   padding: 0 em(7px);
 }
