@@ -15,6 +15,9 @@ function wpService ($http, $sce) {
             postsByCategory: [],
             currentCategoryName: '',
             currentCategorySlug: '',
+            postsByTag: [],
+            currentTagName: '',
+            currentTagSlug: '',
             currentPage: 1,
             totalPages: 1
         };
@@ -40,7 +43,16 @@ function wpService ($http, $sce) {
             });
     }
 
-    wpService.getAllPosts = function(page) {
+    // get tag taxonomy info
+    function _getTag(tag) {
+        return $http.get(apiUrl + '/taxonomies/post_tag/terms/?filter[slug]=' + tag)
+            .success(function(res) {
+                wpService.currentTagSlug = tag;
+                wpService.currentTagName = res[0].name;
+            });
+    }
+
+    wpService.getFeed = function(page) {
         var postArrayLength = wpService.feed.length;
 
         // only get if feed is empty
@@ -90,8 +102,26 @@ function wpService ($http, $sce) {
                 }
 
                 wpService.postsByCategory = res;
-                console.log("Posts by category: " + wpService.postsByCategory);
                 console.log("number of category posts: " + wpService.postsByCategory.length);
+
+            });
+    };
+
+    wpService.getPostsByTag = function(tag) {
+        if (wpService.currentTagSlug === tag) {
+            return;
+        }
+
+        _getTag(tag);
+
+        return $http.get(apiUrl + '/posts/?filter[tag]=' + tag)
+            .success(function(res) {
+                if (wpService.postsByTag.length) {
+                    wpService.postsByTag = [];
+                }
+
+                wpService.postsByTag = res;
+                console.log("number of tag posts: " + wpService.postsByTag.length);
 
             });
     };

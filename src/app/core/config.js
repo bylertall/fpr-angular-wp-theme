@@ -42,10 +42,19 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
 
         .state('main.category', {
             url: '/category/:category/',
-            templateUrl: 'layout/category/category.html',
+            templateUrl: 'layout/terms/category/category.html',
             controller: 'Category as category',
             resolve: {
                 categoryPrepService: categoryPrepService
+            }
+        })
+
+        .state('main.tag', {
+            url: '/tag/:tag/',
+            templateUrl: 'layout/terms/tag/tag.html',
+            controller: 'Tag as tag',
+            resolve: {
+                tagPrepService: tagPrepService
             }
         });
 }
@@ -59,7 +68,7 @@ function instaPrepService(instaService) {
 feedPrepService.$inject = ['wpService'];
 
 function feedPrepService(wpService) {
-    return wpService.getAllPosts(1);
+    return wpService.getFeed(1);
 }
 
 singlePostPrepService.$inject = ['wpService', '$stateParams'];
@@ -73,4 +82,11 @@ categoryPrepService.$inject = ['wpService', '$stateParams'];
 function categoryPrepService(wpService, $stateParams) {
     console.log('Category service!');
     return wpService.getPostsByCategory($stateParams.category);
+}
+
+tagPrepService.$inject = ['wpService', '$stateParams'];
+
+function tagPrepService(wpService, $stateParams) {
+    console.log('Tag service!');
+    return wpService.getPostsByTag($stateParams.tag);
 }

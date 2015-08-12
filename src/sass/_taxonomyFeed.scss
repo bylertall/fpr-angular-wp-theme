@@ -17,11 +17,11 @@
   padding: 0 em(7px);
 }
 
-.category-feed-container {
+.terms-feed-container {
   @include outer-container();
   margin: 0 em(30px);
 
-  .category-tile {
+  .terms-tile {
     @include span-columns(6);
     @include omega(2n);
 
@@ -30,7 +30,7 @@
     }
     
     .post-title {
-      font-size: modular-scale(3);
+      font-size: modular-scale(4);
     }
 
     .date-widget {

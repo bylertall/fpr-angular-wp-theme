@@ -1,9 +1,9 @@
 <div class="terms-header-border">
-    <h2 class="terms-header">Category Archives: {{::category.currentCategory}}</h2>
+    <h2 class="terms-header">Tag Archives: {{::tag.currentTag}}</h2>
 </div>
 
-<div class="category-feed-container">
-    <article class="feed category-tile" ng-repeat="post in ::category.posts" fpr-page-title="Category: {{::category.currentCategory}}">
+<div class="terms-feed-container">
+    <article class="feed terms-tile" ng-repeat="post in ::tag.posts" fpr-page-title="Category: {{::tag.currentTag}}">
         <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
             <div fpr-post-date="{{::post.date}}"></div>
 
