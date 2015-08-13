@@ -8,6 +8,14 @@ function Feed(wpService) {
     var vm = this;
 
     vm.posts = wpService.feed;
-    vm.getMoreFeed = wpService.getMoreFeed;
-}
+    vm.postLimit = 10;
+    vm.noMoreResults = false;
 
+    vm.getMoreFeed = function() {
+        wpService.getFeed().then(function() {
+            if (wpService.currentFeedPage >= wpService.totalFeedPages) {
+                vm.noMoreResults = true;
+            }
+        });
+    };
+}

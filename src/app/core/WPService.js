@@ -8,52 +8,50 @@ function wpService ($http, $sce) {
     var apiUrl = WPAPI.api_url,
         wpService = {
             feed: [],
-            currentFeedPage: 2,
+            currentFeedPage: 0,
+            totalFeedPages: 0,
             post: {},
             isFormatted: false,
             trustedPostContent: undefined,
             categories: [],
             postsByCategory: [],
+            currentCategoryPage: 0,
             currentCategoryName: '',
             currentCategorySlug: '',
-            numCategoryPosts: 0,
+            totalCategoryPosts: 0,
+            totalCategoryPages: 0,
             postsByTag: [],
+            currentTagPage: 0,
             currentTagName: '',
             currentTagSlug: '',
-            numTagPosts: 0
+            totalTagPosts: 0,
+            totalTagPages: 0
         };
 
     // Main Feed
-    wpService.getInitialFeed = function() {
-        var postArrayLength = wpService.feed.length;
-
-        // get page 1 if feed is empty
-        // each page is 10 posts
-        if (!postArrayLength) {
-            return $http.get(apiUrl + '/posts/')
-                .success(function(res) {
-                    wpService.feed = res;
-                    console.log(wpService.feed);
-                });
-        }
-
-
-    };
-
-    // Load more on main feed
-    wpService.getMoreFeed = function() {
+    wpService.getFeed = function() {
         var feed = [];
 
+        if (wpService.currentFeedPage) {
+            wpService.currentFeedPage++;
+        } else {
+            wpService.currentFeedPage = 1;
+        }
+
         return $http.get(apiUrl + '/posts/?page=' + wpService.currentFeedPage)
-            .success(function(res) {
+            .success(function(res, status, headers) {
                 feed = wpService.feed.concat(res);
-                wpService.currentFeedPage++;
+                wpService.totalFeedPages = headers('X-WP-TotalPages');
 
                 // Use angular.copy to update controller with new results
                 angular.copy(feed, wpService.feed);
                 console.log(wpService.feed);
+
+                if (wpService.currentFeedPage > wpService.totalFeedPages) {
+                    wpService.noMoreFeed = true;
+                }
             });
-    }
+    };
 
     // Single Post
     wpService.getSinglePost = function(slug) {
@@ -77,51 +75,60 @@ function wpService ($http, $sce) {
                 wpService.post = res[0];
                 _isFormatted(wpService.post);
             });
-
-
     };
 
     // Posts by category term
     wpService.getPostsByCategory = function(category) {
-        if (wpService.currentCategorySlug === category) {
-            return;
+        var feed = [];
+
+        _setCategoryInfo(category);
+
+        // if page is not 0, increment
+        // otherwise set to page 1
+        if (wpService.currentCategoryPage) {
+            wpService.currentCategoryPage++;
+        } else {
+            wpService.currentCategoryPage = 1;
         }
 
-        _getCategoryInfo(category);
+        return $http.get(apiUrl + '/posts/?filter[category_name]=' + category + '&page=' + wpService.currentCategoryPage)
+            .success(function(res, status, headers) {
+                feed = wpService.postsByCategory.concat(res);
+                wpService.totalCategoryPages = headers('X-WP-TotalPages');
 
-        return $http.get(apiUrl + '/posts/?filter[category_name]=' + category)
-            .success(function(res) {
-
-                angular.copy(res, wpService.postsByCategory);
-                console.log("number of category posts: " + wpService.postsByCategory.length);
-                console.log(res);
+                angular.copy(feed, wpService.postsByCategory);
             });
     };
 
     // Posts by tag term
     wpService.getPostsByTag = function(tag) {
-        if (wpService.currentTagSlug === tag) {
-            return;
+        var feed = [];
+
+        _setTagInfo(tag);
+
+        // if page is not 0, increment
+        // otherwise set to page 1
+        if (wpService.currentTagPage) {
+            wpService.currentTagPage++;
+            console.log('Current tag page: ' + wpService.currentTagPage);
+        } else {
+            wpService.currentTagPage = 1;
         }
 
-        _getTagInfo(tag);
+        return $http.get(apiUrl + '/posts/?filter[tag]=' + tag + '&page=' + wpService.currentTagPage)
+            .success(function(res, status, headers) {
+                feed = wpService.postsByTag.concat(res);
+                wpService.totalTagPages = headers('X-WP-TotalPages');
 
-        return $http.get(apiUrl + '/posts/?filter[tag]=' + tag)
-            .success(function(res) {
-
-                angular.copy(res, wpService.postsByTag);
-                console.log(res);
-                console.log("number of tag posts: " + wpService.postsByTag.length);
-
+                angular.copy(feed, wpService.postsByTag);
             });
     };
 
     return wpService;
 
-
-    //
+    ////////////////////////////////////
     // Private functions
-    //
+    ////////////////////////////////////
 
     // determine is post is in new format w/ custom fields
     // if not, run post.content through $sce.trustAsHtml
@@ -135,27 +142,39 @@ function wpService ($http, $sce) {
     }
 
     // get category taxonomy info
-    function _getCategoryInfo(category) {
+    function _setCategoryInfo(category) {
+        if (category === wpService.currentCategorySlug) return;
+
+        // clear array & reset page # for new category
+        wpService.postsByCategory = [];
+        wpService.currentCategoryPage = 0;
+
         return $http.get(apiUrl + '/taxonomies/category/terms/?filter[slug]=' + category)
             .success(function(res) {
+                // set category details
                 wpService.currentCategorySlug = category;
                 wpService.currentCategoryName = res[0].name;
-                wpService.numCategoryPosts = res[0].count;
-                console.log('Number of posts for ' + wpService.currentCategoryName + ': ' + wpService.numCategoryPosts);
-                console.log('Get category info resulted in:');
+                wpService.totalCategoryPosts = res[0].count;
+                console.log('Current category info:');
                 console.log(res);
             });
     }
 
     // get tag taxonomy info
-    function _getTagInfo(tag) {
+    function _setTagInfo(tag) {
+        if (tag === wpService.currentTagSlug) return;
+
+        // clear array & reset page # for new tag
+        wpService.postsByTag = [];
+        wpService.currentTagPage = 0;
+
         return $http.get(apiUrl + '/taxonomies/post_tag/terms/?filter[slug]=' + tag)
             .success(function(res) {
+                // set tag details
                 wpService.currentTagSlug = tag;
                 wpService.currentTagName = res[0].name;
-                wpService.numTagPosts = res[0].count;
-                console.log('Number of posts for ' + wpService.currentTagName + ': ' + wpService.numTagPosts);
-                console.log('Get tag info resulted in:');
+                wpService.totalTagPosts = res[0].count;
+                console.log('Current tag info:');
                 console.log(res);
             });
     }

@@ -1,9 +1,11 @@
 <div class="terms-header-border">
-    <h2 class="terms-header">Tag Archives: {{::tag.currentTag}}</h2>
+    <h2 class="terms-header">Tag Archives: {{::tag.currentTagName}}</h2>
 </div>
 
+<div class="terms-num-posts">Number of posts found: {{tag.totalTagPosts}}</div>
+
 <div class="terms-feed-container">
-    <article class="feed terms-tile" ng-repeat="post in ::tag.posts" fpr-page-title="Tag: {{::tag.currentTag}}">
+    <article class="feed terms-tile" ng-repeat="post in tag.posts" fpr-page-title="Tag: {{::tag.currentTagName}}">
         <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
             <div fpr-post-date="{{::post.date}}"></div>
 
@@ -17,3 +19,7 @@
         </header>
     </article>
 </div>
+
+<!-- load more articles -->
+<button ng-if="!tag.noMoreResults" ng-click="tag.getMorePosts()" class="load-more-posts">Load More Posts</button>
+<div ng-if="tag.noMoreResults">No more results...</div>

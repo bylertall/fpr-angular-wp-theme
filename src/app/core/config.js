@@ -68,7 +68,9 @@ function instaPrepService(instaService) {
 feedPrepService.$inject = ['wpService'];
 
 function feedPrepService(wpService) {
-    return wpService.getInitialFeed();
+    if (wpService.feed.length) return;
+
+    return wpService.getFeed();
 }
 
 singlePostPrepService.$inject = ['wpService', '$stateParams'];
@@ -80,11 +82,15 @@ function singlePostPrepService(wpService, $stateParams) {
 categoryPrepService.$inject = ['wpService', '$stateParams'];
 
 function categoryPrepService(wpService, $stateParams) {
+    if ($stateParams.category === wpService.currentCategorySlug) return console.log('Current category!');
+
     return wpService.getPostsByCategory($stateParams.category);
 }
 
 tagPrepService.$inject = ['wpService', '$stateParams'];
 
 function tagPrepService(wpService, $stateParams) {
+    if ($stateParams.tag === wpService.currentTagSlug) return console.log('Current tag!');
+
     return wpService.getPostsByTag($stateParams.tag);
 }

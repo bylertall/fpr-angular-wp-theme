@@ -1,9 +1,11 @@
 <div class="terms-header-border">
-    <h2 class="terms-header">Category Archives: {{::category.currentCategory}}</h2>
+    <h2 class="terms-header">Category Archives: {{::category.currentCategoryName}}</h2>
 </div>
 
+<div class="terms-num-posts">Number of posts found: {{::category.totalCategoryPosts}}</div>
+
 <div class="terms-feed-container">
-    <article class="feed terms-tile" ng-repeat="post in ::category.posts" fpr-page-title="Category: {{::category.currentCategory}}">
+    <article class="feed terms-tile" ng-repeat="post in category.posts" fpr-page-title="Category: {{::category.currentCategoryName}}">
         <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
             <div fpr-post-date="{{::post.date}}"></div>
 
@@ -17,3 +19,7 @@
         </header>
     </article>
 </div>
+
+<!-- load more articles -->
+<button ng-if="!category.noMoreResults" ng-click="category.getMorePosts()" class="load-more-posts">Load More Posts</button>
+<div ng-if="category.noMoreResults">No more results...</div>

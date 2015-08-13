@@ -25,5 +25,6 @@
     </section>
 </article>
 
-<!-- insert button to load more articles -->
-<button ng-click="feed.getMoreFeed()">Load More Posts</button>
+<!-- load more articles -->
+<button ng-if="!feed.noMoreResults" ng-click="feed.getMoreFeed()" class="load-more-posts">Load More Posts</button>
+<div ng-if="feed.noMoreResults">No more posts...</div>
