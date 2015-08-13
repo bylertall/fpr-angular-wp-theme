@@ -19,8 +19,8 @@
 }
 
 .terms-feed-container {
-  @include outer-container();
-  margin: 0 em(30px);
+  @include outer-container;
+  margin: 0 em(35px);
 
   .terms-tile {
     @include span-columns(6);
@@ -28,6 +28,7 @@
 
     .post-header {
       background-position: center;
+      height: em(400);
     }
     
     .post-title {

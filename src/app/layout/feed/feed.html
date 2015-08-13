@@ -1,4 +1,4 @@
-<article class="feed" ng-repeat="post in ::feed.posts" fpr-page-title>
+<article class="feed" ng-repeat="post in feed.posts" fpr-page-title>
     <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
         <div fpr-post-date="{{::post.date}}"></div>
 
@@ -24,3 +24,6 @@
         </div>
     </section>
 </article>
+
+<!-- insert button to load more articles -->
+<button ng-click="feed.getMoreFeed()">Load More Posts</button>

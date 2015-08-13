@@ -68,7 +68,7 @@ function instaPrepService(instaService) {
 feedPrepService.$inject = ['wpService'];
 
 function feedPrepService(wpService) {
-    return wpService.getFeed(1);
+    return wpService.getInitialFeed();
 }
 
 singlePostPrepService.$inject = ['wpService', '$stateParams'];
@@ -80,13 +80,11 @@ function singlePostPrepService(wpService, $stateParams) {
 categoryPrepService.$inject = ['wpService', '$stateParams'];
 
 function categoryPrepService(wpService, $stateParams) {
-    console.log('Category service!');
     return wpService.getPostsByCategory($stateParams.category);
 }
 
 tagPrepService.$inject = ['wpService', '$stateParams'];
 
 function tagPrepService(wpService, $stateParams) {
-    console.log('Tag service!');
     return wpService.getPostsByTag($stateParams.tag);
 }

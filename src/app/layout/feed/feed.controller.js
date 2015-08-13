@@ -6,5 +6,8 @@ Feed.$inject = ['wpService'];
 
 function Feed(wpService) {
     var vm = this;
+
     vm.posts = wpService.feed;
+    vm.getMoreFeed = wpService.getMoreFeed;
 }
+

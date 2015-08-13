@@ -3,7 +3,7 @@
 </div>
 
 <div class="terms-feed-container">
-    <article class="feed terms-tile" ng-repeat="post in ::tag.posts" fpr-page-title="Category: {{::tag.currentTag}}">
+    <article class="feed terms-tile" ng-repeat="post in ::tag.posts" fpr-page-title="Tag: {{::tag.currentTag}}">
         <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
             <div fpr-post-date="{{::post.date}}"></div>
 
