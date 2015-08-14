@@ -11,13 +11,20 @@ function Category(wpService) {
     vm.currentCategoryName = wpService.currentCategoryName;
     vm.currentCategorySlug = wpService.currentCategorySlug;
     vm.totalCategoryPosts = wpService.totalCategoryPosts;
+    vm.showError = false;
     vm.noMoreResults = false;
 
-    vm.getMorePosts = function () {
+    vm.getMorePosts = getMorePosts;
+
+    if (vm.totalCategoryPosts === 0) {
+        vm.showError = true;
+    }
+
+    function getMorePosts () {
         wpService.getPostsByCategory(vm.currentCategorySlug);
 
-        if (wpService.currentCategoryPage >= wpService.totalCategoryPages) {
+        if (wpService.currentCategoryPage > wpService.totalCategoryPages) {
             vm.noMoreResults = true;
         }
-    };
+    }
 }

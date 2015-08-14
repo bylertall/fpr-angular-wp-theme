@@ -2,9 +2,9 @@ angular
     .module('fprApp')
     .factory('wpService', wpService);
 
-wpService.$inject = ['$http', '$sce'];
+wpService.$inject = ['$http', '$sce', '$state'];
 
-function wpService ($http, $sce) {
+function wpService ($http, $sce, $state) {
     var apiUrl = WPAPI.api_url,
         wpService = {
             feed: [],
@@ -143,6 +143,7 @@ function wpService ($http, $sce) {
 
     // get category taxonomy info
     function _setCategoryInfo(category) {
+        // only get category info if different from current category
         if (category === wpService.currentCategorySlug) return;
 
         // clear array & reset page # for new category
@@ -151,6 +152,11 @@ function wpService ($http, $sce) {
 
         return $http.get(apiUrl + '/taxonomies/category/terms/?filter[slug]=' + category)
             .success(function(res) {
+                // set category name if get request results in empty array
+                if (!res.length) {
+                    return wpService.currentCategoryName = category;
+                }
+
                 // set category details
                 wpService.currentCategorySlug = category;
                 wpService.currentCategoryName = res[0].name;
@@ -162,6 +168,7 @@ function wpService ($http, $sce) {
 
     // get tag taxonomy info
     function _setTagInfo(tag) {
+        // only get tag info if different from current tag
         if (tag === wpService.currentTagSlug) return;
 
         // clear array & reset page # for new tag
@@ -170,6 +177,11 @@ function wpService ($http, $sce) {
 
         return $http.get(apiUrl + '/taxonomies/post_tag/terms/?filter[slug]=' + tag)
             .success(function(res) {
+                // set tag name if get request results in empty array
+                if (!res.length) {
+                    return wpService.currentTagName = tag;
+                }
+
                 // set tag details
                 wpService.currentTagSlug = tag;
                 wpService.currentTagName = res[0].name;

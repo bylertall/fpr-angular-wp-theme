@@ -2,7 +2,8 @@
     <h2 class="terms-header">Category Archives: {{::category.currentCategoryName}}</h2>
 </div>
 
-<div class="terms-num-posts">Number of posts found: {{::category.totalCategoryPosts}}</div>
+<div class="terms-num-posts" ng-if="!category.showError">Number of posts found: {{::category.totalCategoryPosts}}</div>
+<div class="terms-error" ng-if="category.showError">No posts found for the tag: <span>{{::category.currentCategoryName}}</span></div>
 
 <div class="terms-feed-container">
     <article class="feed terms-tile" ng-repeat="post in category.posts" fpr-page-title="Category: {{::category.currentCategoryName}}">
@@ -21,5 +22,7 @@
 </div>
 
 <!-- load more articles -->
-<button ng-if="!category.noMoreResults" ng-click="category.getMorePosts()" class="load-more-posts">Load More Posts</button>
-<div ng-if="category.noMoreResults">No more results...</div>
+<div ng-if="!category.showError">
+    <button ng-if="!category.noMoreResults" ng-click="category.getMorePosts()" class="load-more-posts">Load More Posts</button>
+    <div ng-if="category.noMoreResults" class="no-results">No more results...</div>
+</div>

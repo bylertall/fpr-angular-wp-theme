@@ -87,7 +87,7 @@ function singlePostPrepService(wpService, $stateParams) {
 categoryPrepService.$inject = ['wpService', '$stateParams'];
 
 function categoryPrepService(wpService, $stateParams) {
-    if ($stateParams.category === wpService.currentCategorySlug) return console.log('Current category!');
+    if ($stateParams.category === wpService.currentCategorySlug) return;
 
     return wpService.getPostsByCategory($stateParams.category);
 }
@@ -95,7 +95,7 @@ function categoryPrepService(wpService, $stateParams) {
 tagPrepService.$inject = ['wpService', '$stateParams'];
 
 function tagPrepService(wpService, $stateParams) {
-    if ($stateParams.tag === wpService.currentTagSlug) return console.log('Current tag!');
+    if ($stateParams.tag === wpService.currentTagSlug) return;
 
     return wpService.getPostsByTag($stateParams.tag);
 }

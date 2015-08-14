@@ -46,8 +46,19 @@
   }
 }
 
-.terms-num-posts {
+.terms-num-posts, .terms-error {
   text-align: center;
   text-transform: lowercase;
-  margin-bottom: rem(30px);
+  margin-bottom: rem(50);
+}
+
+.no-results {
+  text-align: center;
+  text-transform: lowercase;
+  margin: rem(40);
+}
+
+.terms-error {
+  margin: rem(30);
+  text-transform: uppercase;
 }

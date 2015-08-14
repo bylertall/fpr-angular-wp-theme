@@ -11,13 +11,20 @@ function Tag(wpService) {
     vm.currentTagName = wpService.currentTagName;
     vm.currentTagSlug = wpService.currentTagSlug;
     vm.totalTagPosts = wpService.totalTagPosts;
+    vm.showError = false;
     vm.noMoreResults = false;
 
-    vm.getMorePosts = function () {
+    vm.getMorePosts = getMorePosts;
+
+    if (vm.totalTagPosts === 0) {
+        vm.showError = true;
+    }
+
+    function getMorePosts () {
         wpService.getPostsByTag(vm.currentTagSlug);
 
-        if (wpService.currentTagPage >= wpService.totalTagPages) {
+        if (wpService.currentTagPage > wpService.totalTagPages) {
             vm.noMoreResults = true;
         }
-    };
+    }
 }
