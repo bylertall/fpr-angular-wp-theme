@@ -87,3 +87,14 @@
     }
   }
 }
+
+.load-more-posts {
+  @include center-x-align(relative);
+  background: #FFF;
+  border: rem(1) solid #000;
+  border-radius: 2px;
+  margin: em(30) 0;
+  padding: em(22) em(25);
+  text-transform: uppercase;
+  color: #000;
+}

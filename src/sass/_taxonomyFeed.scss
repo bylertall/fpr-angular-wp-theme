@@ -1,5 +1,5 @@
 .terms-header-border {
-  margin: 0 auto rem(70px);
+  margin: 0 auto rem(15px);
   border-bottom: 1px solid #000;
   height: 100%;
   max-width: 80%;
@@ -44,4 +44,10 @@
       }
     }
   }
+}
+
+.terms-num-posts {
+  text-align: center;
+  text-transform: lowercase;
+  margin-bottom: rem(30px);
 }

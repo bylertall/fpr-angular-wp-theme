@@ -1,6 +1,6 @@
 .main-footer {
   @include outer-container;
-  margin-bottom: rem(35);
+  margin: rem(35) 0;
 
   .nav-social-container {
     height: 100%;
