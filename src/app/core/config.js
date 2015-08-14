@@ -7,7 +7,7 @@ Config.$inject = ['$locationProvider', '$urlRouterProvider', '$stateProvider'];
 function Config($locationProvider, $urlRouterProvider, $stateProvider) {
     $locationProvider.html5Mode(true);
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/404');
 
     $stateProvider
         .state('main', {
@@ -56,6 +56,11 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
             resolve: {
                 tagPrepService: tagPrepService
             }
+        })
+
+        .state('main.404', {
+            url: '/404',
+            templateUrl: 'core/404.html'
         });
 }
 

@@ -54,3 +54,13 @@ button {
     outline: none;
   }
 }
+
+// 404 error page
+.not-found {
+  width: 80%;
+  margin: em(40) auto;
+
+  a {
+    font-weight: 700;
+  }
+}
