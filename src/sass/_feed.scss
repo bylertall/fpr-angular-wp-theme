@@ -97,4 +97,11 @@
   padding: em(22) em(25);
   text-transform: uppercase;
   color: #000;
+  @include transition(all 500 ease);
+
+  &:hover {
+    background: $accent-color;
+    border-color: $accent-color;
+    color: #FFF;
+  }
 }

@@ -9,7 +9,7 @@ function fprInstaLoaded() {
 }
 
 function link(scope, elem, attrs) {
-    if (scope.$first){
+    if (scope.$last){
         elem.on('load', function() {
             scope.$emit('instaWidgetLoaded');
         });

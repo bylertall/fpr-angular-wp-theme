@@ -12,8 +12,9 @@ function Feed(wpService) {
     vm.noMoreResults = false;
 
     vm.getMoreFeed = function() {
-        wpService.getFeed().then(function() {
-            if (wpService.currentFeedPage >= wpService.totalFeedPages) {
+        wpService.getFeed().success(function() {
+
+            if (isNaN(wpService.currentFeedPage) || wpService.currentFeedPage >= wpService.totalFeedPages) {
                 vm.noMoreResults = true;
             }
         });

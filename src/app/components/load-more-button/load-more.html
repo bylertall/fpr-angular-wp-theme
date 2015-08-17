@@ -1,0 +1,7 @@
+<div class="load-more-container" ng-if="">
+    <button ng-hide="loadingMorePosts || noMoreResults" class="load-more-posts">Load More Posts</button>
+
+    <div ng-show="noMoreResults" class="no-results">No more posts...</div>
+
+    <chasing-dots-spinner ng-show="loadingMorePosts"></chasing-dots-spinner>
+</div>
