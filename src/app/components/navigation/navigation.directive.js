@@ -14,10 +14,6 @@ function fprNav($window, $timeout) {
 
     return directive;
 
-    function _getOffsetTop(element) {
-        return element[0].offsetTop;
-    }
-
     function link(scope, elem, attrs) {
         var elNavContainer = angular.element(document.querySelector('.nav-container')),
             window = angular.element($window),
@@ -66,4 +62,8 @@ function fprNav($window, $timeout) {
             );
         });
     }
+}
+
+function _getOffsetTop(element) {
+    return element[0].offsetTop;
 }

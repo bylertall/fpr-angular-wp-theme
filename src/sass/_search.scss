@@ -1,0 +1,39 @@
+#search-outer {
+  font-size: modular-scale(4);
+  min-height: em(200);
+
+  .search-inner {
+    position: relative;
+    top: rem(50%);
+    label {
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    .search-input {
+      display: inline-block;
+      height: 100%;
+      border: none;
+      border-bottom: 1px solid #000;
+      background: transparent;
+      padding: rem(5);
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .results-header-border {
+      margin-bottom: rem(60);
+    }
+  }
+
+  .search-form {
+    @include center-x-align(relative);
+    display: inline-block;
+  }
+
+  .load-more-container {
+    margin-bottom: em(100);
+  }
+}

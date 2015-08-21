@@ -1,12 +1,12 @@
-<div class="terms-header-border">
-    <h2 class="terms-header">Tag Archives: {{::tag.currentTagName}}</h2>
+<div class="results-header-border">
+    <h2 class="results-header">Tag Archives: {{::tag.currentTagName}}</h2>
 </div>
 
-<div class="terms-num-posts" ng-if="!tag.showError">Number of posts found: {{::tag.numPosts}}</div>
-<div class="terms-error" ng-if="tag.showError">No posts found for the tag: <span>{{::tag.currentTagName}}</span></div>
+<div class="results-num-posts" ng-if="!tag.showError">Number of posts found: {{::tag.numPosts}}</div>
+<div class="results-error" ng-if="tag.showError">No posts found for the tag: <span>{{::tag.currentTagName}}</span></div>
 
-<div class="terms-feed-container">
-    <article class="feed terms-tile" ng-repeat="post in tag.posts" fpr-page-title="Tag: {{::tag.currentTagName}}">
+<div class="results-feed-container">
+    <article class="feed results-tile" ng-repeat="post in tag.posts" fpr-page-title="Tag: {{::tag.currentTagName}}">
         <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
             <div fpr-post-date="{{::post.date}}"></div>
 

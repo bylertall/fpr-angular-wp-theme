@@ -13,6 +13,7 @@ function Category(wpService) {
     vm.currentCategorySlug = wpService.currentCategorySlug;
     vm.showError = false;
 
+    // show no posts error if no posts are found for the category
     if (vm.numPosts === 0) {
         vm.showError = true;
     }

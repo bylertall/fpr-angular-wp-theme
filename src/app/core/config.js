@@ -36,7 +36,7 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
             },
             onEnter: function(smoothScroll) {
                 var header = document.getElementById('main-header');
-                smoothScroll(header, {duration: 100});
+                smoothScroll(header, {duration: 400});
             }
         })
 
@@ -56,6 +56,12 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
             resolve: {
                 tagPrepService: tagPrepService
             }
+        })
+
+        .state('main.search', {
+            url: '/search',
+            templateUrl: 'components/search/search.html',
+            controller: 'Search as search'
         })
 
         .state('main.404', {

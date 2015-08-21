@@ -1,4 +1,4 @@
-<div class="load-more-container" ng-if="">
+<div class="load-more-container" ng-show="postsAvailable">
     <button ng-hide="loadingMorePosts || noMoreResults" class="load-more-posts">Load More Posts</button>
 
     <div ng-show="noMoreResults" class="no-results">No more posts...</div>

@@ -1,11 +1,11 @@
-.terms-header-border {
+.results-header-border {
   margin: 0 auto rem(15px);
   border-bottom: 1px solid #000;
   height: 100%;
   max-width: 80%;
 }
 
-.terms-header {
+.results-header {
   @include center-x-align(relative);
   top: rem(30px);
   display: inline-block;
@@ -18,11 +18,11 @@
   padding: 0 em(7px);
 }
 
-.terms-feed-container {
+.results-feed-container {
   @include outer-container;
   margin: 0 em(35px);
 
-  .terms-tile {
+  .results-tile {
     @include span-columns(6);
     @include omega(2n);
 
@@ -46,7 +46,7 @@
   }
 }
 
-.terms-num-posts, .terms-error {
+.results-num-posts, .results-error {
   text-align: center;
   text-transform: lowercase;
   margin-bottom: rem(50);
@@ -58,7 +58,12 @@
   margin: rem(40);
 }
 
-.terms-error {
+.results-error {
   margin: rem(30);
   text-transform: uppercase;
+}
+
+// search page font size fix
+.results-container {
+  font-size: modular-scale(-4);
 }

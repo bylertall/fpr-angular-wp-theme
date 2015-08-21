@@ -18,20 +18,28 @@ function fprLoadMore($state, $stateParams, wpService) {
     function link(scope, elem, attrs) {
         // use state.current.name to find state
         // use switch to run correct getMore function on click
-
         var currentState = $state.current.name;
 
         scope.loadingMorePosts = false;
         scope.noMoreResults = false;
-        scope.nothingToLoad = false;
+        scope.postsAvailable = true;
 
-        // if no posts found, don't show load more
+        // if < 10 posts found, don't show load more
         switch (currentState) {
             case 'main.category':
-                if (wpService.totalCategoryPosts === 0) {
-
+                if (wpService.totalCategoryPosts <= 10) {
+                    scope.postsAvailable = false;
                 }
                 break;
+
+            case 'main.tag':
+                if (wpService.totalTagPosts <= 10) {
+                    scope.postsAvailable = false;
+                }
+                break;
+
+            default:
+                scope.postsAvailable = true;
         }
 
         elem.on('click', function () {
@@ -58,14 +66,8 @@ function fprLoadMore($state, $stateParams, wpService) {
 
                     wpService.getPostsByCategory(category).success(
                         function(res) {
+                            scope.noMoreResults = res.length < 10;
                             scope.loadingMorePosts = false;
-
-                            if (res.length < 10) {
-                                console.log(res.length);
-                                scope.noMoreResults = true;
-                            }
-
-                            console.log(scope.noMoreResults);
                         }
                     );
                     break;
@@ -76,9 +78,7 @@ function fprLoadMore($state, $stateParams, wpService) {
 
                     wpService.getPostsByTag(tag).success(
                         function(res) {
-                            if (res.length < 10) {
-                                scope.noMoreResults = true;
-                            }
+                            scope.noMoreResults = res.length < 10;
                             scope.loadingMorePosts = false;
                         }
                     );

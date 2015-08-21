@@ -22,18 +22,19 @@ function wpService ($http, $sce, $state) {
             currentTagPage: 0,
             currentTagName: '',
             currentTagSlug: '',
-            totalTagPosts: 0
+            totalTagPosts: 0,
+            currentSearchPage: 0,
+            currentSearchStr: '',
+            searchResults: []
         };
 
     // Main Feed
     wpService.getFeed = function() {
         var feed = [];
 
-        if (wpService.currentFeedPage) {
-            wpService.currentFeedPage++;
-        } else {
-            wpService.currentFeedPage = 1;
-        }
+        // if page is 0, set to page 1
+        // otherwise increment
+        wpService.currentFeedPage === 0 ? wpService.currentFeedPage = 1 : wpService.currentFeedPage++;
 
         return $http.get(apiUrl + '/posts/?page=' + wpService.currentFeedPage)
             .success(function(res, status, headers) {
@@ -77,14 +78,9 @@ function wpService ($http, $sce, $state) {
 
         _setCategoryInfo(category);
 
-        // if page is not 0, increment
-        // otherwise set to page 1
-        if (wpService.currentCategoryPage) {
-            wpService.currentCategoryPage++;
-            console.log("Current page is " + wpService.currentCategoryPage);
-        } else {
-            wpService.currentCategoryPage = 1;
-        }
+        // if page is 0, set to page 1
+        // otherwise increment
+        wpService.currentCategoryPage === 0 ? wpService.currentCategoryPage = 1 : wpService.currentCategoryPage++;
 
         return $http.get(apiUrl + '/posts/?filter[category_name]=' + category + '&page=' + wpService.currentCategoryPage)
             .success(function(res, status, headers) {
@@ -100,20 +96,43 @@ function wpService ($http, $sce, $state) {
 
         _setTagInfo(tag);
 
-        // if page is not 0, increment
-        // otherwise set to page 1
-        if (wpService.currentTagPage) {
-            wpService.currentTagPage++;
-            console.log('Current tag page: ' + wpService.currentTagPage);
-        } else {
-            wpService.currentTagPage = 1;
-        }
+        // if page is 0, set to page 1
+        // otherwise increment
+        wpService.currentTagPage === 0 ? wpService.currentTagPage = 1 : wpService.currentTagPage++;
 
         return $http.get(apiUrl + '/posts/?filter[tag]=' + tag + '&page=' + wpService.currentTagPage)
-            .success(function(res, status, headers) {
+            .success(function(res) {
                 feed = wpService.postsByTag.concat(res);
 
                 angular.copy(feed, wpService.postsByTag);
+            });
+    };
+
+    // get search results
+    wpService.getSearchResults = function(search) {
+        var feed = [];
+
+        // reset search properties if new search string
+        if (wpService.currentSearchStr !== search) {
+            wpService.currentSearchPage = 0;
+            wpService.currentSearchStr = search;
+
+            angular.copy(feed, wpService.searchResults);
+        }
+
+        // if page is 0, set to page 1
+        // otherwise increment
+        wpService.currentSearchPage === 0 ? wpService.currentSearchPage = 1 : wpService.currentSearchPage++;
+
+        return $http.get(apiUrl + '/posts/?filter[s]=' + search + '&page=' + wpService.currentSearchPage + '&filter[posts_per_page]=20')
+            .success(function(res) {
+                feed = wpService.searchResults.concat(res);
+
+                console.log('The result is: ');
+                console.log(res);
+
+                // update search results
+                angular.copy(feed, wpService.searchResults)
             });
     };
 

@@ -1,0 +1,41 @@
+<div id="search-outer">
+    <div class="search-inner">
+        <form role="search" class="search-form">
+            <label>Search:</label>
+            <input class="search-input" type="text" name="search" ng-model="search.filter.s" ng-keypress="search.getInitialResults($event)" autofocus>
+        </form>
+
+        <div class="results-container" ng-if="search.resultsActive">
+            <div class="results-header-border">
+                <h2 class="results-header">Search Results</h2>
+            </div>
+
+            <div class="results-error" ng-if="search.showError">No posts found for: <span>{{search.currentSearchString}}</span></div>
+
+            <div class="results-feed-container">
+                <article class="feed results-tile" ng-repeat="post in search.posts" fpr-page-title="Search FPR">
+                    <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
+                        <div fpr-post-date="{{::post.date}}"></div>
+
+                        <a class="post-title-link" ng-href="{{::post.link}}">
+                            <h2 class="post-title" ng-bind-html="::post.title | uppercase"></h2>
+
+                            <button type="button" class="read-more-button" ng-if="!post.acf['is_featured']">
+                                <h4>Read More</h4>
+                            </button>
+                        </a>
+                    </header>
+                </article>
+            </div>
+
+            <!-- load more articles -->
+            <div class="load-more-container" ng-hide="search.showError">
+                <button class="load-more-posts" ng-hide="search.loadingMorePosts || search.noMoreResults" ng-click="search.getMoreResults()">Load More Posts</button>
+
+                <div ng-show="search.noMoreResults" class="no-results">No more results...</div>
+
+                <chasing-dots-spinner ng-show="search.loadingMorePosts"></chasing-dots-spinner>
+            </div>
+        </div>
+    </div>
+</div>
