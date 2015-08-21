@@ -22,15 +22,16 @@
     "angular-sanitize": "~1.4.1",
     "angular-ui-router": "~0.2.15",
     "bourbon": "~4.2.3",
-    "angular": "~1.4.2",
+    "angular": "~1.4.4",
     "neat": "~1.7.2",
     "normalize-scss": "~3.0.3",
     "angular-motion": "~0.4.2",
     "angular-strap": "~2.3.1",
     "angular-animate": "~1.4.4",
-    "angular-spinkit": "~0.3.3"
+    "angular-spinkit": "~0.3.3",
+    "ngSmoothScroll": "~1.7.1"
   },
   "resolutions": {
-    "angular": "~1.4.2"
+    "angular": "~1.4.4"
   }
 }

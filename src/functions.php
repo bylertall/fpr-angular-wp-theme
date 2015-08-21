@@ -27,6 +27,12 @@ function my_scripts() {
 	);
 
 	wp_register_script(
+		'angular-animate',
+		get_template_directory_uri() . '/bower_components/angular-animate/angular-animate.min.js',
+		array(), null, false
+	);
+
+	wp_register_script(
 		'angular-spinkit',
 		get_template_directory_uri() . '/bower_components/angular-spinkit/build/angular-spinkit.min.js',
 		array(), null, false
@@ -53,11 +59,11 @@ function my_scripts() {
 	wp_enqueue_script(
 		'my-scripts',
 		get_template_directory_uri() . '/js/app.js',
-		array( 'angularjs', 'angular-ui-router', 'angular-sanitize', 'angular-smooth-scroll', 'angular-spinkit', 'angular-strap', 'angular-strap-tpl', 'reward-style')
+		array( 'angularjs', 'angular-ui-router', 'angular-sanitize', 'angular-smooth-scroll', 'angular-animate', 'angular-spinkit', 'angular-strap', 'angular-strap-tpl', 'reward-style')
 	);
 
-	wp_enqueue_style( 'flaticon.css', get_template_directory_uri() . '/assets/icons/flaticon.css' );
 
+	wp_enqueue_style( 'flaticon.css', get_template_directory_uri() . '/assets/icons/flaticon.css' );
 	wp_enqueue_style( 'angular-motion.css', get_template_directory_uri() . '/bower_components/angular-motion/dist/angular-motion.min.css' );
 	wp_enqueue_style( 'angular-spinkit.css', get_template_directory_uri() . '/bower_components/angular-spinkit/build/angular-spinkit.min.css' );
 
