@@ -10,6 +10,7 @@
                 <h2 class="results-header">Search Results</h2>
             </div>
 
+            <div class="results-error" ng-show="search.noSearchStringError">You have to type something to search for!</div>
             <div class="results-error" ng-if="search.showError">No posts found for: <span>{{search.currentSearchString}}</span></div>
 
             <div class="results-feed-container">
