@@ -83,7 +83,7 @@
 }
 
 .bottom-insta-widget {
-  margin-bottom: em(25);
+  margin: 0 em(30) em(25);
 
   .insta-widget-header {
     margin: 0 rem(55px);
@@ -104,14 +104,4 @@
       background-color: #FFF;
     }
   }
-  //
-  //.insta-widget {
-  //  @include outer-container;
-  //
-  //  .insta-tile {
-  //    @include media(min-width 768px) {
-  //      @include span-columns(3, table);
-  //    }
-  //  }
-  //}
 }

@@ -14,7 +14,7 @@
             <div class="results-error" ng-if="search.showError">No posts found for: <span>{{search.currentSearchString}}</span></div>
 
             <div class="results-feed-container">
-                <article class="feed results-tile" ng-repeat="post in search.posts" fpr-page-title="Search FPR">
+                <article class="feed fade results-tile" ng-repeat="post in search.posts track by post.ID" fpr-page-title="Search FPR">
                     <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
                         <div fpr-post-date="{{::post.date}}"></div>
 

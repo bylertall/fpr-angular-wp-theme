@@ -51,12 +51,14 @@
   text-align: center;
   text-transform: lowercase;
   margin-bottom: rem(50);
+  color: $accent-grey;
 }
 
 .no-results {
   text-align: center;
   text-transform: lowercase;
   margin: rem(40);
+  color: $accent-grey;
 }
 
 .results-error {

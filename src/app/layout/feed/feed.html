@@ -1,4 +1,4 @@
-<article ng-cloak class="feed" ng-repeat="post in feed.posts" fpr-page-title>
+<article ng-cloak class="feed fade" ng-repeat="post in feed.posts track by post.ID" fpr-page-title>
     <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
         <div fpr-post-date="{{::post.date}}"></div>
 
