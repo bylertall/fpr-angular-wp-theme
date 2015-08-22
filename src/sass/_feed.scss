@@ -5,7 +5,7 @@
 
 .post-header {
   height: modular-scale(3, 7em, $golden);
-  @include linear-gradient(-45deg, $accent-color, #EBD0CF);
+  @include linear-gradient(-45deg, $accent-pink, #EBD0CF);
   background-size: cover;
   background-position: 25% 30%;
   position: relative;
@@ -100,8 +100,8 @@
   @include transition(all 500 ease);
 
   &:hover {
-    background: $accent-color;
-    border-color: $accent-color;
+    background: $accent-pink;
+    border-color: $accent-pink;
     color: #FFF;
   }
 }

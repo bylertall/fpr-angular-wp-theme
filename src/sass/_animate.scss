@@ -4,13 +4,8 @@
 
 [ui-view].ng-enter, [fpr-insta-widget].ng-enter {
   opacity: 0;
-  -webkit-transition-delay: .35s;
-  -moz-transition-delay: .35s;
-  -ms-transition-delay: .35s;
-  -o-transition-delay: .35s;
-  transition-delay: .35s;
-  -webkit-transition:all .75s ease-in-out;
-  transition:all .75s ease-in-out;
+  -webkit-transition:all .5s ease-in-out;
+  transition:all .5s ease-in-out;
 }
 
 [ui-view].ng-enter-active, [fpr-insta-widget].ng-enter-active {

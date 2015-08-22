@@ -3,7 +3,7 @@ a {
   @include transition(all 250ms ease);
 
   &:hover {
-    color: $accent-color;
+    color: $accent-pink;
   }
 }
 
@@ -90,7 +90,7 @@ a {
     }
 
     &:hover {
-      color: $accent-color;
+      color: $accent-pink;
     }
   }
 }
@@ -117,7 +117,7 @@ a {
       font-size: rem(18);
       @include transition(background-color 250ms ease);
       @include fill-parent;
-      background-color: $accent-color;
+      background-color: $accent-pink;
       border: rem(2) solid #FFF;
       -webkit-border-radius: 100%;
       -moz-border-radius: 100%;

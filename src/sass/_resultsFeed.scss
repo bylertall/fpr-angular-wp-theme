@@ -1,6 +1,6 @@
 .results-header-border {
   margin: 0 auto rem(15px);
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid $accent-grey;
   height: 100%;
   max-width: 80%;
 }
@@ -10,6 +10,7 @@
   top: rem(30px);
   display: inline-block;
   background: #FFF;
+  color: $accent-grey;
   text-align: center;
   text-transform: uppercase;
   font-weight: 300;

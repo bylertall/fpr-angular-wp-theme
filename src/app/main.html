@@ -1,5 +1,5 @@
 <header id="main-header">
-    <div fpr-insta-widget ng-if="main.isFeedView"></div>
+    <fpr-insta-widget tile-count="6" ng-if="main.isFeedView"></fpr-insta-widget>
     <fpr-nav></fpr-nav>
 
 </header>
@@ -13,6 +13,11 @@
 </main>
 
 <footer class="main-footer">
+    <div class="bottom-insta-widget">
+        <div class="insta-widget-header"><h3>More on Instagram</h3></div>
+        <fpr-insta-widget tile-count="18"></fpr-insta-widget>
+    </div>
+
     <div class="nav-social-container">
         <div id="connect">CONNECT</div>
 

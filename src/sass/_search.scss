@@ -8,13 +8,14 @@
     label {
       display: inline-block;
       text-transform: uppercase;
+      color: $accent-grey;
     }
 
     .search-input {
       display: inline-block;
       height: 100%;
       border: none;
-      border-bottom: 1px solid #000;
+      border-bottom: 1px solid $accent-grey;
       background: transparent;
       padding: rem(5);
 

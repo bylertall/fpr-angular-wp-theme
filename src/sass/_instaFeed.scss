@@ -80,6 +80,38 @@
       right: 25%;
     }
   }
+}
 
+.bottom-insta-widget {
+  margin-bottom: em(25);
 
+  .insta-widget-header {
+    margin: 0 rem(55px);
+    border-top: 1px solid $accent-grey;
+
+    h3 {
+      @include center-x-align(relative);
+      bottom: rem(14px);
+      display: inline-block;
+      z-index: 1;
+      margin-top: 0;
+      padding: 0 rem(10);
+      text-transform: uppercase;
+      color: $accent-grey;
+      font-family: $font-lato;
+      font-size: rem(20);
+      font-weight: 300;
+      background-color: #FFF;
+    }
+  }
+  //
+  //.insta-widget {
+  //  @include outer-container;
+  //
+  //  .insta-tile {
+  //    @include media(min-width 768px) {
+  //      @include span-columns(3, table);
+  //    }
+  //  }
+  //}
 }

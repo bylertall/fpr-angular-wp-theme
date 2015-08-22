@@ -15,7 +15,7 @@ function Main($scope, $state, smoothScroll) {
 
     $scope.$on('$stateChangeSuccess', function(event, toState) {
         var header = document.getElementById('main-header');
-        smoothScroll(header, {duration: 5});
+        smoothScroll(header, {duration: 1});
 
         if (toState.name === 'main.content') {
             return vm.isFeedView = false;
