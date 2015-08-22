@@ -22,7 +22,7 @@ function instaService ($http) {
             });
         }
         return;
-    }
+    };
 
     return instaService;
 };

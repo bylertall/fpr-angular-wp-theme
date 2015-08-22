@@ -89,15 +89,11 @@ function singlePostPrepService(wpService, $stateParams) {
 categoryPrepService.$inject = ['wpService', '$stateParams'];
 
 function categoryPrepService(wpService, $stateParams) {
-    if ($stateParams.category === wpService.currentCategorySlug) return;
-
     return wpService.getPostsByCategory($stateParams.category);
 }
 
 tagPrepService.$inject = ['wpService', '$stateParams'];
 
 function tagPrepService(wpService, $stateParams) {
-    if ($stateParams.tag === wpService.currentTagSlug) return;
-
     return wpService.getPostsByTag($stateParams.tag);
 }

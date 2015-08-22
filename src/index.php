@@ -11,7 +11,7 @@
 
 	<body>
 		<div class="angular-wrapper" ng-app="fprApp">
-			<div ui-view></div>
+			<div ui-view class="fade"></div>
 		</div>
 
 		<?php wp_footer(); ?>

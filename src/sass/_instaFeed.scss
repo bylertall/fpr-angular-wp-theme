@@ -83,25 +83,41 @@
 }
 
 .bottom-insta-widget {
-  margin: 0 em(30) em(25);
+  margin: 0 em(75px) em(25px);
 
   .insta-widget-header {
-    margin: 0 rem(55px);
+    margin: 0 rem(15px);
     border-top: 1px solid $accent-grey;
+
+    @include media(min-width 768px) {
+     margin: 0 rem(55px);
+    }
 
     h3 {
       @include center-x-align(relative);
-      bottom: rem(14px);
+      bottom: modular-scale(-2);
       display: inline-block;
       z-index: 1;
       margin-top: 0;
-      padding: 0 rem(10);
+      padding: 0 rem(10px);
       text-transform: uppercase;
       color: $accent-grey;
       font-family: $font-lato;
-      font-size: rem(20);
+      font-size: modular-scale(2);
       font-weight: 300;
       background-color: #FFF;
+    }
+  }
+
+  .insta-widget {
+    @include outer-container;
+
+    .insta-tile {
+      @include span-columns(4, table);
+
+      @include media(min-width 768px) {
+        @include span-columns(2 of 10, table);
+      }
     }
   }
 }

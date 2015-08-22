@@ -42,8 +42,6 @@ function wpService ($http, $sce, $state) {
 
                 // Use angular.copy to update controller with new results
                 angular.copy(feed, wpService.feed);
-                console.log(wpService.feed);
-
             });
     };
 
@@ -68,7 +66,6 @@ function wpService ($http, $sce, $state) {
                 // filter returns an array of posts, only 1 should return
                 wpService.post = res[0];
                 _isFormatted(wpService.post);
-                console.log(res);
             });
     };
 
@@ -173,8 +170,6 @@ function wpService ($http, $sce, $state) {
                 wpService.currentCategorySlug = category;
                 wpService.currentCategoryName = res[0].name;
                 wpService.totalCategoryPosts = res[0].count;
-                console.log('Current category info:');
-                console.log(res);
             });
     }
 
@@ -198,8 +193,6 @@ function wpService ($http, $sce, $state) {
                 wpService.currentTagSlug = tag;
                 wpService.currentTagName = res[0].name;
                 wpService.totalTagPosts = res[0].count;
-                console.log('Current tag info:');
-                console.log(res);
             });
     }
 }
