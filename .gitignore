@@ -1,7 +1,3 @@
-# Ignore Gulp build temp folder
-###################
-tmp
-
 # Ignore Node & Bower
 ###################
 node_modules

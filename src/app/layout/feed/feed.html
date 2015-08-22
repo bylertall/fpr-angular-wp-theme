@@ -1,11 +1,11 @@
-<article class="feed am-fade" ng-repeat="post in feed.posts" fpr-page-title>
+<article class="feed" ng-repeat="post in feed.posts" fpr-page-title>
     <header class="post-header" ng-style="::post.acf['featured_image'] && {'background-image': 'url(' + post.acf['featured_image'] + ')'}">
         <div fpr-post-date="{{::post.date}}"></div>
 
         <a class="post-title-link" ng-href="{{::post.link}}">
             <h2 class="post-title" ng-bind-html="::post.title | uppercase"></h2>
 
-            <button type="button" class="read-more-button" ng-if="!post.acf['is_featured']">
+            <button type="button" class="read-more-button" ng-if="::!post.acf['is_featured']">
                 <h4>Read More</h4>
             </button>
         </a>

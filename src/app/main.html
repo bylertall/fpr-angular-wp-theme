@@ -1,11 +1,11 @@
 <header id="main-header">
-    <fpr-insta-widget ng-if="main.isFeedView"></fpr-insta-widget>
+    <div fpr-insta-widget ng-if="main.isFeedView"></div>
     <fpr-nav></fpr-nav>
 
 </header>
 
 <main class="ui-view-container">
-    <div ui-view></div>
+    <div ui-view autoscroll="false" class="view-content"></div>
 
     <a href="#" title="Scroll to Top" class="scroll-top" scroll-to="main-header" bs-affix data-offset-top="1000">
         <i class="flaticon-chevron10"></i>

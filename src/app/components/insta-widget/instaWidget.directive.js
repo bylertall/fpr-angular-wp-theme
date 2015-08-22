@@ -5,7 +5,6 @@ angular
 function fprInstaWidget() {
     return {
         restrict: 'EA',
-        replace: true,
         controller: 'InstaWidget as insta',
         templateUrl: 'components/insta-widget/insta-widget.html'
     }

@@ -33,10 +33,6 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
             controller: 'Content as content',
             resolve: {
                 singlePostPrepService: singlePostPrepService
-            },
-            onEnter: function(smoothScroll) {
-                var header = document.getElementById('main-header');
-                smoothScroll(header, {duration: 400});
             }
         })
 

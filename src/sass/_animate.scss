@@ -1,21 +1,26 @@
-[ui-view].ng-enter, [ui-view].ng-leave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  -webkit-transition:all .5s ease-in-out;
-  transition:all .5s ease-in-out;
+.ui-view-container {
+  min-height: rem(650);
 }
 
-[ui-view].ng-enter {
+[ui-view].ng-enter, [fpr-insta-widget].ng-enter {
   opacity: 0;
+  -webkit-transition-delay: .35s;
+  -moz-transition-delay: .35s;
+  -ms-transition-delay: .35s;
+  -o-transition-delay: .35s;
+  transition-delay: .35s;
+  -webkit-transition:all .75s ease-in-out;
+  transition:all .75s ease-in-out;
 }
 
-[ui-view].ng-enter-active {
+[ui-view].ng-enter-active, [fpr-insta-widget].ng-enter-active {
   opacity: 1;
 }
 
 [ui-view].ng-leave {
   opacity: 1;
+  -webkit-transition:all .35s ease-in-out;
+  transition:all .35s ease-in-out;
 }
 
 [ui-view].ng-leave-active {
