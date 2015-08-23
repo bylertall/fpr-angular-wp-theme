@@ -1,20 +1,20 @@
 <header id="main-header">
-    <fpr-insta-widget tile-count="6" ng-if="main.isFeedView"></fpr-insta-widget>
+    <fpr-insta-widget tile-count="6"></fpr-insta-widget>
     <fpr-nav></fpr-nav>
-
 </header>
 
 <main class="ui-view-container">
-    <div class="view-content fade" ng-cloak ui-view autoscroll="false"></div>
+    <div class="view-content fade" ui-view></div>
 
-    <a href="#" title="Scroll to Top" class="scroll-top fade" scroll-to="main-header" bs-affix data-offset-top="1000">
+    <a href="#" title="Scroll to Top" class="scroll-top" scroll-to="main-header" bs-affix data-offset-top="1000">
         <i class="flaticon-chevron10"></i>
     </a>
 </main>
 
 <footer class="main-footer">
+
     <div class="bottom-insta-widget">
-        <div class="insta-widget-header"><h3>More on Instagram</h3></div>
+        <div class="insta-widget-header"><h3>More From Instagram</h3></div>
         <fpr-insta-widget tile-count="15"></fpr-insta-widget>
     </div>
 

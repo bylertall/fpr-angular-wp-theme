@@ -36,6 +36,7 @@ body {
   overflow-x: hidden;
   font-family: $font-lato;
   font-weight: 300;
+  padding-bottom: rem(75px);
 
   @include media(max-width 992px) {
     font-size: modular-scale(-1);

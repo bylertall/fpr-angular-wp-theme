@@ -42,6 +42,8 @@ function wpService ($http, $sce, $state) {
 
                 // Use angular.copy to update controller with new results
                 angular.copy(feed, wpService.feed);
+
+                console.log(wpService.feed);
             });
     };
 

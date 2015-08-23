@@ -56,7 +56,7 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
 
         .state('main.search', {
             url: '/search',
-            templateUrl: 'components/search/search.html',
+            templateUrl: 'layout/search/search.html',
             controller: 'Search as search'
         })
 
