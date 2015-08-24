@@ -21,27 +21,16 @@ function fprNav($window, $timeout) {
             timer;
 
         // if instaWidget is present, set offset height once it's loaded
-        scope.$on('instaWidgetLoaded', function (event) {
+        scope.$on('instaWidgetLoaded', function () {
             offsetTop = _getOffsetTop(elem);
         });
 
         // update offset on state change
-        scope.$on('$stateChangeSuccess', function (event, toState) {
+        scope.$on('$stateChangeSuccess', function () {
             // if timer exists, cancel it so you don't have multiple instances running
             if (timer) {
                 $timeout.cancel(timer);
             }
-
-            // if moving to content view, set offset to 0
-            //otherwise:
-            // remove fixed class so that the nav bar isn't stuck
-            // and measure new offset
-            //if (toState.name === 'main.content') {
-            //    offsetTop = 0;
-            //} else {
-            //    elNavContainer.removeClass('fixed');
-            //    offsetTop = _getOffsetTop(elem);
-            //}
         });
 
         // adjust offset on window resize

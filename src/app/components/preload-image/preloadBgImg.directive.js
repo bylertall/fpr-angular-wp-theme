@@ -11,20 +11,20 @@ function fprPreloadBg() {
     };
 
     return directive;
-}
 
-function link(scope, elem, attrs) {
-    // url given in html template
-    var url = attrs.fprPreloadBg;
+    function link(scope, elem, attrs) {
+        // url given in html template
+        var url = attrs.fprPreloadBg;
 
-    // if no featured img url is set
-    // acf['featured_image'] is set to false
-    if (url) {
-        preLoader(url, function() {
-            elem.css({
-                'background-image': 'url("' + url + '")'
+        // if no featured img url is set then
+        // acf['featured_image'] is set to 'false'
+        if (url !== 'false') {
+            preLoader(url, function() {
+                elem.css({
+                    'background-image': 'url("' + url + '")'
+                });
             });
-        });
+        }
     }
 }
 

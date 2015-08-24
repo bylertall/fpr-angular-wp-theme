@@ -9,8 +9,9 @@
 		<?php wp_head(); ?>
 	</head>
 
-	<body>
+	<body class="no-scroll">
 		<div class="angular-wrapper" ng-app="fprApp">
+			<fpr-loading-panel></fpr-loading-panel>
 			<div ui-view class="fade"></div>
 		</div>
 

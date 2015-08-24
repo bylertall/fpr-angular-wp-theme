@@ -2,24 +2,24 @@ angular
     .module('fprApp')
     .controller('Main', Main);
 
-Main.$inject = ['$scope', '$state', 'smoothScroll'];
+Main.$inject = ['$scope', 'smoothScroll'];
 
-function Main($scope, $state, smoothScroll) {
+function Main($scope, smoothScroll) {
     var vm = this,
-        thisDate = new Date(),
-        currentState = $state.current.name;
+        thisDate = new Date();
 
     vm.currentYear = thisDate.getFullYear();
 
-    vm.isFeedView = (currentState === 'main.feed');
+    $scope.$on('$stateChangeStart', function(event, toState) {
+        var header = document.getElementById('main-header'),
+            nav = document.getElementById('main-nav');
 
-    $scope.$on('$stateChangeSuccess', function(event, toState) {
-        var header = document.getElementById('main-header');
-        smoothScroll(header, {duration: 1});
-
+        // if going to content page, scroll to nav (so instawidget is not visible)
+        // otherwise scroll all the way to top
         if (toState.name === 'main.content') {
-            return vm.isFeedView = false;
+            smoothScroll(nav, {duration: 1});
+        } else {
+            smoothScroll(header, {duration: 1});
         }
-        return vm.isFeedView = true;
     });
 }

@@ -1,9 +1,14 @@
 #search-outer {
   font-size: modular-scale(4);
+  padding-top: rem(50);
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #FFF;
 
   .search-inner {
-    position: relative;
-    top: rem(50%);
     label {
       display: inline-block;
       text-transform: uppercase;
