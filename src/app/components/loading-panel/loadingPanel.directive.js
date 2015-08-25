@@ -2,9 +2,9 @@ angular
     .module('fprApp')
     .directive('fprLoadingPanel', fprLoadingPanel);
 
-fprLoadingPanel.$inject = ['$rootScope', '$timeout'];
+fprLoadingPanel.$inject = ['$rootScope'];
 
-function fprLoadingPanel($rootScope, $timeout) {
+function fprLoadingPanel($rootScope) {
     var directive = {
         restrict: 'AE',
         replace: true,
@@ -16,23 +16,25 @@ function fprLoadingPanel($rootScope, $timeout) {
     return directive;
 
     function link(scope, elem, attrs) {
-        var body = angular.element(document.body),
-            timer;
+        var body = angular.element(document.body);
 
         scope.viewIsLoading = true;
 
         scope.$on('$stateChangeStart', function(event, toState) {
-                scope.viewIsLoading = true;
-                body.addClass('no-scroll');
+            scope.viewIsLoading = true;
+            body.addClass('no-scroll');
         });
 
-        $rootScope.$on('$viewContentLoaded', function() {
-            if (timer) $timeout.cancel(timer);
-
-            timer = $timeout(function () {
+        scope.$on('$stateChangeSuccess', function(event, toState){
+            if(toState.name === 'main.search') {
                 scope.viewIsLoading = false;
                 body.removeClass('no-scroll');
-            }, 550);
+            }
+        });
+
+        $rootScope.$on('bgImageReady', function() {
+            scope.viewIsLoading = false;
+            body.removeClass('no-scroll');
         });
     }
 }

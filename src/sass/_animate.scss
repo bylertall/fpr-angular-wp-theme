@@ -14,13 +14,8 @@
 
 /* The starting CSS styles for the enter animation */
 .fade.ng-enter {
-  transition: 600ms linear all;
+  transition: 500ms linear all;
   opacity: 0;
-}
-
-// no delay for enter of loading panel
-.loading-panel.fade.ng-enter {
-  transition: 1ms linear all;
 }
 
 /* The finishing CSS styles for the enter animation */
@@ -30,9 +25,22 @@
 
 /* now the element will fade out before it is removed from the DOM */
 .fade.ng-leave {
-  transition: 850ms linear all;
+  transition: 650ms linear all;
   opacity:1;
 }
 .fade.ng-leave.ng-leave-active {
   opacity:0;
+}
+
+/**
+* LOADING PANEL
+**/
+// no delay for enter of loading panel
+.loading-panel.fade.ng-enter {
+  transition: 0ms linear all;
+}
+
+// more delay for leave of loading panel
+.loading-panel.fade.ng-leave {
+  transition: 1000ms ease-out all;
 }
