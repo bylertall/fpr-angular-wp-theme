@@ -9,6 +9,7 @@ function fprNav($window, $timeout) {
         restrict: 'EA',
         replace: true,
         templateUrl: 'components/navigation/navigation.html',
+        controller: 'NavigationController as nav',
         link: link
     };
 

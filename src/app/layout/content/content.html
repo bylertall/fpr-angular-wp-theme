@@ -13,15 +13,18 @@
         <div class="outfit-details" ng-bind-html="::content.post.acf['outfit_details']"></div>
         <div class="main-copy" ng-bind-html="::content.post.acf['main_copy']"></div>
 
+        <!-- Reward style widget -->
+        <div class="rewardstyle-container">
+            <h3 class="rewardstyle-title">Shop the look</h3>
+            <div ng-if="content.hasRewardStyleId" reward-style="{{::content.post.acf['rewardstyle_id']}}"></div>
+        </div>
+
         <div class="blog-lovin">
             <a href="http://www.bloglovin.com/en/blog/3440067/the-fancy-pants-report/follow" target="_blank">
                 <img src="/wp-content/uploads/2014/11/bloglovin-button.jpg" alt="The Fancy Pants Report on Bloglovin'"/>
             </a>
         </div>
     </section>
-
-    <!-- Reward style widget -->
-    <div ng-if="content.hasRewardStyleId" reward-style="{{::content.post.acf['rewardstyle_id']}}"></div>
 
     <!-- Share buttons -->
     <section class="share">
