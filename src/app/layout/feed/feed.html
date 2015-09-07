@@ -1,7 +1,5 @@
 <article class="feed fade" ng-repeat="post in feed.posts track by post.ID" fpr-page-title>
     <header class="post-header" fpr-preload-bg="{{::post.acf['featured_image']}}">
-        <div fpr-post-date="{{::post.date}}"></div>
-
         <a class="post-title-link" ng-href="{{::post.link}}">
             <h2 class="post-title" ng-bind-html="::post.title | uppercase"></h2>
 

@@ -42,7 +42,7 @@
       h4 {
         margin: 0;
         font-size: modular-scale(0);
-        font-weight: 100;
+        font-weight: 300;
         color: #FFF;
         text-transform: uppercase;
       }
@@ -60,31 +60,6 @@
     font-weight: 300;
     text-align: center;
     color: #FFF;
-  }
-
-  .date-widget {
-    @include size(modular-scale(7));
-    position: absolute;
-    left: modular-scale(0);
-    top: modular-scale(0);
-    text-align: center;
-    border: 1px solid #FFF;
-
-    .date-container {
-      @include center-y-align(relative);
-      font-family: $font-lato;
-      font-weight: 100;
-      line-height: modular-scale(3);
-      color: #FFF;
-      
-      .month {
-        font-size: modular-scale(3);
-      }
-      
-      .day {
-        font-size: modular-scale(2);
-      }
-    }
   }
 }
 
