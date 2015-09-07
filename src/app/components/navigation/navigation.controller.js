@@ -13,7 +13,6 @@ function NavigationController($modal) {
         });
 
     vm.showMenuModal = function() {
-        console.log('Show modal!');
         mobileMenu.$promise.then(mobileMenu.show);
     };
 }

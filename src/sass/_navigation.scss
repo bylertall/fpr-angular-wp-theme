@@ -125,19 +125,23 @@ a {
 
 // mobile menu modal
 .modal-backdrop.am-fade {
-  background-color: rgba(250, 250, 250, 0.75);
+  background-color: rgba(250, 250, 250, 0.85);
 }
 
 .modal.top {
   z-index: 9999;
   @include center-x-align(fixed);
-  top: 15%;
+  top: 5%;
   width: 100%;
   max-width: rem(500);
 
+  @include media(min-height 600px) {
+    top: 15%;
+  }
+
   .modal-header {
-    height: rem(50);
     text-align: right;
+    margin-bottom: rem(10);
 
     .close-icon {
       padding: rem(20);
@@ -148,14 +152,16 @@ a {
   .modal-body .modal.nav-site {
     float: none;
     margin: 0 auto;
-    width: 65%;
+    width: 90%;
 
     .modal.nav-list li {
+      top: 0;
+      transform: translate(0,0);
       float: none;
       width: 100%;
       max-width: rem(350);
-      margin: rem(20) auto;
-      padding: rem(25) rem(5);
+      margin: rem(8) auto;
+      padding: rem(20) rem(5);
       font-size: modular-scale(2.5);
       text-align: center;
       border: 1px solid #000;
@@ -166,7 +172,7 @@ a {
 // connect social nav
 .nav-social-container {
   height: 100%;
-  width: 65%;
+  width: 90%;
   margin: 0 auto;
   text-align: center;
 
