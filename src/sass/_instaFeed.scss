@@ -13,6 +13,11 @@
 
     a {
       color: #000;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
     }
 
     .insta-image {
@@ -41,15 +46,18 @@
     opacity: 0.75;
     top: modular-scale(-1);
     right: modular-scale(-1);
-    @include size(modular-scale(4));
+    
+    &:before {
+      margin: 0;
+      font-size: modular-scale(3);
+    }
   }
 
   .insta-caption {
     opacity: 0.5;
     position: absolute;
     bottom: 15%;
-
-
+    text-align: center;
 
     span {
       display: block;
@@ -57,11 +65,6 @@
       font-family: $font-oswald;
       font-size: modular-scale(3);
       font-weight: 300;
-    }
-
-    .icon-heart, .icon-comment {
-      @include size(modular-scale(2));
-      @include center-x-align(relative);
     }
   }
 
@@ -80,17 +83,22 @@
       right: 25%;
     }
   }
+
+  .insta-caption i::before {
+    margin: 0;
+    font-size: modular-scale(2);
+  }
 }
 
 .bottom-insta-widget {
-  margin: 0 em(75px) em(25px);
+  margin: 0 rem(15) em(25);
 
   .insta-widget-header {
-    margin: 0 rem(15px);
+    margin: 0;
     border-top: 1px solid $accent-grey;
 
     @include media(min-width 768px) {
-     margin: 0 rem(55px);
+     margin: 0 rem(55);
     }
 
     h3 {

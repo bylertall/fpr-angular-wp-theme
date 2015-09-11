@@ -47,6 +47,7 @@ a {
 
 .nav-list {
   height: 100%;
+  max-width: rem(500);
   margin: 0 auto;
   padding: 0;
   list-style-type: none;
@@ -54,6 +55,7 @@ a {
   li {
     @include center-y-align(relative);
     text-align: center;
+    cursor: pointer;
   }
 }
 
@@ -62,8 +64,6 @@ a {
   height: 100%;
 
   .nav-list {
-    max-width: rem(450);
-
     li {
       @include span-columns(1.2 of 6);
       text-transform: uppercase;
@@ -142,17 +142,15 @@ a {
 
   .modal-header {
     text-align: right;
-    margin-bottom: rem(10);
+    margin: 0 rem(20) rem(30) 0;
 
     .close-icon {
-      padding: rem(30);
       cursor: pointer;
     }
   }
 
   .modal-body, .modal-footer {
-    width: 95%;
-    margin: 0 auto;
+    margin: 0 rem(15);
   }
 
   .modal.nav-site {
@@ -171,11 +169,18 @@ a {
       border: 1px solid #000;
     }
   }
+
+  .modal-footer .nav-social-container {
+    padding: 0;
+  }
 }
 
 // connect social nav
 .nav-social-container {
   width: 100%;
+  max-width: rem(500);
+  margin: 0 auto;
+  padding: 0 rem(30);
   text-align: center;
 
   #connect {
@@ -203,6 +208,7 @@ a {
 .scroll-top {
   visibility: hidden;
   z-index: 5;
+  position: fixed;
   top: initial !important;
   bottom: rem(30);
   right: rem(30);

@@ -38,11 +38,11 @@ body {
   font-weight: 300;
   padding-bottom: rem(75px);
 
-  @include media(max-width 992px) {
+  @include media(max-width 991px) {
     font-size: modular-scale(-1);
   }
 
-  @include media(max-width 768px) {
+  @include media(max-width 767px) {
     font-size: modular-scale(-2);
   }
 
