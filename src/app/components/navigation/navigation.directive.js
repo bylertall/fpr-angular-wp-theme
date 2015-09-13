@@ -7,7 +7,6 @@ fprNav.$inject = ['$window', '$timeout'];
 function fprNav($window, $timeout) {
     var directive = {
         restrict: 'EA',
-        replace: true,
         templateUrl: 'components/navigation/navigation.html',
         controller: 'NavigationController as nav',
         link: link

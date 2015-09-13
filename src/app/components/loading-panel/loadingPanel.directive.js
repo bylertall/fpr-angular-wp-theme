@@ -7,7 +7,6 @@ fprLoadingPanel.$inject = ['$rootScope'];
 function fprLoadingPanel($rootScope) {
     var directive = {
         restrict: 'AE',
-        replace: true,
         templateUrl: 'components/loading-panel/loading-panel.html',
         scope: true,
         link: link
