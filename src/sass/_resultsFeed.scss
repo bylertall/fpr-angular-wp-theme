@@ -21,7 +21,9 @@
 
 .results-feed-container {
   @include outer-container;
-  margin: 0 em(35px);
+  max-width: rem(1000);
+  margin: 0 auto;
+  padding: 0 rem(35);
 
   .results-tile {
     @include span-columns(6);

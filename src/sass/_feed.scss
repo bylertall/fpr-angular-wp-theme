@@ -4,7 +4,8 @@
 }
 
 .post-header {
-  height: modular-scale(3, 7em, $golden);
+  height: modular-scale(3, 6.5em, $golden);
+  max-height: rem(400);
   background: #EFBACC;
   background-size: cover;
   background-position: 25% 30%;

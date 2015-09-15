@@ -91,7 +91,9 @@
 }
 
 .bottom-insta-widget {
-  margin: 0 rem(15) em(25);
+  max-width: rem(1000);
+  margin: 0 auto em(25);
+  padding: 0 rem(15);
 
   .insta-widget-header {
     margin: 0;
