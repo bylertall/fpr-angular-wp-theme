@@ -2,8 +2,10 @@
   @include outer-container;
 
   .post-header {
-    height: modular-scale(15, 2.25em, $minor-third);
+    height: modular-scale(15, 4em, $minor-third);
+    max-height: rem(500);
     background-attachment: fixed;
+    background-position: center;
 
     @include media(max-width 992px) {
       background-attachment: scroll;

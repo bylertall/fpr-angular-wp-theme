@@ -18,7 +18,7 @@ function Main($scope, smoothScroll) {
         // otherwise scroll all the way to top
         if (toState.name === 'main.content') {
             smoothScroll(nav, {duration: 1});
-        } else {
+        } else if (toState.name !== 'main.feed') {
             smoothScroll(header, {duration: 1});
         }
     });

@@ -8,5 +8,4 @@ function InstaWidget(instaService) {
     var vm = this;
 
     vm.feed = instaService.feed;
-    console.log(vm.feed);
 }
