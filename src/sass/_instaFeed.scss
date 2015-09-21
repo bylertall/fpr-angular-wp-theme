@@ -1,15 +1,11 @@
 .insta-widget {
-  @include outer-container;
+  display: flex;
+  flex-flow: row nowrap;
 
   .insta-tile {
-    width: 33.33333333333%;
-    display: block;
-    float: left;
     position: relative;
-
-    @include media(min-width 768px){
-      @include span-columns(2, table);
-    }
+    flex: 0 1 auto;
+    min-width: 50px;
 
     a {
       color: #000;
@@ -95,6 +91,10 @@
   margin: 0 auto em(25);
   padding: 0 rem(15);
 
+  .insta-widget {
+    flex-wrap: wrap;
+  }
+
   .insta-widget-header {
     margin: 0;
     border-top: 1px solid $accent-grey;
@@ -119,15 +119,17 @@
     }
   }
 
+  .insta-tile {
+    width: 20%;
+  }
+}
+
+@include media(max-width 768px) {
   .insta-widget {
-    @include outer-container;
+    flex-wrap: wrap;
+  }
 
-    .insta-tile {
-      @include span-columns(4, table);
-
-      @include media(min-width 768px) {
-        @include span-columns(2 of 10, table);
-      }
-    }
+  .insta-tile, .bottom-insta-widget .insta-tile {
+    width: 33.33333333%;
   }
 }
