@@ -50,7 +50,7 @@ function fprLoadMore($state, $stateParams, wpService) {
                 case 'main.feed':
                     scope.loadingMorePosts = true;
 
-                    wpService.getFeed().success(
+                    wpService.getFeed().then(
                         function(res) {
                             if (res.length < 10) {
                                 scope.noMoreResults = true;
@@ -64,7 +64,7 @@ function fprLoadMore($state, $stateParams, wpService) {
                     var category = $stateParams.category;
                     scope.loadingMorePosts = true;
 
-                    wpService.getPostsByCategory(category).success(
+                    wpService.getPostsByCategory(category).then(
                         function(res) {
                             scope.noMoreResults = res.length < 10;
                             scope.loadingMorePosts = false;
@@ -76,7 +76,7 @@ function fprLoadMore($state, $stateParams, wpService) {
                     var tag = $stateParams.tag;
                     scope.loadingMorePosts = true;
 
-                    wpService.getPostsByTag(tag).success(
+                    wpService.getPostsByTag(tag).then(
                         function(res) {
                             scope.noMoreResults = res.length < 10;
                             scope.loadingMorePosts = false;

@@ -2,9 +2,9 @@ angular
     .module('fprApp')
     .directive('fprLoadingPanel', fprLoadingPanel);
 
-fprLoadingPanel.$inject = ['$rootScope'];
+fprLoadingPanel.$inject = ['$rootScope', 'wpService'];
 
-function fprLoadingPanel($rootScope) {
+function fprLoadingPanel($rootScope, wpService) {
     var directive = {
         restrict: 'AE',
         templateUrl: 'components/loading-panel/loading-panel.html',
@@ -20,8 +20,10 @@ function fprLoadingPanel($rootScope) {
         scope.viewIsLoading = true;
 
         scope.$on('$stateChangeStart', function(event, toState) {
-            scope.viewIsLoading = true;
-            body.addClass('no-scroll');
+            if (toState.name === 'main.feed' && !wpService.feed.length) {
+                scope.viewIsLoading = true;
+                body.addClass('no-scroll');
+            }
         });
 
         scope.$on('$stateChangeSuccess', function(event, toState){

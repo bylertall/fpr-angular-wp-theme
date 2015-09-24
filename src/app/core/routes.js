@@ -13,18 +13,12 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
         .state('main', {
             abstract: true,
             templateUrl: 'main.html',
-            controller: 'Main as main',
-            resolve: {
-                instaPrepService: instaPrepService
-            }
+            controller: 'Main as main'
         })
         .state('main.feed', {
             url: '/',
             templateUrl: 'layout/feed/feed.html',
-            controller: 'Feed as feed',
-            resolve: {
-                feedPrepService: feedPrepService
-            }
+            controller: 'Feed as feed'
         })
 
         .state('main.content', {
@@ -64,20 +58,6 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
             url: '/404',
             templateUrl: 'core/404.html'
         });
-}
-
-instaPrepService.$inject = ['instaService'];
-
-function instaPrepService(instaService) {
-    return instaService.getInstaFeed();
-}
-
-feedPrepService.$inject = ['wpService'];
-
-function feedPrepService(wpService) {
-    if (wpService.feed.length) return;
-
-    return wpService.getFeed();
 }
 
 singlePostPrepService.$inject = ['wpService', '$stateParams'];

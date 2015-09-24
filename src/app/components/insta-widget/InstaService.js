@@ -19,9 +19,10 @@ function instaService ($http) {
                 }
             }).success(function(res) {
                 instaService.feed = res.data;
+            }).error(function() {
+                console.log('Unable to get Instagram feed!');
             });
         }
-        return;
     };
 
     return instaService;

@@ -16,4 +16,14 @@ function InstaWidget($scope, instaService) {
         // show remaining photos (do not include ones shown at the top)
         vm.feed = instaService.feed.slice(6);
     }
+
+    function initFeed() {
+        if (!instaService.feed.length) {
+            instaService.getInstaFeed().then(function(res) {
+                vm.feed = instaService.feed;
+            });
+        }
+    }
+
+    initFeed();
 }

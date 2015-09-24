@@ -1,14 +1,3 @@
-//
-//[ui-view].ng-leave {
-//  opacity: 1;
-//  -webkit-transition:all .35s ease-in-out;
-//  transition:all .35s ease-in-out;
-//}
-//
-//[ui-view].ng-leave-active {
-//  opacity: 0;
-//}
-
 /* The starting CSS styles for the enter animation */
 .fade.ng-enter {
   transition: 500ms linear all;
@@ -22,11 +11,20 @@
 
 /* now the element will fade out before it is removed from the DOM */
 .fade.ng-leave {
-  transition: 650ms linear all;
+  transition: 350ms linear all;
   opacity:1;
 }
 .fade.ng-leave.ng-leave-active {
   opacity:0;
+}
+
+/**
+* STAGGERED FEED ENTER
+**/
+
+.feed.ng-enter-stagger {
+  transition-delay: 500ms;
+  transition-duration: 0ms;
 }
 
 /**

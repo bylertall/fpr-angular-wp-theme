@@ -16,11 +16,11 @@
     display: block;
     text-decoration: none;
 
-    &:hover .read-more-button {
+    &:hover .read-more-btn {
       opacity: 1;
     }
 
-    .read-more-button {
+    .read-more-btn {
       @include center-x-align(absolute);
       opacity: 0;
       bottom: modular-scale(2);

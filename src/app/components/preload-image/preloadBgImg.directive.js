@@ -15,8 +15,7 @@ function fprPreloadBg() {
 
 function link(scope, elem, attrs) {
     // url given in html template
-    var url = attrs.fprPreloadBg,
-        count = 0;
+    var url = attrs.fprPreloadBg;
 
     // if background img url is NOT false or empty string, set background img url, then emit ready
     // otherwise, just emit ready to  remove loading

@@ -7,7 +7,6 @@ rewardStyle.$inject = ['$window'];
 function rewardStyle($window) {
     var directive = {
         scope: {},
-        replace: true,
         link: link
     };
 

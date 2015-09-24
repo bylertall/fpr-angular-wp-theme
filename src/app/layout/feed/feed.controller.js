@@ -7,16 +7,17 @@ Feed.$inject = ['wpService'];
 function Feed(wpService) {
     var vm = this;
 
-    vm.posts = wpService.feed;
+    vm.posts = [];
     vm.postLimit = 10;
     vm.noMoreResults = false;
 
-    vm.getMoreFeed = function() {
-        wpService.getFeed().success(function() {
+    function initFeed() {
+        if (!wpService.feed.length) {
+            wpService.getFeed();
+        }
 
-            if (isNaN(wpService.currentFeedPage) || wpService.currentFeedPage >= wpService.totalFeedPages) {
-                vm.noMoreResults = true;
-            }
-        });
-    };
+        vm.posts = wpService.feed;
+    }
+
+    initFeed();
 }
