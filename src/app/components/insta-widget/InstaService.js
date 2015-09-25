@@ -12,20 +12,17 @@ function instaService ($http) {
     };
 
     function getInstaFeed() {
-        // only get if feed is empty
-        if (!instaService.feed.length) {
-            return $http.jsonp(instaUrl, {
-                params: {
-                    count: 24,
-                    callback: 'JSON_CALLBACK'
-                }
-            }).success(function(res) {
-                instaService.feed = res.data;
-            }).error(function() {
-                console.log('Unable to get Instagram feed!');
-            });
-        }
+        return $http.jsonp(instaUrl, {
+            params: {
+                count: 24,
+                callback: 'JSON_CALLBACK'
+            }
+        }).success(function(res) {
+            instaService.feed = res.data;
+        }).error(function() {
+            console.log('Unable to get Instagram feed!');
+        });
     }
 
     return instaService;
-};
+}

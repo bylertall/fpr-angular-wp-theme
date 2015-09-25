@@ -15,10 +15,22 @@ function fprLoadingPanel($rootScope, wpService) {
     return directive;
 
     function link(scope, elem, attrs) {
-        var body = angular.element(document.body);
+        var body = angular.element(document.body),
+            currentState;
 
         scope.viewIsLoading = true;
 
+        // if user navigates directly to search state
+        // hide loading on state change success
+        scope.$on('$stateChangeSuccess', function(event, toState) {
+            currentState = toState.name;
+
+            if (currentState === 'main.search') {
+                _hideLoading();
+            }
+        });
+
+        // show loading on state change start to FEED, CATEGORY, or TAG states
         scope.$on('$stateChangeStart', function(event, toState) {
             // show loading if going to feed view and have not gotten posts from WP yet
             if (toState.name === 'main.feed' && !wpService.feed.length ) {

@@ -9,7 +9,7 @@ function InstaWidget($scope, instaService) {
 
     vm.feed = [];
 
-    init().then(function(res) {
+    init().then(function (res) {
         // header is set to show 6 tiles (most recent)
         if ($scope.tileCount == 6) {
             vm.feed = instaService.feed;
@@ -22,8 +22,6 @@ function InstaWidget($scope, instaService) {
     });
 
     function init() {
-        if (!instaService.feed.length) {
-            return instaService.getInstaFeed();
-        }
+        return instaService.getInstaFeed();
     }
 }

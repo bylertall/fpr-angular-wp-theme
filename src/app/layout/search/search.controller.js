@@ -13,6 +13,7 @@ function Search(wpService) {
 
     // initial config
     vm.posts = [];
+    vm.numPosts = 0;
     vm.currentSearchString = '';
     vm.resultsActive = false;
     vm.showError = false;
@@ -30,27 +31,29 @@ function Search(wpService) {
             }
 
             // reset vars if new search
+            vm.posts = [];
             vm.showError = false;
             vm.noMoreResults = false;
             vm.resultsActive = true;
             vm.loadingMorePosts = true;
-            _getSearchResults(wpService, vm.filter.s).success(function(res) {
-                if (res) {
-                    vm.currentSearchString = vm.filter.s;
-                    vm.posts = wpService.searchResults;
-                    vm.resultsActive = true;
-                    vm.showError = res.length === 0;
-                    vm.noMoreResults = res.length < 20;
-                    vm.loadingMorePosts = false;
-                }
-            });
+            _getSearchResults(vm.filter.s)
+                .then(function(res) {
+                    if (res) {
+                        vm.currentSearchString = vm.filter.s;
+                        vm.posts = wpService.searchResults;
+                        vm.resultsActive = true;
+                        vm.showError = res.data.length === 0;
+                        vm.noMoreResults = res.data.length < 20;
+                        vm.loadingMorePosts = false;
+                    }
+                });
         }
     };
 
     // get more search results (load more button)
     vm.getMoreResults = function() {
         vm.loadingMorePosts = true;
-        _getSearchResults(wpService, vm.currentSearchString).success(function(res) {
+        _getSearchResults(vm.currentSearchString).success(function(res) {
             if (res) {
                 vm.posts.concat(wpService.searchResults);
                 vm.noMoreResults = res.length < 20;
@@ -58,8 +61,8 @@ function Search(wpService) {
             }
         });
     };
-}
 
-function _getSearchResults(wpService, string) {
-    return wpService.getSearchResults(string);
+    function _getSearchResults(string) {
+        return wpService.getSearchResults(string);
+    }
 }

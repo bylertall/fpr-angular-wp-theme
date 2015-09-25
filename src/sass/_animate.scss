@@ -22,8 +22,12 @@
 * VIEW CONTENT FADE
 **/
 
-.view-content.ng-enter, .view-content.ng-leave {
-  transition: 750ms linear all;
+.view-content.ng-enter {
+  transition: 1000ms linear all;
+}
+
+.view-content.ng-leave {
+  transition: 50ms linear all;
 }
 
 /**

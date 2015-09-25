@@ -17,7 +17,7 @@ function Main($scope, smoothScroll) {
         // if going to content page, scroll to nav (so instawidget is not visible)
         // otherwise scroll all the way to top
         if (toState.name === 'main.content') {
-            smoothScroll(nav, {duration: 1});
+            smoothScroll(nav, {duration: 550});
         } else if (toState.name !== 'main.feed') {
             smoothScroll(header, {duration: 1});
         }
