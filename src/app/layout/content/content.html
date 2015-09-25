@@ -13,9 +13,9 @@
         <div class="main-copy" ng-bind-html="::content.post.acf['main_copy']"></div>
 
         <!-- Reward style widget -->
-        <div class="rewardstyle-container">
+        <div ng-if="content.rewardStyleId" class="rewardstyle-container">
             <h3 class="rewardstyle-title">Shop the look</h3>
-            <div ng-if="content.hasRewardStyleId" reward-style="{{::content.post.acf['rewardstyle_id']}}"></div>
+            <div reward-style="{{::content.rewardStyleId}}"></div>
         </div>
 
         <div class="blog-lovin">

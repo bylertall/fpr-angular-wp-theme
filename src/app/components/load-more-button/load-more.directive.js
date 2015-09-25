@@ -7,8 +7,8 @@ fprLoadMore.$inject = ['$state', '$stateParams', 'wpService'];
 function fprLoadMore($state, $stateParams, wpService) {
     var directive = {
         restrict: 'E',
-        replace: true,
         scope: {},
+        replace: true,
         templateUrl: 'components/load-more-button/load-more.html',
         link: link
     };
@@ -22,27 +22,17 @@ function fprLoadMore($state, $stateParams, wpService) {
 
         scope.loadingMorePosts = false;
         scope.noMoreResults = false;
-        scope.postsAvailable = true;
 
-        // if < 10 posts found, don't show load more
-        switch (currentState) {
-            case 'main.category':
-                if (wpService.totalCategoryPosts <= 10) {
-                    scope.postsAvailable = false;
-                }
-                break;
+        if (currentState === 'main.category') {
+            scope.noMoreResults = wpService.totalCategoryPosts <= 10;
+        }
 
-            case 'main.tag':
-                if (wpService.totalTagPosts <= 10) {
-                    scope.postsAvailable = false;
-                }
-                break;
-
-            default:
-                scope.postsAvailable = true;
+        if (currentState === 'main.tag') {
+            scope.noMoreResults = wpService.totalTagPosts <= 10;
         }
 
         elem.on('click', function () {
+            var tag, category;
             // do nothing if no more results
             if (scope.noMoreResults) return;
 
@@ -61,27 +51,25 @@ function fprLoadMore($state, $stateParams, wpService) {
                     break;
 
                 case 'main.category':
-                    var category = $stateParams.category;
+                    category = $stateParams.category;
                     scope.loadingMorePosts = true;
 
-                    wpService.getPostsByCategory(category).then(
-                        function(res) {
-                            scope.noMoreResults = res.length < 10;
+                    wpService.getPostsByCategory(category)
+                        .then(function(res) {
+                            scope.noMoreResults = res.data.length < 10;
                             scope.loadingMorePosts = false;
-                        }
-                    );
+                        });
                     break;
 
                 case 'main.tag':
-                    var tag = $stateParams.tag;
+                    tag = $stateParams.tag;
                     scope.loadingMorePosts = true;
 
-                    wpService.getPostsByTag(tag).then(
-                        function(res) {
-                            scope.noMoreResults = res.length < 10;
+                    wpService.getPostsByTag(tag)
+                        .then(function(res) {
+                            scope.noMoreResults = res.data.length < 10;
                             scope.loadingMorePosts = false;
-                        }
-                    );
+                        });
                     break;
 
                 default:

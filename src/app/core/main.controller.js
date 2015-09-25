@@ -10,7 +10,7 @@ function Main($scope, smoothScroll) {
 
     vm.currentYear = thisDate.getFullYear();
 
-    $scope.$on('$stateChangeStart', function(event, toState) {
+    $scope.$on('$stateChangeSuccess', function(event, toState) {
         var header = document.getElementById('main-header'),
             nav = document.getElementById('main-nav');
 
@@ -18,7 +18,7 @@ function Main($scope, smoothScroll) {
         // otherwise scroll all the way to top
         if (toState.name === 'main.content') {
             smoothScroll(nav, {duration: 1});
-        } else {
+        } else if (toState.name !== 'main.feed') {
             smoothScroll(header, {duration: 1});
         }
     });

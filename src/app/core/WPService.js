@@ -6,37 +6,42 @@ wpService.$inject = ['$http', '$sce', '$state'];
 
 function wpService ($http, $sce, $state) {
     var apiUrl = WPAPI.api_url,
+        currentFeedPage = 0,
+        currentCategoryPage = 0,
+        currentTagPage = 0,
+        currentSearchPage = 0,
+        currentSearchStr = '',
         wpService = {
+            getFeed: getFeed,
             feed: [],
-            currentFeedPage: 0,
+            getSinglePost: getSinglePost,
             post: {},
             isFormatted: false,
             trustedPostContent: undefined,
             categories: [],
+            getPostsByCategory: getPostsByCategory,
             postsByCategory: [],
-            currentCategoryPage: 0,
             currentCategoryName: '',
             currentCategorySlug: '',
             totalCategoryPosts: 0,
+            getPostsByTag: getPostsByTag,
             postsByTag: [],
-            currentTagPage: 0,
             currentTagName: '',
             currentTagSlug: '',
             totalTagPosts: 0,
-            currentSearchPage: 0,
-            currentSearchStr: '',
+            getSearchResults: getSearchResults,
             searchResults: []
         };
 
     // Main Feed
-    wpService.getFeed = function() {
+    function getFeed() {
         var feed = [];
 
         // if page is 0, set to page 1
         // otherwise increment
-        wpService.currentFeedPage === 0 ? wpService.currentFeedPage = 1 : wpService.currentFeedPage++;
+        currentFeedPage === 0 ? currentFeedPage = 1 : currentFeedPage++;
 
-        return $http.get(apiUrl + '/posts/?page=' + wpService.currentFeedPage)
+        return $http.get(apiUrl + '/posts/?page=' + currentFeedPage)
             .success(function(res, status, headers) {
                 feed = wpService.feed.concat(res);
 
@@ -45,10 +50,10 @@ function wpService ($http, $sce, $state) {
 
                 console.log(wpService.feed);
             });
-    };
+    }
 
     // Single Post
-    wpService.getSinglePost = function(slug) {
+    function getSinglePost(slug) {
         var i,
             postArrayLength = wpService.feed.length;
 
@@ -69,71 +74,68 @@ function wpService ($http, $sce, $state) {
                 wpService.post = res[0];
                 _isFormatted(wpService.post);
             });
-    };
+    }
 
     // Posts by category term
-    wpService.getPostsByCategory = function(category) {
+    function getPostsByCategory(category) {
         var feed = [];
 
         _setCategoryInfo(category);
 
         // if page is 0, set to page 1
         // otherwise increment
-        wpService.currentCategoryPage === 0 ? wpService.currentCategoryPage = 1 : wpService.currentCategoryPage++;
+        currentCategoryPage === 0 ? currentCategoryPage = 1 : currentCategoryPage++;
 
-        return $http.get(apiUrl + '/posts/?filter[category_name]=' + category + '&page=' + wpService.currentCategoryPage)
+        return $http.get(apiUrl + '/posts/?filter[category_name]=' + category + '&page=' + currentCategoryPage)
             .success(function(res, status, headers) {
                 feed = wpService.postsByCategory.concat(res);
 
                 angular.copy(feed, wpService.postsByCategory);
             });
-    };
+    }
 
     // Posts by tag term
-    wpService.getPostsByTag = function(tag) {
+    function getPostsByTag(tag) {
         var feed = [];
 
         _setTagInfo(tag);
 
         // if page is 0, set to page 1
         // otherwise increment
-        wpService.currentTagPage === 0 ? wpService.currentTagPage = 1 : wpService.currentTagPage++;
+        currentTagPage === 0 ? currentTagPage = 1 : currentTagPage++;
 
-        return $http.get(apiUrl + '/posts/?filter[tag]=' + tag + '&page=' + wpService.currentTagPage)
+        return $http.get(apiUrl + '/posts/?filter[tag]=' + tag + '&page=' + currentTagPage)
             .success(function(res) {
                 feed = wpService.postsByTag.concat(res);
 
                 angular.copy(feed, wpService.postsByTag);
             });
-    };
+    }
 
     // get search results
-    wpService.getSearchResults = function(search) {
+    function getSearchResults(search) {
         var feed = [];
 
         // reset search properties if new search string
-        if (wpService.currentSearchStr !== search) {
-            wpService.currentSearchPage = 0;
-            wpService.currentSearchStr = search;
+        if (currentSearchStr !== search) {
+            currentSearchPage = 0;
+            currentSearchStr = search;
 
             angular.copy(feed, wpService.searchResults);
         }
 
         // if page is 0, set to page 1
         // otherwise increment
-        wpService.currentSearchPage === 0 ? wpService.currentSearchPage = 1 : wpService.currentSearchPage++;
+        currentSearchPage === 0 ? currentSearchPage = 1 : currentSearchPage++;
 
-        return $http.get(apiUrl + '/posts/?filter[s]=' + search + '&page=' + wpService.currentSearchPage + '&filter[posts_per_page]=20')
+        return $http.get(apiUrl + '/posts/?filter[s]=' + search + '&page=' + currentSearchPage + '&filter[posts_per_page]=20')
             .success(function(res) {
                 feed = wpService.searchResults.concat(res);
-
-                console.log('The result is: ');
-                console.log(res);
 
                 // update search results
                 angular.copy(feed, wpService.searchResults)
             });
-    };
+    }
 
     return wpService;
 
@@ -159,7 +161,7 @@ function wpService ($http, $sce, $state) {
 
         // clear array & reset page # for new category
         wpService.postsByCategory = [];
-        wpService.currentCategoryPage = 0;
+        currentCategoryPage = 0;
 
         return $http.get(apiUrl + '/taxonomies/category/terms/?filter[slug]=' + category)
             .success(function(res) {
@@ -182,7 +184,7 @@ function wpService ($http, $sce, $state) {
 
         // clear array & reset page # for new tag
         wpService.postsByTag = [];
-        wpService.currentTagPage = 0;
+        currentTagPage = 0;
 
         return $http.get(apiUrl + '/taxonomies/post_tag/terms/?filter[slug]=' + tag)
             .success(function(res) {

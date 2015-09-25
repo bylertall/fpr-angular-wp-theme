@@ -26,7 +26,7 @@ function fprNav($window, $timeout) {
         });
 
         // update offset on state change
-        scope.$on('$stateChangeSuccess', function () {
+        scope.$on('$stateChangeSuccess', function (event, toState) {
             // if timer exists, cancel it so you don't have multiple instances running
             if (timer) {
                 $timeout.cancel(timer);

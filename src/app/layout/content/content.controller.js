@@ -10,9 +10,7 @@ function Content(wpService) {
     vm.post = wpService.post;
     vm.categories = wpService.post.terms['category'];
     vm.tags = wpService.post.terms['post_tag'];
-
     vm.isFormatted = wpService.isFormatted;
     vm.oldFormatContent = wpService.trustedPostContent;
-
-    vm.hasRewardStyleId = wpService.post.acf['rewardstyle_id'];
+    vm.rewardStyleId = wpService.post.acf['rewardstyle_id'];
 }

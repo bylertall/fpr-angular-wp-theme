@@ -2,9 +2,9 @@ angular
     .module('fprApp')
     .controller('Category', Category);
 
-Category.$inject = ['wpService'];
+Category.$inject = ['$stateParams', 'wpService'];
 
-function Category(wpService) {
+function Category($stateParams, wpService) {
     var vm = this;
 
     vm.posts = wpService.postsByCategory;

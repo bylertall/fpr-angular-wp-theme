@@ -5,14 +5,16 @@ angular
 instaService.$inject = ['$http'];
 
 function instaService ($http) {
-    var instaService = {
-        feed: []
+    var instaUrl = 'https://api.instagram.com/v1/users/8382535/media/recent/?client_id=b2df96d07b1f4851ab7ddd155d35de11',
+        instaService = {
+        feed: [],
+        getInstaFeed: getInstaFeed
     };
 
-    instaService.getInstaFeed = function() {
+    function getInstaFeed() {
         // only get if feed is empty
         if (!instaService.feed.length) {
-            return $http.jsonp('https://api.instagram.com/v1/users/8382535/media/recent/?client_id=b2df96d07b1f4851ab7ddd155d35de11', {
+            return $http.jsonp(instaUrl, {
                 params: {
                     count: 24,
                     callback: 'JSON_CALLBACK'
@@ -23,7 +25,7 @@ function instaService ($http) {
                 console.log('Unable to get Instagram feed!');
             });
         }
-    };
+    }
 
     return instaService;
 };

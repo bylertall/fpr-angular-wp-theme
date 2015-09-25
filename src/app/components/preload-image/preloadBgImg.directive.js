@@ -27,7 +27,6 @@ function link(scope, elem, attrs) {
         });
     }
 
-    console.log('bg image');
     scope.$emit('bgImageReady');
 
 }
