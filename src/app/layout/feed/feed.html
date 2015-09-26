@@ -7,11 +7,13 @@
                 <h4>Read More</h4>
             </button>
         </a>
+        <!-- show shop button if rewardstyle id is set for this post -->
+        <div ng-if="::post.acf['rewardstyle_id']" ng-click="feed.toggleWidget(post.acf['rewardstyle_id'])" class="shop-btn am-slide-top">
+            <i class="flaticon-shirt11" alt="Shop the Post"></i>
+        </div>
     </header>
 
-    <!-- show shop button if rewardstyle id is set for this post -->
-    <fpr-shop-button ng-if="::post.acf['rewardstyle_id']"></fpr-shop-button>
-    <div ng-if="::post.acf['rewardstyle_id'] && feed.activeShopId === post.ID" reward-style="{{::post.acf['rewardstyle_id']}}"></div>
+    <div ng-if="post.acf['rewardstyle_id'] === feed.activeWidget" reward-style="{{::post.acf['rewardstyle_id']}}"></div>
 
     <!-- if FEATURED post -->
     <section ng-if="post.acf['is_featured']" class="post-content featured-post">

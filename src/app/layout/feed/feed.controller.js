@@ -10,6 +10,8 @@ function Feed($timeout, wpService) {
     vm.posts = [];
     vm.postLimit = 10;
     vm.noMoreResults = false;
+    vm.activeWidget = 0;
+    vm.toggleWidget = toggleWidget;
 
     init();
 
@@ -29,5 +31,9 @@ function Feed($timeout, wpService) {
             }, function() {
                 console.log('Unable to fetch recent posts!');
             });
+    }
+
+    function toggleWidget(id) {
+        vm.activeWidget = vm.activeWidget === id ? 0 : id;
     }
 }

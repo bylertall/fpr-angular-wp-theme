@@ -40,6 +40,11 @@
         outline: none;
       }
 
+      // Do not show read more button on small screens
+      @include media(max-width 500px) {
+        display: none !important;
+      }
+
       h4 {
         margin: 0;
         font-size: modular-scale(0);
@@ -83,5 +88,21 @@
       border-color: $accent-pink;
       color: #FFF;
     }
+  }
+}
+
+.shop-btn {
+  z-index: 10;
+  position: absolute;
+  bottom: em(25);
+  right: em(25);
+  padding: modular-scale(1, 0.8em, $minor-third);
+  color: #FFF;
+  border: 1px solid #FFF;
+  cursor: pointer;
+
+  .flaticon-shirt11:before {
+    margin: 0;
+    font-size: modular-scale(2.5);
   }
 }
