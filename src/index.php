@@ -10,7 +10,7 @@
 	</head>
 
 	<body class="no-scroll">
-		<div class="angular-wrapper" ng-app="fprApp">
+		<div class="angular-wrapper" ng-app="fprApp" ng-strict-di>
 			<fpr-loading-panel></fpr-loading-panel>
 			<div ui-view class="fade"></div>
 		</div>

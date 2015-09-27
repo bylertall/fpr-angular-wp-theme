@@ -105,6 +105,10 @@ button {
   display: none;
 }
 
+.invisible {
+  visibility: hidden;
+}
+
 .no-scroll {
   overflow-y: hidden;
 }

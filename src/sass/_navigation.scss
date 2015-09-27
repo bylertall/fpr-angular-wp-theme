@@ -22,7 +22,7 @@ a {
 
 .nav-container {
   height: rem(65);
-  z-index: 5;
+  z-index: 10;
   background-color: rgba(250, 250, 250, 0.4);
   @include transition(background-color 250ms ease);
 

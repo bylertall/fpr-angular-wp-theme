@@ -2,9 +2,9 @@ angular
     .module('fprApp')
     .controller('Feed', Feed);
 
-Feed.$inject = ['$timeout', 'wpService'];
+Feed.$inject = ['$window', '$timeout', 'wpService'];
 
-function Feed($timeout, wpService) {
+function Feed($window, $timeout, wpService) {
     var vm = this;
 
     vm.posts = [];
@@ -34,6 +34,9 @@ function Feed($timeout, wpService) {
     }
 
     function toggleWidget(id) {
+        var window = angular.element($window),
+            timer;
+
         vm.activeWidget = vm.activeWidget === id ? 0 : id;
     }
 }

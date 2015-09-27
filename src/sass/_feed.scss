@@ -4,6 +4,7 @@
 }
 
 .post-header {
+  z-index: 5;
   height: modular-scale(3, 6.5em, $golden);
   max-height: rem(400);
   background: #EFBACC;
@@ -33,7 +34,7 @@
       @include transition(all, 250ms, linear);
 
       &:hover {
-        background-color: rgba(75, 75, 75, 0.25);
+        background-color: rgba(75, 75, 75, 0.45);
       }
 
       &:focus {
@@ -72,12 +73,12 @@
 .load-more-container {
   display: inline-block;
   @include center-x-align(relative);
+  margin: em(30) 0;
 
   .load-more-posts {
     background: #FFF;
     border: rem(1) solid #000;
     border-radius: 2px;
-    margin: em(30) 0;
     padding: em(22) em(25);
     text-transform: uppercase;
     color: #000;
@@ -96,13 +97,29 @@
   position: absolute;
   bottom: em(25);
   right: em(25);
-  padding: modular-scale(1, 0.8em, $minor-third);
+  border-radius: 50%;
+  padding: modular-scale(1, 0.8em, $minor-third) modular-scale(1, 0.9em, $minor-third);
   color: #FFF;
-  border: 1px solid #FFF;
   cursor: pointer;
+  transition: all 350ms linear;
 
-  .flaticon-shirt11:before {
+  &:hover {
+    background-color: rgba(75, 75, 75, 0.45);
+  }
+
+  .flaticon-clothes17:before {
     margin: 0;
     font-size: modular-scale(2.5);
   }
 }
+
+.rs-widget-container {
+  margin: 0 rem(10);
+}
+
+.rs-widget {
+  margin-top: rem(15);
+}
+
+// NEED BETTER TRANSITION FOR SHOW/HIDE RSWIDGET
+// MAX-HEIGHT TRANSITION?

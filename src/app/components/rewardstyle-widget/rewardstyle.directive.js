@@ -13,29 +13,32 @@ function rewardStyle($window) {
     return directive;
 
     function link(scope, elem, attrs) {
-        var widgetHtml = buildWidget(attrs.rewardStyle);
+        var rsId = attrs.rewardStyle,
+            widgetHtml,
+            timer,
+            window = angular.element($window),
+            stp = window[0].__stp;
+
+        widgetHtml = buildWidget(rsId);
 
         elem.html(widgetHtml);
 
-        var window = angular.element($window);
+        stp.init();
 
-        window[0].__stp.init();
+        // build rs widget
+        function buildWidget(id) {
+            var html;
 
-    }
+            // rs html
+            html = '<div class="shopthepost-widget" data-widget-id="' + id + '">'
+                +   '<div class="rs-adblock"><img src="//assets.rewardstyle.com/images/search/350.gif" onerror="this.parentNode.innerHTML=\'Disable your ad blocking software to view this content.\'" style="width: 15px; height: 15px;" />'
+                +     '<noscript>JavaScript is currently disabled in this browser. Reactivate it to view this content.</noscript>'
+                +   '</div>'
+                + '<div>'
+            ;
 
-// build rs widget
-    function buildWidget(id) {
-        var html;
-
-        // rs html
-        html = '<div class="shopthepost-widget" data-widget-id="' + id + '">'
-            +   '<div class="rs-adblock"><img src="//assets.rewardstyle.com/images/search/350.gif" onerror="this.parentNode.innerHTML=\'Disable your ad blocking software to view this content.\'" style="width: 15px; height: 15px;" />'
-            +     '<noscript>JavaScript is currently disabled in this browser. Reactivate it to view this content.</noscript>'
-            +   '</div>'
-            + '<div>'
-        ;
-
-        return html;
+            return html;
+        }
     }
 }
 
