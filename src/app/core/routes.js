@@ -24,28 +24,19 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
         .state('main.content', {
             url: '/:year/:month/:day/:slug/',
             templateUrl: 'layout/content/content.html',
-            controller: 'Content as content',
-            resolve: {
-                singlePostPrepService: singlePostPrepService
-            }
+            controller: 'Content as content'
         })
 
         .state('main.category', {
             url: '/category/:category/',
             templateUrl: 'layout/terms/category/category.html',
-            controller: 'Category as category',
-            resolve: {
-                categoryPrepService: categoryPrepService
-            }
+            controller: 'Category as category'
         })
 
         .state('main.tag', {
             url: '/tag/:tag/',
             templateUrl: 'layout/terms/tag/tag.html',
-            controller: 'Tag as tag',
-            resolve: {
-                tagPrepService: tagPrepService
-            }
+            controller: 'Tag as tag'
         })
 
         .state('main.search', {
@@ -58,22 +49,4 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
             url: '/404',
             templateUrl: 'core/404.html'
         });
-}
-
-singlePostPrepService.$inject = ['wpService', '$stateParams'];
-
-function singlePostPrepService(wpService, $stateParams) {
-    return wpService.getSinglePost($stateParams.slug);
-}
-
-categoryPrepService.$inject = ['wpService', '$stateParams'];
-
-function categoryPrepService(wpService, $stateParams) {
-    return wpService.getPostsByCategory($stateParams.category);
-}
-
-tagPrepService.$inject = ['wpService', '$stateParams'];
-
-function tagPrepService(wpService, $stateParams) {
-    return wpService.getPostsByTag($stateParams.tag);
 }

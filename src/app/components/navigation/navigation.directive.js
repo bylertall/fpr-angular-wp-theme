@@ -17,19 +17,13 @@ function fprNav($window, $timeout) {
     function link(scope, elem, attrs) {
         var elNavContainer = angular.element(document.querySelector('.nav-container')),
             window = angular.element($window),
-            offsetTop = 0,
+            offsetTop = 200,
             timer;
 
-        // if instaWidget is present, set offset height once it's loaded
-        scope.$on('instaWidgetLoaded', function () {
-            offsetTop = _getOffsetTop(elem);
-        });
-
-        // update offset on state change
-        scope.$on('$stateChangeSuccess', function (event, toState) {
-            // if timer exists, cancel it so you don't have multiple instances running
+        scope.$on('$stateChangeStart', function() {
             if (timer) {
                 $timeout.cancel(timer);
+                console.log('canceled timer');
             }
         });
 
@@ -40,19 +34,21 @@ function fprNav($window, $timeout) {
 
         // check position on scroll
         window.on('scroll', function () {
-            timer = $timeout(
-                function () {
-                    if ($window.pageYOffset >= offsetTop) {
-                        elNavContainer.addClass('fixed');
-                    } else {
-                        elNavContainer.removeClass('fixed');
-                    }
-                }, 100
-            );
-        });
-    }
-}
+            timer = $timeout(function() {
+                if (offsetTop === 0) {
+                    offsetTop = _getOffsetTop(elem);
+                }
 
-function _getOffsetTop(element) {
-    return element[0].offsetTop;
+                if ($window.pageYOffset >= offsetTop) {
+                    elNavContainer.addClass('fixed');
+                } else {
+                    elNavContainer.removeClass('fixed');
+                }
+            }, 250);
+        });
+
+        function _getOffsetTop(element) {
+            return element[0].offsetTop;
+        }
+    }
 }

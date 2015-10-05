@@ -2,24 +2,25 @@ angular
     .module('fprApp')
     .controller('Main', Main);
 
-Main.$inject = ['$scope', 'smoothScroll'];
+Main.$inject = ['$scope', '$window', 'smoothScroll'];
 
-function Main($scope, smoothScroll) {
+function Main($scope, $window, smoothScroll) {
     var vm = this,
         thisDate = new Date();
 
     vm.currentYear = thisDate.getFullYear();
 
     $scope.$on('$stateChangeSuccess', function(event, toState) {
-        var header = document.getElementById('main-header'),
-            nav = document.getElementById('main-nav');
+        var instaWidget = angular.element(document.querySelector('.insta-widget')),
+            navOffsetHeight = 0;
 
-        // if going to content page, scroll to nav (so instawidget is not visible)
-        // otherwise scroll all the way to top
+        // find offset height of tag: fprnav
+        // then scroll to when state is main.content
         if (toState.name === 'main.content') {
-            smoothScroll(nav, {duration: 550});
-        } else if (toState.name !== 'main.feed') {
-            smoothScroll(header, {duration: 1});
+            navOffsetHeight = instaWidget[0].clientHeight;
+            $window.scrollTo(0, navOffsetHeight);
+        } else {
+            $window.scrollTo(0, 0);
         }
     });
 }

@@ -1,6 +1,6 @@
 /* The starting CSS styles for the enter animation */
 .fade.ng-enter {
-  transition: 350ms linear all;
+  transition: 1000ms linear all;
   opacity: 0;
 }
 
@@ -11,23 +11,11 @@
 
 /* now the element will fade out before it is removed from the DOM */
 .fade.ng-leave {
-  transition: 350ms linear all;
+  transition: 50ms linear all;
   opacity: 1;
 }
 .fade.ng-leave.ng-leave-active {
   opacity: 0;
-}
-
-/**
-* VIEW CONTENT FADE
-**/
-
-.view-content.ng-enter {
-  transition: 500ms linear all;
-}
-
-.view-content.ng-leave {
-  transition: 50ms linear all;
 }
 
 /**

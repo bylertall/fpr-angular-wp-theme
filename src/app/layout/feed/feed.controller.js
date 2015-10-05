@@ -2,24 +2,25 @@ angular
     .module('fprApp')
     .controller('Feed', Feed);
 
-Feed.$inject = ['$window', '$timeout', 'wpService'];
+Feed.$inject = ['$window', '$sce', 'wpService'];
 
-function Feed($window, $timeout, wpService) {
+function Feed($window, $sce, wpService) {
     var vm = this;
 
     vm.posts = [];
     vm.postLimit = 10;
     vm.noMoreResults = false;
     vm.activeWidget = 0;
+    vm.trustPostContent = trustPostContent;
     vm.toggleWidget = toggleWidget;
 
     init();
 
     function init() {
         if (!wpService.feed.length) {
-            return getFeed();
+            getFeed();
         } else {
-            return vm.posts = wpService.feed;
+            vm.posts = wpService.feed;
         }
     }
 
@@ -31,6 +32,10 @@ function Feed($window, $timeout, wpService) {
             }, function() {
                 console.log('Unable to fetch recent posts!');
             });
+    }
+
+    function trustPostContent(content) {
+        return $sce.trustAsHtml(content);
     }
 
     function toggleWidget(id) {

@@ -58,8 +58,8 @@ function my_scripts() {
 		'my-scripts',
 		'WPAPI',
 			array(
-				'api_url' => json_url(),
-				'api_nonce' => wp_create_nonce('wp_json')
+				'apiUrl' => json_url(),
+				'apiNonce' => wp_create_nonce('wp_json')
 			)
 	);
 }

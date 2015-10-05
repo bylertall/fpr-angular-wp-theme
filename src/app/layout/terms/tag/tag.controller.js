@@ -2,18 +2,24 @@ angular
     .module('fprApp')
     .controller('Tag', Tag);
 
-Tag.$inject = ['wpService'];
+Tag.$inject = ['$stateParams', 'wpService'];
 
-function Tag(wpService) {
+function Tag($stateParams, wpService) {
     var vm = this;
 
-    vm.posts = wpService.postsByTag;
-    vm.numPosts = wpService.totalTagPosts;
-    vm.currentTagName = wpService.currentTagName;
-    vm.currentTagSlug = wpService.currentTagSlug;
-    vm.showError = false;
+    init().then(function() {
+        vm.posts = wpService.postsByTag;
+        vm.numPosts = wpService.totalTagPosts;
+        vm.currentTagName = wpService.currentTagName;
+        vm.currentTagSlug = wpService.currentTagSlug;
+        vm.showError = false;
 
-    if (vm.numPosts === 0) {
-        vm.showError = true;
+        if (vm.numPosts === 0) {
+            vm.showError = true;
+        }
+    });
+
+    function init() {
+        return wpService.getPostsByTag($stateParams.tag);
     }
 }

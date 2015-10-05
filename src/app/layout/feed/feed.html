@@ -19,9 +19,7 @@
 
     <!-- if FEATURED post -->
     <section ng-if="post.acf['is_featured']" class="post-content featured-post">
-        <div class="post-images" ng-bind-html="::post.content"></div>
-        <div class="outfit-details" ng-bind-html="::post.acf['outfit_details']"></div>
-        <div class="main-copy" ng-bind-html="::post.acf['main_copy']"></div>
+        <div class="post-images" ng-bind-html="::feed.trustPostContent(post.content)"></div>
 
         <div class="blog-lovin">
             <a href="http://www.bloglovin.com/en/blog/3440067/the-fancy-pants-report/follow" target="_blank">

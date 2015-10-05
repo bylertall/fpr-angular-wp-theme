@@ -5,10 +5,11 @@ angular
 function fprInstaWidget() {
     return {
         restrict: 'EA',
-        scope: {
+        scope: {},
+        bindToController: {
             tileCount: '@'
         },
         controller: 'InstaWidget as insta',
         templateUrl: 'components/insta-widget/insta-widget.html'
-    }
+    };
 }

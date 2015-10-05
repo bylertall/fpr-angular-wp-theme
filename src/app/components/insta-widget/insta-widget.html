@@ -1,5 +1,5 @@
 <div class="insta-widget">
-    <div class="insta-tile am-fade-and-slide-top" ng-repeat="photo in insta.feed | limitTo: tileCount">
+    <div class="insta-tile am-fade-and-slide-top" ng-repeat="photo in insta.feed | limitTo: insta.tileCount">
         <a href="http://instagram.com/hey_im_kate" target="_blank">
             <div class="insta-caption-container">
                 <i class="icon-instagram flaticon-instagram12"></i>
@@ -13,6 +13,6 @@
                 </div>
             </div>
         </a>
-        <img fpr-insta-loaded class="insta-image" ng-src="{{::photo.images.low_resolution.url}}" />
+        <img fpr-insta-loaded class="insta-image" ng-src="{{::photo.images.standard_resolution.url}}" />
     </div>
 </div>

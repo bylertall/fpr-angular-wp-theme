@@ -3,18 +3,20 @@
         <h1 class="post-title" ng-bind-html="::content.post.title | uppercase"></h1>
     </header>
 
-    <!-- if OLD post format -->
-    <section ng-if="!content.isFormatted" class="post-content" ng-bind-html="::content.oldFormatContent"></section>
+    <section class="post-content">
+        <!-- if OLD post format -->
+        <div ng-if="!content.isFormatted" class="old-post-content" ng-bind-html="::content.oldFormatContent"></div>
 
-    <!-- if NEW post format -->
-    <section ng-if="content.isFormatted" class="post-content">
-        <div class="post-images" ng-bind-html="::content.post.content"></div>
-        <div class="outfit-details" ng-bind-html="::content.post.acf['outfit_details']"></div>
-        <div class="main-copy" ng-bind-html="::content.post.acf['main_copy']"></div>
+        <!-- if NEW post format -->
+        <div ng-if="content.isFormatted">
+            <div class="post-images" ng-bind-html="::content.post.content"></div>
+            <div class="outfit-details" ng-bind-html="::content.post.acf['outfit_details']"></div>
+            <div class="main-copy" ng-bind-html="::content.post.acf['main_copy']"></div>
+        </div>
 
         <!-- Reward style widget -->
         <div ng-if="content.rewardStyleId" class="rewardstyle-container">
-            <h3 class="rewardstyle-title">Shop the look</h3>
+            <h3 class="rewardstyle-title" ng-bind-html="::content.post.acf['rewardstyle_title']"></h3>
             <div reward-style="{{::content.rewardStyleId}}"></div>
         </div>
 
