@@ -7,6 +7,8 @@ Content.$inject = ['$stateParams', 'wpService'];
 function Content($stateParams, wpService) {
     var vm = this;
 
+    vm.contentLoaded = false;
+
     init().then(function() {
         vm.post = wpService.post;
         vm.categories = wpService.post.terms['category'];
@@ -14,6 +16,8 @@ function Content($stateParams, wpService) {
         vm.isFormatted = wpService.isFormatted;
         vm.oldFormatContent = wpService.trustedPostContent;
         vm.rewardStyleId = wpService.post.acf['rewardstyle_id'];
+
+        vm.contentLoaded = true;
     });
 
     function init() {

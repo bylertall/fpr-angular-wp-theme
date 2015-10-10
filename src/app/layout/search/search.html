@@ -2,7 +2,7 @@
     <div class="search-inner">
         <form role="search" class="search-form">
             <label>Search:</label>
-            <input class="search-input" type="text" name="search" ng-model="search.filter.s" ng-keypress="search.getInitialResults($event)" autofocus>
+            <input id="search" class="search-input" type="text" name="search" ng-model="search.filter.s" ng-keypress="search.getInitialResults($event)" autofocus>
         </form>
 
         <div class="results-container" ng-if="search.resultsActive">

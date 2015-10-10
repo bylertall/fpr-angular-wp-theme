@@ -15,8 +15,8 @@ function Main($scope, $window, smoothScroll) {
             navOffsetHeight = 0;
 
         // find offset height of tag: fprnav
-        // then scroll to when state is main.content
-        if (toState.name === 'main.content') {
+        // then scroll to when state is main.content & instaWidget is not undefined
+        if (toState.name === 'content' && instaWidget[0]) {
             navOffsetHeight = instaWidget[0].clientHeight;
             $window.scrollTo(0, navOffsetHeight);
         } else {

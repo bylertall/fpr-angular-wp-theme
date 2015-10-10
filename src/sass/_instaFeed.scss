@@ -42,7 +42,7 @@
     opacity: 0.75;
     top: modular-scale(-1);
     right: modular-scale(-1);
-    
+
     &:before {
       margin: 0;
       font-size: modular-scale(3);
@@ -87,7 +87,8 @@
 }
 
 .bottom-insta-widget {
-  max-width: rem(1000);
+  width: 90%;
+  max-width: rem(1500);
   margin: 0 auto em(25);
   padding: 0 rem(15);
 

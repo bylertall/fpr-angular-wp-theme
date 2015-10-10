@@ -23,7 +23,6 @@ function fprNav($window, $timeout) {
         scope.$on('$stateChangeStart', function() {
             if (timer) {
                 $timeout.cancel(timer);
-                console.log('canceled timer');
             }
         });
 

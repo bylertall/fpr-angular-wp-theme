@@ -23,11 +23,11 @@ function fprLoadMore($state, $stateParams, wpService) {
         scope.loadingMorePosts = false;
         scope.noMoreResults = false;
 
-        if (currentState === 'main.category') {
+        if (currentState === 'category') {
             scope.noMoreResults = wpService.totalCategoryPosts <= 10;
         }
 
-        if (currentState === 'main.tag') {
+        if (currentState === 'tag') {
             scope.noMoreResults = wpService.totalTagPosts <= 10;
         }
 
@@ -37,7 +37,7 @@ function fprLoadMore($state, $stateParams, wpService) {
             if (scope.noMoreResults) return;
 
             switch (currentState) {
-                case 'main.feed':
+                case 'feed':
                     scope.loadingMorePosts = true;
 
                     wpService.getFeed().then(
@@ -50,7 +50,7 @@ function fprLoadMore($state, $stateParams, wpService) {
                     );
                     break;
 
-                case 'main.category':
+                case 'category':
                     category = $stateParams.category;
                     scope.loadingMorePosts = true;
 
@@ -61,7 +61,7 @@ function fprLoadMore($state, $stateParams, wpService) {
                         });
                     break;
 
-                case 'main.tag':
+                case 'tag':
                     tag = $stateParams.tag;
                     scope.loadingMorePosts = true;
 

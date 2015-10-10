@@ -4,7 +4,6 @@
   .post-header {
     height: modular-scale(15, 4em, $minor-third);
     max-height: rem(500);
-    background-position: center;
   }
 
   .post-title {
@@ -53,7 +52,7 @@
     width: 100%;
     max-width: rem(650);
     margin: rem(15) auto;
-    
+
     img {
       @include fill-parent;
     }
@@ -128,7 +127,7 @@
 
   .post-terms {
     font-size: modular-scale(0, rem(13.5));
-    
+
     h4 {
       display: inline-block;
       font-weight: 300;

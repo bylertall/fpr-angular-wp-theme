@@ -11,7 +11,6 @@ function InstaWidget(instaService) {
 
     if (!instaService.feed.length) {
         init().then(function () {
-            console.log('The tile count is: ' + vm.tileCount + '. And the type is: ' + (typeof +vm.tileCount));
             // header is set to show 6 tiles (most recent)
             if (+vm.tileCount === 6) {
                 vm.feed = instaService.feed;

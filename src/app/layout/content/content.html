@@ -1,4 +1,4 @@
-<article class="single-post" fpr-page-title="{{::content.post.title}}">
+<article class="single-post fade" fpr-page-title="{{::content.post.title}}" ng-if="content.contentLoaded">
     <header class="post-header" fpr-preload-bg="{{::content.post.acf['featured_image']}}">
         <h1 class="post-title" ng-bind-html="::content.post.title | uppercase"></h1>
     </header>

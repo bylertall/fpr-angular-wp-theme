@@ -5,7 +5,8 @@ angular
 Search.$inject = ['wpService'];
 
 function Search(wpService) {
-    var vm = this;
+    var vm = this,
+        elInput = document.getElementById('search').focus();
 
     vm.filter = {
         s: ''
