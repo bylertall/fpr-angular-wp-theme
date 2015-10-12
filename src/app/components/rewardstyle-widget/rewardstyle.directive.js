@@ -2,56 +2,25 @@ angular
     .module('fprApp')
     .directive('rewardStyle', rewardStyle);
 
-rewardStyle.$inject = ['$window'];
-
-function rewardStyle($window) {
+function rewardStyle() {
     var directive = {
+        restrict: 'AE',
+        controller: 'rewardstyleController as rstyle',
+        templateUrl: 'components/rewardstyle-widget/rewardstyle.html',
         scope: {},
-        link: link
+        bindToController: {
+            rsId: '@'
+        }
     };
 
     return directive;
-
-    function link(scope, elem, attrs) {
-        var rsId = attrs.rewardStyle,
-            widgetHtml,
-            timer,
-            window = angular.element($window),
-            stp = window[0].__stp;
-
-        widgetHtml = buildWidget(rsId);
-
-        elem.html(widgetHtml);
-
-        stp.init();
-
-        // build rs widget
-        function buildWidget(id) {
-            var html;
-
-            // rs html
-            html = '<div class="shopthepost-widget" data-widget-id="' + id + '">'
-                +   '<div class="rs-adblock"><img src="//assets.rewardstyle.com/images/search/350.gif" onerror="this.parentNode.innerHTML=\'Disable your ad blocking software to view this content.\'" style="width: 15px; height: 15px;" />'
-                +     '<noscript>JavaScript is currently disabled in this browser. Reactivate it to view this content.</noscript>'
-                +   '</div>'
-                + '<div>'
-            ;
-
-            return html;
-        }
-    }
 }
 
-/**
- * Check for acf.rewardstyle_id, default is false
- * If id is present, build widget from there
- * If no id, look for shop the post widget in the post body
- * If rewardstyle shortcode is present in body, get the id and build widget
- * If no shortcode and no acf id, do nothing
- *
- */
-
-
+// Check for acf.rewardstyle_id, default is false
+// If id is present, build widget from there
+// If no id, look for shop the post widget in the post body
+// If rewardstyle shortcode is present in body, get the id and build widget
+// If no shortcode and no acf id, do nothing
 
 // if attrs id is false, look for shortcode in post content
 //function getId () {
@@ -72,14 +41,6 @@ function rewardStyle($window) {
 //        return stpContent.substr(0, secondIndex);
 //    }
 //}
-
-
-
-
-
-
-
-
 
 // FROM GHOST BUILD
 //

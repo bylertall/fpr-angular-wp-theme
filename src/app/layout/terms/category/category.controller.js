@@ -1,10 +1,10 @@
 angular
     .module('fprApp')
-    .controller('Category', Category);
+    .controller('categoryController', categoryController);
 
-Category.$inject = ['$stateParams', 'wpService'];
+categoryController.$inject = ['$stateParams', 'wpService'];
 
-function Category($stateParams, wpService) {
+function categoryController($stateParams, wpService) {
     var vm = this;
 
     init().then(function() {

@@ -1,3 +1,4 @@
+// Single post view
 .rewardstyle-container {
   margin: rem(10) rem(25);
 
@@ -8,4 +9,9 @@
     text-align: center;
     background-color: #FFF;
   }
+}
+
+// Feed view
+.rs-widget-container {
+  margin: rem(15) rem(10) 0;
 }

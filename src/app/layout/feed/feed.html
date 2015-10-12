@@ -8,17 +8,17 @@
             </button>
         </a>
         <!-- show shop button if rewardstyle id is set for this post -->
-        <div ng-if="::post.acf['rewardstyle_id']" ng-click="feed.toggleWidget(post.acf['rewardstyle_id'])" class="shop-btn">
+        <div ng-if="::post.acf['rewardstyle_id']" ng-click="feed.rsWidget.toggle(post.acf['rewardstyle_id'])" class="shop-btn">
             <i class="flaticon-clothes17" alt="Shop the Post"></i>
         </div>
     </header>
 
-    <div ng-if="post.acf['rewardstyle_id'] === feed.activeWidget" class="rs-widget-container am-fade-and-scale">
-        <div reward-style="{{::post.acf['rewardstyle_id']}}" class="rs-widget"></div>
+    <div ng-if="post.acf['rewardstyle_id'] === feed.rsWidget.activeId" class="rs-widget-container am-fade-and-scale">
+        <reward-style rs-id="{{::post.acf['rewardstyle_id']}}" class="rs-widget"></reward-style>
     </div>
 
     <!-- if FEATURED post -->
-    <section ng-if="post.acf['is_featured']" class="post-content featured-post">
+    <section ng-if="::post.acf['is_featured']" class="post-content featured-post">
         <div class="post-images" ng-bind-html="::feed.trustPostContent(post.content)"></div>
 
         <div class="blog-lovin">

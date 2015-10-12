@@ -15,9 +15,9 @@
         </div>
 
         <!-- Reward style widget -->
-        <div ng-if="content.rewardStyleId" class="rewardstyle-container">
+        <div ng-if="content.rewardstyleId" class="rewardstyle-container">
             <h3 class="rewardstyle-title" ng-bind-html="::content.post.acf['rewardstyle_title']"></h3>
-            <div reward-style="{{::content.rewardStyleId}}"></div>
+            <reward-style rs-id="{{::content.rewardstyleId}}"></reward-style>
         </div>
 
         <div class="blog-lovin">

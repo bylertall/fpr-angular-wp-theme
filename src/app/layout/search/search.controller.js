@@ -1,10 +1,10 @@
 angular
     .module('fprApp')
-    .controller('Search', Search);
+    .controller('searchController', searchController);
 
-Search.$inject = ['wpService'];
+searchController.$inject = ['wpService'];
 
-function Search(wpService) {
+function searchController(wpService) {
     var vm = this,
         elInput = document.getElementById('search').focus();
 

@@ -1,10 +1,10 @@
 angular
     .module('fprApp')
-    .controller('Tag', Tag);
+    .controller('tagController', tagController);
 
-Tag.$inject = ['$stateParams', 'wpService'];
+tagController.$inject = ['$stateParams', 'wpService'];
 
-function Tag($stateParams, wpService) {
+function tagController($stateParams, wpService) {
     var vm = this;
 
     init().then(function() {

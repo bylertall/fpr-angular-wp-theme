@@ -1,18 +1,20 @@
 angular
     .module('fprApp')
-    .controller('Feed', Feed);
+    .controller('feedController', feedController);
 
-Feed.$inject = ['$window', '$sce', 'wpService'];
+feedController.$inject = ['$window', '$sce', 'wpService'];
 
-function Feed($window, $sce, wpService) {
+function feedController($window, $sce, wpService) {
     var vm = this;
 
     vm.posts = [];
     vm.postLimit = 10;
     vm.noMoreResults = false;
-    vm.activeWidget = 0;
+    vm.rsWidget = {
+        activeId: 0,
+        toggle: toggleWidget
+    };
     vm.trustPostContent = trustPostContent;
-    vm.toggleWidget = toggleWidget;
 
     init();
 
@@ -39,9 +41,6 @@ function Feed($window, $sce, wpService) {
     }
 
     function toggleWidget(id) {
-        var window = angular.element($window),
-            timer;
-
-        vm.activeWidget = vm.activeWidget === id ? 0 : id;
+        vm.rsWidget.activeId = (vm.rsWidget.activeId === id) ? 0 : id;
     }
 }

@@ -13,31 +13,31 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
         .state('feed', {
             url: '/',
             templateUrl: 'layout/feed/feed.html',
-            controller: 'Feed as feed'
+            controller: 'feedController as feed'
         })
 
         .state('content', {
             url: '/:year/:month/:day/:slug/',
             templateUrl: 'layout/content/content.html',
-            controller: 'Content as content'
+            controller: 'contentController as content'
         })
 
         .state('category', {
             url: '/category/:category/',
             templateUrl: 'layout/terms/category/category.html',
-            controller: 'Category as category'
+            controller: 'categoryController as category'
         })
 
         .state('tag', {
             url: '/tag/:tag/',
             templateUrl: 'layout/terms/tag/tag.html',
-            controller: 'Tag as tag'
+            controller: 'tagController as tag'
         })
 
         .state('search', {
             url: '/search',
             templateUrl: 'layout/search/search.html',
-            controller: 'Search as search'
+            controller: 'searchController as search'
         })
 
         .state('404', {

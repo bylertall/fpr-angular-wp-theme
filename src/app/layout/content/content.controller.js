@@ -1,13 +1,14 @@
 angular
     .module('fprApp')
-    .controller('Content', Content);
+    .controller('contentController', contentController);
 
-Content.$inject = ['$stateParams', 'wpService'];
+contentController.$inject = ['$stateParams', 'wpService'];
 
-function Content($stateParams, wpService) {
+function contentController($stateParams, wpService) {
     var vm = this;
 
     vm.contentLoaded = false;
+    vm.rewardstyleId = 0;
 
     init().then(function() {
         vm.post = wpService.post;
@@ -15,7 +16,7 @@ function Content($stateParams, wpService) {
         vm.tags = wpService.post.terms['post_tag'];
         vm.isFormatted = wpService.isFormatted;
         vm.oldFormatContent = wpService.trustedPostContent;
-        vm.rewardStyleId = wpService.post.acf['rewardstyle_id'];
+        vm.rewardstyleId = wpService.post.acf['rewardstyle_id'];
 
         vm.contentLoaded = true;
     });

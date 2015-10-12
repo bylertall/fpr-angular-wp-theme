@@ -21,7 +21,7 @@
 	</head>
 
 	<body class="no-scroll">
-		<div class="angular-wrapper" ng-app="fprApp" ng-strict-di ng-controller="Main as main">
+		<div class="angular-wrapper" ng-app="fprApp" ng-strict-di ng-controller="mainController as main">
 			<fpr-loading-panel></fpr-loading-panel>
 
 			<header id="main-header">

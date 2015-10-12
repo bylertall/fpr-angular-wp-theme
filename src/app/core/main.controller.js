@@ -1,10 +1,10 @@
 angular
     .module('fprApp')
-    .controller('Main', Main);
+    .controller('mainController', mainController);
 
-Main.$inject = ['$scope', '$window', 'smoothScroll'];
+mainController.$inject = ['$scope', '$window', 'smoothScroll'];
 
-function Main($scope, $window, smoothScroll) {
+function mainController($scope, $window, smoothScroll) {
     var vm = this,
         thisDate = new Date();
 
