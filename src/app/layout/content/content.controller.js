@@ -11,7 +11,7 @@ function contentController($stateParams, wpService) {
     vm.rewardstyleId = 0;
 
     // disqus
-    vm.disqus_shortname = 'staging-thefancypantsreport';
+    vm.disqusShortname = 'staging-thefancypantsreport';
 
     init().then(function() {
         vm.post = wpService.post;

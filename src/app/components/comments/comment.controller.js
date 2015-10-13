@@ -18,8 +18,8 @@ function commentController($window) {
             var dsq = document.createElement('script');
             dsq.type = 'text/javascript';
             dsq.async = true;
-            dsq.src = 'http://' + vm.disqusShortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('footer')[0]).appendChild(dsq);
+            dsq.src = 'https://' + vm.disqusShortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         } else {
             $window.DISQUS.reset({
                 reload: true,

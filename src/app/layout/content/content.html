@@ -5,17 +5,17 @@
 
     <section class="post-content">
         <!-- if OLD post format -->
-        <div ng-if="!content.isFormatted" class="old-post-content" ng-bind-html="::content.oldFormatContent"></div>
+        <div ng-if="::!content.isFormatted" class="old-post-content" ng-bind-html="::content.oldFormatContent"></div>
 
         <!-- if NEW post format -->
-        <div ng-if="content.isFormatted">
+        <div ng-if="::content.isFormatted">
             <div class="post-images" ng-bind-html="::content.post.content"></div>
             <div class="outfit-details" ng-bind-html="::content.post.acf['outfit_details']"></div>
             <div class="main-copy" ng-bind-html="::content.post.acf['main_copy']"></div>
         </div>
 
         <!-- Reward style widget -->
-        <div ng-if="content.rewardstyleId" class="rewardstyle-container">
+        <div ng-if="::content.rewardstyleId" class="rewardstyle-container">
             <h3 class="rewardstyle-title" ng-bind-html="::content.post.acf['rewardstyle_title']"></h3>
             <reward-style rs-id="{{::content.rewardstyleId}}"></reward-style>
         </div>
@@ -28,30 +28,13 @@
     </section>
 
     <!-- Share buttons -->
-    <section class="share">
-        <h4>Share this post</h4>
-        <a class="icon-twitter" ng-href="https://twitter.com/share?text=Love%20this%20post%20from%20The%20Fancy%20Pants%20Report!&amp;url={{content.post.link}}"
-        onclick="window.open(this.href, 'twitter-share', 'width=550,height=335');return false;">
-            <i class="social-icon flaticon-twitter1"></i>
-        </a>
-        <a class="icon-facebook" ng-href="https://www.facebook.com/sharer/sharer.php?u={{content.post.link}}"
-        onclick="window.open(this.href, 'facebook-share','width=580,height=350');return false;">
-            <i class="social-icon flaticon-facebook31"></i>
-        </a>
-        <a class="icon-tumblr" ng-href="https://tumblr.com/share?url={{content.post.link}}"
-        onclick="window.open(this.href, 'tumblr-share', 'width=490,height=530');return false;">
-            <i class="social-icon flaticon-socialnetwork176"></i>
-        </a>
+    <fpr-share-buttons></fpr-share-buttons>
 
-        <!--<div class="icon-pinterest">-->
-            <!--<a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-shape="round" data-pin-height="32"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png" /></a>-->
-        <!--</div>-->
-    </section>
-
-    <fpr-comments disqus-shortname="{{content.disqus_shortname}}"
-                  disqus-identifier="{{content.post.id}}"
-                  disqus-title="{{content.post.title}}"
-                  disqus-url="{{content.post.link}}"
+    <!-- Disqus comments -->
+    <fpr-comments disqus-shortname="{{::content.disqusShortname}}"
+                  disqus-identifier="{{::content.post.id}}"
+                  disqus-title="{{::content.post.title}}"
+                  disqus-url="{{::content.post.link}}"
                   >
     </fpr-comments>
 

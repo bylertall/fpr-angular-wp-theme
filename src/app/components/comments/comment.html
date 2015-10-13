@@ -1,5 +1,6 @@
 <div class="comment-container">
     <button class="fpr-btn comment-btn" ng-if="!comment.showComments" ng-click="comment.toggleComments()">Leave a Comment</button>
+    <div class="disqus-comment-count" disqus-identifier="comment.disqusIdentifier"></div>
 
     <div class="disqus-container" ng-if="comment.showComments">
         <div id="disqus_thread"></div>
