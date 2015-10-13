@@ -10,6 +10,9 @@ function contentController($stateParams, wpService) {
     vm.contentLoaded = false;
     vm.rewardstyleId = 0;
 
+    // disqus
+    vm.disqus_shortname = 'staging-thefancypantsreport';
+
     init().then(function() {
         vm.post = wpService.post;
         vm.categories = wpService.post.terms['category'];
@@ -17,7 +20,6 @@ function contentController($stateParams, wpService) {
         vm.isFormatted = wpService.isFormatted;
         vm.oldFormatContent = wpService.trustedPostContent;
         vm.rewardstyleId = wpService.post.acf['rewardstyle_id'];
-
         vm.contentLoaded = true;
     });
 

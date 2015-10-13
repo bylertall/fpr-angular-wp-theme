@@ -2,9 +2,9 @@ angular
     .module('fprApp')
     .controller('feedController', feedController);
 
-feedController.$inject = ['$window', '$sce', 'wpService'];
+feedController.$inject = ['$sce', 'wpService'];
 
-function feedController($window, $sce, wpService) {
+function feedController($sce, wpService) {
     var vm = this;
 
     vm.posts = [];

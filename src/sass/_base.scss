@@ -91,6 +91,25 @@ button {
   }
 }
 
+// buttons
+.fpr-btn {
+    background-color: transparent;
+    border: 1px solid #FFF;
+    padding: modular-scale(0);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    @include transition(all, 250ms, linear);
+
+    &:hover {
+      background-color: rgba(75, 75, 75, 0.45);
+    }
+
+    &:focus {
+      outline: none;
+    }
+}
+
 // 404 error page
 .not-found {
   width: 80%;

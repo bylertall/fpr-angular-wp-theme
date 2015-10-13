@@ -1,0 +1,8 @@
+<div class="comment-container">
+    <button class="fpr-btn comment-btn" ng-if="!comment.showComments" ng-click="comment.toggleComments()">Leave a Comment</button>
+
+    <div class="disqus-container" ng-if="comment.showComments">
+        <div id="disqus_thread"></div>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</div>

@@ -11,52 +11,38 @@
   background-size: cover;
   background-position: 25% 30%;
   position: relative;
+}
 
-  .post-title-link {
+.post-title-link {
     @include size(100%);
     display: block;
     text-decoration: none;
 
-    &:hover .read-more-btn {
-      opacity: 1;
+    &:hover .read-more {
+        opacity: 1;
     }
 
-    .read-more-btn {
-      @include center-x-align(absolute);
-      opacity: 0;
-      bottom: modular-scale(2);
-      background-color: transparent;
-      border: 1px solid #FFF;
-      padding: modular-scale(0);
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      box-shadow: none;
-      @include transition(all, 250ms, linear);
+    .read-more {
+        @include center-x-align(absolute);
+        opacity: 0;
+        bottom: modular-scale(2);
 
-      &:hover {
-        background-color: rgba(75, 75, 75, 0.45);
-      }
+        // Do not show read more button on small screens
+        @include media(max-width 500px) {
+          display: none !important;
+        }
+    }
 
-      &:focus {
-        outline: none;
-      }
-
-      // Do not show read more button on small screens
-      @include media(max-width 500px) {
-        display: none !important;
-      }
-
-      h4 {
+    h4 {
         margin: 0;
         font-size: modular-scale(0);
         font-weight: 300;
         color: #FFF;
         text-transform: uppercase;
-      }
     }
-  }
+}
 
-  .post-title {
+.post-title {
     @include center-y-align(absolute);
     width: 100%;
     margin: 0;
@@ -67,50 +53,49 @@
     font-weight: 300;
     text-align: center;
     color: #FFF;
-  }
 }
 
 .load-more-container {
-  display: inline-block;
-  @include center-x-align(relative);
-  margin: em(30) 0;
+    display: inline-block;
+    @include center-x-align(relative);
+    margin: em(30) 0;
 
-  .load-more-posts {
-    background: #FFF;
-    border: rem(1) solid #000;
-    border-radius: 2px;
-    padding: em(22) em(25);
-    text-transform: uppercase;
-    color: #000;
-    @include transition(all 500 ease);
+    .load-more-posts {
+        background: #FFF;
+        border: rem(1) solid #000;
+        border-radius: 2px;
+        padding: em(22) em(25);
+        text-transform: uppercase;
+        color: #000;
+        @include transition(all 500 ease);
 
-    &:hover {
-      background: $accent-pink;
-      border-color: $accent-pink;
-      color: #FFF;
+        &:hover {
+          background: $accent-pink;
+          border-color: $accent-pink;
+          color: #FFF;
+        }
     }
-  }
 }
 
 .shop-btn {
-  z-index: 10;
-  position: absolute;
-  bottom: em(25);
-  right: em(25);
-  border-radius: 50%;
-  padding: modular-scale(1, 0.8em, $minor-third) modular-scale(1, 0.9em, $minor-third);
-  color: #FFF;
-  cursor: pointer;
-  transition: all 350ms linear;
+    z-index: 10;
+    position: absolute;
+    bottom: em(25);
+    right: em(25);
+    border-radius: 50%;
+    padding: modular-scale(1, 0.8em, $minor-third) modular-scale(1, 0.9em, $minor-third);
+    color: #FFF;
+    cursor: pointer;
+    transition: all 350ms linear;
 
-  &:hover {
-    background-color: rgba(75, 75, 75, 0.45);
-  }
+    &:hover {
+        background-color: rgba(75, 75, 75, 0.45);
+    }
 
-  .flaticon-clothes17:before {
-    margin: 0;
-    font-size: modular-scale(2.5);
-  }
+    .flaticon-clothes17:before {
+        margin: 0;
+        font-size: modular-scale(2.5);
+    }
 }
 
 // NEED BETTER TRANSITION FOR SHOW/HIDE RSWIDGET
