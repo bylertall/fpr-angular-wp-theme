@@ -9,8 +9,12 @@
   max-height: rem(400);
   background-color: #FFF;
   background-size: cover;
-  background-position: 25% 30%;
+  background-position: center;
   position: relative;
+
+  @include media(min-width 768px) {
+      background-position: 25% 30%;
+  }
 }
 
 .post-title-link {

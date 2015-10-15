@@ -9,8 +9,8 @@ function shareController() {
         var p = document.createElement('script');
         p.type = 'text/javascript';
         p.async = true;
+        p.defer = true;
         p.src = '//assets.pinterest.com/js/pinit.js';
         (document.getElementsByTagName('footer')[0]).appendChild(p);
-        console.log('Share controller');
     }
 }

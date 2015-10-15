@@ -1,21 +1,35 @@
-<section class="share">
-    <h4>Share this post</h4>
-    <a class="share-icon icon-twitter" ng-href="https://twitter.com/share?text=Love%20this%20post%20from%20The%20Fancy%20Pants%20Report!&amp;url={{content.post.link}}"
-    onclick="window.open(this.href, 'twitter-share', 'width=550,height=335');return false;">
+<section class="share" bs-affix data-offset-top="500">
+    <a  class="share-icon icon-twitter"
+        ng-href="https://twitter.com/share?text=Love%20this%20post%20from%20The%20Fancy%20Pants%20Report!&amp;url={{content.post.link}}"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=335');return false;">
+
         <i class="social-icon flaticon-twitter1"></i>
-    </a>
-    <a class="share-icon icon-facebook" ng-href="https://www.facebook.com/sharer/sharer.php?u={{content.post.link}}"
-    onclick="window.open(this.href, 'facebook-share','width=580,height=350');return false;">
-        <i class="social-icon flaticon-facebook31"></i>
-    </a>
-    <a class="share-icon icon-tumblr" ng-href="https://tumblr.com/share?url={{content.post.link}}"
-    onclick="window.open(this.href, 'tumblr-share', 'width=490,height=530');return false;">
-        <i class="social-icon flaticon-socialnetwork176"></i>
+
     </a>
 
-    <div class="icon-pinterest">
-        <a href="//www.pinterest.com/pin/create/button/" data-pin-do="buttonBookmark"  data-pin-shape="round" data-pin-height="32">
-            <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_round_red_32.png" />
-        </a>
-    </div>
+    <a  class="share-icon icon-facebook"
+        ng-href="https://www.facebook.com/sharer/sharer.php?u={{content.post.link}}"
+        onclick="window.open(this.href, 'facebook-share','width=580,height=350');return false;">
+
+        <i class="social-icon flaticon-facebook31"></i>
+
+    </a>
+
+    <a  class="share-icon icon-tumblr"
+        ng-href="https://tumblr.com/share?url={{content.post.link}}"
+        onclick="window.open(this.href, 'tumblr-share', 'width=490,height=530');return false;">
+
+        <i class="social-icon flaticon-socialnetwork176"></i>
+
+    </a>
+
+    <a  class="share-icon icon-pinterest"
+        null
+        href="//www.pinterest.com/pin/create/button/"
+        data-pin-do="buttonBookmark"
+        data-pin-shape="round"
+        data-pin-height="32">
+
+        <img src="//s-passets.pinimg.com/images/pidgets/pinit_bg_en_round_red_32_2.png" />
+    </a>
 </section>

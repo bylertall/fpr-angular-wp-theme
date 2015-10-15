@@ -32,6 +32,9 @@
 			<main class="ui-view-container">
 			    <div class="view-content fade" ui-view></div>
 
+				<!-- Share buttons -->
+				<fpr-share-buttons ng-show="main.singlePostView"></fpr-share-buttons>
+
 			    <a href="#" title="Scroll to Top" class="scroll-top" scroll-to="main-header" bs-affix data-offset-top="1000">
 			        <i class="flaticon-chevron10"></i>
 			    </a>

@@ -206,12 +206,12 @@ a {
 }
 
 .scroll-top {
-  visibility: hidden;
+  opacity: 0;
   z-index: 5;
-  position: fixed;
   top: initial !important;
   bottom: rem(30);
   right: rem(30);
+  transition: all 550ms linear;
 
   @include media(max-width 768px) {
     display: none;
@@ -239,5 +239,9 @@ a {
 }
 
 .scroll-top.affix{
-  visibility: visible;
+  opacity: 1;
+}
+
+.scroll-top.affix-bottom {
+    opacity: 0;
 }
