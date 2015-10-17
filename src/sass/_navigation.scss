@@ -13,7 +13,7 @@ a {
   position: relative;
 }
 
-.nav-container.fixed {
+.nav-container.affix {
   position: fixed;
   top: 0;
   left: 0;
@@ -206,12 +206,9 @@ a {
 }
 
 .scroll-top {
-  opacity: 0;
-  z-index: 5;
-  top: initial !important;
-  bottom: rem(30);
-  right: rem(30);
-  transition: all 550ms linear;
+    z-index: 5;
+    position: absolute;
+    right: rem(30);
 
   @include media(max-width 768px) {
     display: none;
@@ -238,10 +235,6 @@ a {
   }
 }
 
-.scroll-top.affix{
-  opacity: 1;
-}
-
-.scroll-top.affix-bottom {
-    opacity: 0;
+.scroll-top.affix {
+  bottom: rem(30);
 }

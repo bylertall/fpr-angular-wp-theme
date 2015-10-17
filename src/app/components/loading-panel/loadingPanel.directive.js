@@ -43,9 +43,7 @@ function fprLoadingPanel($rootScope, wpService) {
             }
         });
 
-        $rootScope.$on('bgImageReady', function() {
-            _hideLoading();
-        });
+        $rootScope.$on('bgImageReady', _hideLoading);
 
         ////////////////////
         // Private functions

@@ -7,17 +7,6 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>The Fancy Pants Report | A San Francisco Style Blog by Kate Ogata</title>
 		<?php wp_head(); ?>
-		<!-- Google Analytics -->
-			<script>
-				window.ga = window.ga || function() {
-					(ga.q = ga.q || []).push(arguments)
-				};
-				ga.l = +new Date;
-	//----- TODO: set ID below ------------------------------
-				ga('create', 'UA-XXXXX-Y', 'auto');
-			</script>
-			<script async src='//www.google-analytics.com/analytics.js'></script>
-		<!-- End Google Analytics -->
 	</head>
 
 	<body class="no-scroll">
@@ -35,8 +24,8 @@
 				<!-- Share buttons -->
 				<fpr-share-buttons ng-show="main.singlePostView"></fpr-share-buttons>
 
-			    <a href="#" title="Scroll to Top" class="scroll-top" scroll-to="main-header" bs-affix data-offset-top="1000">
-			        <i class="flaticon-chevron10"></i>
+			    <a href="#" title="Scroll to Top" class="scroll-top" fpr-affix offset-top="1250" offset-unpin="1500">
+			        <i class="flaticon-chevron10" scroll-to="main-header"></i>
 			    </a>
 			</main>
 
@@ -92,5 +81,16 @@
 		</div>
 
 		<?php wp_footer(); ?>
+		<!-- Google Analytics -->
+			<script>
+				window.ga = window.ga || function() {
+					(ga.q = ga.q || []).push(arguments)
+				};
+				ga.l = +new Date;
+	//----- TODO: set ID below ------------------------------
+				ga('create', 'UA-XXXXX-Y', 'auto');
+			</script>
+			<script async src='//www.google-analytics.com/analytics.js'></script>
+		<!-- End Google Analytics -->
 	</body>
 </html>

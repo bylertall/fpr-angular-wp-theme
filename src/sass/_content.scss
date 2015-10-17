@@ -69,18 +69,17 @@
 }
 
 .share {
-    opacity: 0;
-    top: 40% !important;
-    left: 0;
     padding: rem(10);
+    margin: 0 auto;
+    max-width: rem(750);
     transition: all 750ms linear;
 
     .share-icon {
         @include size(rem(34));
-        display: block;
+        display: inline-block;
         position: relative;
         padding: rem(5);
-        margin-bottom: rem(5);
+        margin-right: rem(5);
         text-decoration: none;
         -webkit-border-radius: 50%;
         -moz-border-radius: 50%;
@@ -122,17 +121,23 @@
 }
 
 .share.affix {
-    opacity: 1;
-}
+    top: 40% !important;
+    left: 0;
 
-.share.affix-bottom {
-    opacity: 0;
+    .share-icon {
+        display: block;
+        margin-bottom: rem(5);
+
+        @include media(max-width 768px) {
+          display: inline-block !important;
+        }
+    }
 }
 
 .post-footer {
     width: 95%;
     max-width: rem(750);
-    margin: 0 auto rem(30);
+    margin: 0 auto;
     padding: rem(10);
     border: 0;
     border-bottom: 1px solid #EEE;
