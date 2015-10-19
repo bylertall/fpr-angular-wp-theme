@@ -25,13 +25,19 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
         .state('category', {
             url: '/category/:category/',
             templateUrl: 'layout/terms/category/category.html',
-            controller: 'categoryController as category'
+            controller: 'categoryController as category',
+            resolve: {
+                categoryPrepService: categoryPrepService
+            }
         })
 
         .state('tag', {
             url: '/tag/:tag/',
             templateUrl: 'layout/terms/tag/tag.html',
-            controller: 'tagController as tag'
+            controller: 'tagController as tag',
+            resolve: {
+                tagPrepService: tagPrepService
+            }
         })
 
         .state('search', {
@@ -43,5 +49,17 @@ function Config($locationProvider, $urlRouterProvider, $stateProvider) {
         .state('404', {
             url: '/404',
             templateUrl: 'core/404.html'
-        })
+        });
+}
+
+categoryPrepService.$inject = ['wpService', '$stateParams'];
+
+function categoryPrepService(wpService, $stateParams) {
+    return wpService.getPostsByCategory($stateParams.category);
+}
+
+tagPrepService.$inject = ['wpService', '$stateParams'];
+
+function tagPrepService(wpService, $stateParams) {
+    return wpService.getPostsByTag($stateParams.tag);
 }

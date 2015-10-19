@@ -124,6 +124,10 @@
     top: 40% !important;
     left: 0;
 
+    @include media(max-width 768px) {
+        position: relative !important;
+    }
+
     .share-icon {
         display: block;
         margin-bottom: rem(5);

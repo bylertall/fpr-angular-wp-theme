@@ -1,6 +1,6 @@
 #search-outer {
   font-size: modular-scale(4);
-  padding: rem(50) 0;
+  padding: rem(40) 0;
   position: relative;
   top: 0;
   right: 0;
@@ -9,11 +9,12 @@
   background: #FFF;
 
   .search-inner {
+    padding: 0 rem(15);
     label {
-      display: inline-block;
-      text-transform: uppercase;
-      color: $accent-grey;
-    }
+        display: inline-block;
+        text-transform: uppercase;
+        color: $accent-grey;
+  }
 
     .search-input {
       display: inline-block;

@@ -20,22 +20,25 @@
 }
 
 .results-feed-container {
-  @include outer-container;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
   max-width: rem(1000);
   margin: 0 auto;
-  padding: 0 rem(35);
+  padding: 0 rem(15);
 
   .results-tile {
-    @include span-columns(6);
-    @include omega(2n);
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 450px;
 
     .post-header {
       background-position: center;
       height: em(400);
     }
-    
+
     .post-title {
-      font-size: modular-scale(4);
+      font-size: modular-scale(1.5, 0.7em, $golden);
     }
 
     .date-widget {

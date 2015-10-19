@@ -10,7 +10,7 @@ function wpService($http, $sce) {
         currentCategoryPage = 1,
         currentTagPage = 1,
         currentSearchPage = 1,
-        currentSearchStr = '',
+        currentSearchString = '',
         factory = {
             getFeed: getFeed,
             feed: [],
@@ -104,23 +104,24 @@ function wpService($http, $sce) {
     // get search results
     function getSearchResults(search) {
         var feed = [],
-            searchUrl = apiUrl + '/posts/?filter[s]=' + search + '&page=' + currentSearchPage + '&filter[posts_per_page]=10';
+            searchUrl = '';
 
-        // reset search properties if new search string
-        if (currentSearchStr !== search) {
+        // reset search properties
+        if (currentSearchString !== search) {
             currentSearchPage = 1;
-            currentSearchStr = search;
-
+            currentSearchString = search;
             angular.copy(feed, factory.searchResults);
         }
 
+        searchUrl = apiUrl + '/posts/?filter[s]=' + search + '&page=' + currentSearchPage + '&filter[posts_per_page]=10';
+
         return $http.get(searchUrl)
             .success(function(res) {
+                currentSearchPage += 1;
                 feed = factory.searchResults.concat(res);
 
                 // update search results
                 angular.copy(feed, factory.searchResults);
-                currentSearchPage += 1;
             });
     }
 

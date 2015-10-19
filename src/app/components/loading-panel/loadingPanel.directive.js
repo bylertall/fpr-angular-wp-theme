@@ -25,7 +25,7 @@ function fprLoadingPanel($rootScope, wpService) {
         scope.$on('$stateChangeSuccess', function(event, toState) {
             currentState = toState.name;
 
-            if (currentState === 'search') {
+            if (currentState === 'search' || currentState === '404') {
                 _hideLoading();
             }
         });
@@ -33,9 +33,11 @@ function fprLoadingPanel($rootScope, wpService) {
         // show loading on state change start to FEED, CATEGORY, or TAG states
         scope.$on('$stateChangeStart', function(event, toState) {
             // show loading if going to feed view and have not gotten posts from WP yet
-            if (toState.name === 'feed' && !wpService.feed.length) {
-                _showLoading();
-            }
+            // if (toState.name === 'feed' && !wpService.feed.length) {
+            //     _showLoading();
+            // }
+
+            _showLoading();
 
             // show loading on transition to category & tag views
             if (toState.name === 'category' || toState.name === 'tag') {
@@ -50,12 +52,12 @@ function fprLoadingPanel($rootScope, wpService) {
         ////////////////////
         function _showLoading() {
             scope.viewIsLoading = true;
-            body.addClass('no-scroll');
+            body.addClass('app-loading');
         }
 
         function _hideLoading() {
             scope.viewIsLoading = false;
-            body.removeClass('no-scroll');
+            body.removeClass('app-loading');
         }
     }
 }

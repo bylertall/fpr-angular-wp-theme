@@ -8,7 +8,6 @@ function fprLoadMore($state, $stateParams, wpService) {
     var directive = {
         restrict: 'E',
         scope: {},
-        replace: true,
         templateUrl: 'components/load-more-button/load-more.html',
         link: link
     };
@@ -34,7 +33,9 @@ function fprLoadMore($state, $stateParams, wpService) {
         elem.on('click', function () {
             var tag, category;
             // do nothing if no more results
-            if (scope.noMoreResults) return;
+            if (scope.noMoreResults) {
+                return;
+            }
 
             switch (currentState) {
                 case 'feed':

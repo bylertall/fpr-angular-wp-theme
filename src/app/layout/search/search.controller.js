@@ -6,7 +6,7 @@ searchController.$inject = ['wpService'];
 
 function searchController(wpService) {
     var vm = this,
-        elInput = document.getElementById('search').focus();
+        elInput = angular.element(document.getElementById('search'));
 
     vm.filter = {
         s: ''
@@ -20,10 +20,12 @@ function searchController(wpService) {
     vm.showError = false;
     vm.loadingMorePosts = false;
     vm.noMoreResults = false;
+    elInput[0].focus();
 
     // get search results
     vm.getInitialResults = function($event) {
         if ($event.which === 13) {
+            elInput[0].blur();
 
             // if empty string is entered
             if (vm.filter.s === '') {
@@ -56,13 +58,14 @@ function searchController(wpService) {
     // get more search results (load more button)
     vm.getMoreResults = function() {
         vm.loadingMorePosts = true;
-        _getSearchResults(vm.currentSearchString).success(function(res) {
-            if (res) {
-                vm.posts.concat(wpService.searchResults);
-                vm.noMoreResults = res.length < 10;
-                vm.loadingMorePosts = false;
-            }
-        });
+        _getSearchResults(vm.currentSearchString)
+            .then(function(res) {
+                if (res) {
+                    vm.posts.concat(wpService.searchResults);
+                    vm.noMoreResults = res.length < 10;
+                    vm.loadingMorePosts = false;
+                }
+            });
     };
 
     function _getSearchResults(string) {
