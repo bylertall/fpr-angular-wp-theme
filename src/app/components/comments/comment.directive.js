@@ -6,13 +6,6 @@ function fprComments() {
     var directive = {
         restrict: 'AE',
         controller: 'commentController as comment',
-        bindToController: {
-            disqusShortname: '@',
-            disqusIdentifier: '@',
-            disqusTitle: '@',
-            disqusUrl: '@'
-        },
-        require: 'contentController',
         templateUrl: 'components/comments/comment.html'
     };
 

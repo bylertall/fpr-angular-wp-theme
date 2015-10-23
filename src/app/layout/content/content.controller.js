@@ -10,9 +10,6 @@ function contentController($stateParams, wpService) {
     vm.contentLoaded = false;
     vm.rewardstyleId = 0;
 
-    // disqus
-    vm.disqusShortname = 'staging-thefancypantsreport';
-
     init().then(function() {
         vm.post = wpService.post;
         vm.categories = wpService.post.terms['category'];

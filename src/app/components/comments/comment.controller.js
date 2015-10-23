@@ -2,17 +2,21 @@ angular
     .module('fprApp')
     .controller('commentController', commentController);
 
-commentController.$inject = ['$window'];
+commentController.$inject = ['$window', 'wpService'];
 
-function commentController($window) {
+function commentController($window, wpService) {
     var vm = this;
 
     vm.disqusShortname = 'staging-thefancypantsreport';
-    vm.showComments = false;
-    vm.toggleComments = toggleComments;
+    vm.disqusIdentifier = wpService.post.ID;
+    vm.disqusUrl = wpService.post.link;
+    vm.disqusTitle = wpService.post.title;
 
-    function toggleComments() {
-        vm.showComments = !vm.showComments;
+    vm.commentsReady = false;
+    vm.showComments = showComments;
+
+    function showComments() {
+        vm.commentsReady = true;
 
         if (!$window.DISQUS) {
             var dsq = document.createElement('script');

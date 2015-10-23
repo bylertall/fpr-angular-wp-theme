@@ -16,7 +16,7 @@ function fprLoadingPanel($rootScope, wpService) {
 
     function link(scope, elem, attrs) {
         var body = angular.element(document.body),
-            currentState;
+            currentState = '';
 
         scope.viewIsLoading = true;
 
@@ -32,17 +32,7 @@ function fprLoadingPanel($rootScope, wpService) {
 
         // show loading on state change start to FEED, CATEGORY, or TAG states
         scope.$on('$stateChangeStart', function(event, toState) {
-            // show loading if going to feed view and have not gotten posts from WP yet
-            // if (toState.name === 'feed' && !wpService.feed.length) {
-            //     _showLoading();
-            // }
-
             _showLoading();
-
-            // show loading on transition to category & tag views
-            if (toState.name === 'category' || toState.name === 'tag') {
-                _showLoading();
-            }
         });
 
         $rootScope.$on('bgImageReady', _hideLoading);
