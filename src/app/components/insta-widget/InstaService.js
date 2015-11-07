@@ -14,7 +14,7 @@ function instaService ($http) {
     function getInstaFeed() {
         return $http.jsonp(instaUrl, {
             params: {
-                count: 24,
+                count: 21,
                 callback: 'JSON_CALLBACK'
             }
         }).success(function(res) {

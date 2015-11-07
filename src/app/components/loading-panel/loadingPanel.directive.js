@@ -15,7 +15,7 @@ function fprLoadingPanel($rootScope, wpService) {
     return directive;
 
     function link(scope, elem, attrs) {
-        var body = angular.element(document.body),
+        var bodyEl = angular.element(document.body),
             currentState = '';
 
         scope.viewIsLoading = true;
@@ -42,12 +42,12 @@ function fprLoadingPanel($rootScope, wpService) {
         ////////////////////
         function _showLoading() {
             scope.viewIsLoading = true;
-            body.addClass('app-loading');
+            bodyEl.addClass('app-loading');
         }
 
         function _hideLoading() {
             scope.viewIsLoading = false;
-            body.removeClass('app-loading');
+            bodyEl.removeClass('app-loading');
         }
     }
 }

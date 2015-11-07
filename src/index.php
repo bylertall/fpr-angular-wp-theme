@@ -3,15 +3,25 @@
 	<head>
 		<base href="<?php $url_info = parse_url( home_url() ); echo trailingslashit( $url_info['path'] ); ?>">
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="fragment" content="!">
+		<meta name="google-site-verification" content="IZ2necFggnjWxbLeoJEEt_rs4teuou8xxxYmZRZEixg" />
+
 		<title>The Fancy Pants Report | A San Francisco Style Blog by Kate Ogata</title>
+		<meta property="og:title" content="The Fancy Pants Report | A San Francisco Style Blog by Kate Ogata">
+		<meta name="description" content="A San Francisco Style Blog by Kate Ogata">
+		<meta property="og:description" content="A San Francisco Style Blog by Kate Ogata">
+		<meta property="og:image" content="">
+		<meta property="og:url" content="http://thefancypantsreport.com">
+		<meta property="og:site_name" content="The Fancy Pants Report">
+		<meta property="og:type" content="website">
+
 		<?php wp_head(); ?>
 	</head>
 
 	<body class="no-scroll">
-		<div class="angular-wrapper" ng-app="fprApp" ng-strict-di ng-controller="mainController as main">
+		<div class="angular-wrapper" ng-app="fprApp" ng-controller="mainController as main">
 			<fpr-loading-panel></fpr-loading-panel>
 
 			<header id="main-header">

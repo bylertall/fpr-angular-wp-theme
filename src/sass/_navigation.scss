@@ -126,13 +126,12 @@ a {
 // mobile menu modal
 .modal-backdrop.am-fade {
     background-color: rgba(250, 250, 250, 0.85);
-    height: 100vh;
 }
 
 .modal.top {
     z-index: 9999;
     @include center-x-align(fixed);
-    top: rem(15);
+    top: rem(25);
     width: 100%;
     max-width: rem(500);
     margin: 0 auto;
@@ -143,10 +142,14 @@ a {
 
     .modal-header {
         text-align: right;
-        margin: 0 rem(20) rem(15) 0;
+        margin: 0 rem(10) rem(15) 0;
 
         .close-icon {
             cursor: pointer;
+
+            &::before {
+                padding: rem(10);
+            }
         }
     }
 
@@ -209,10 +212,11 @@ a {
 .scroll-top {
     z-index: 5;
     position: absolute;
-    right: rem(30);
+    padding: rem(5) rem(10);
+    right: rem(10);
 
     @include media(max-width 768px) {
-        display: none;
+        right: 0;
     }
 
     .flaticon-chevron10{
@@ -237,5 +241,9 @@ a {
 }
 
 .scroll-top.affix {
-    bottom: rem(30);
+    bottom: rem(20);
+
+    @include media(max-width 768px) {
+        bottom: rem(10);
+    }
 }

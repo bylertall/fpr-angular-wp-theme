@@ -51,10 +51,6 @@ body {
   }
 }
 
-body.modal-open {
-  overflow: hidden;
-}
-
 button {
   &:focus {
     outline: none;

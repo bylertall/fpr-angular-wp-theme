@@ -37,6 +37,11 @@ function my_scripts() {
 	);
 	wp_register_script(
 		'angular-strap-tpl',
+		get_template_directory_uri() . '/bower_components/lodash/lodash.min.js',
+		array(), null, false
+	);
+	wp_register_script(
+		'lodash',
 		get_template_directory_uri() . '/bower_components/angular-strap/dist/angular-strap.tpl.min.js',
 		array(), null, false
 	);
@@ -48,7 +53,7 @@ function my_scripts() {
 	wp_enqueue_script(
 		'my-scripts',
 		get_template_directory_uri() . '/js/app.js',
-		array( 'angularjs', 'angular-ui-router', 'angular-sanitize', 'angular-smooth-scroll', 'angular-animate', 'angular-spinkit', 'angular-strap', 'angular-strap-tpl', 'reward-style')
+		array( 'angularjs', 'angular-ui-router', 'angular-sanitize', 'angular-smooth-scroll', 'angular-animate', 'angular-spinkit', 'angular-strap', 'angular-strap-tpl', 'lodash', 'reward-style')
 	);
 	wp_enqueue_style( 'flaticon.css', get_template_directory_uri() . '/assets/icons/flaticon.css' );
 	wp_enqueue_style( 'angular-motion.css', get_template_directory_uri() . '/bower_components/angular-motion/dist/angular-motion.min.css' );

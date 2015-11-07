@@ -6,7 +6,12 @@
 <div class="results-error" ng-if="category.showError">No posts found for the tag: <span>{{::category.currentCategoryName}}</span></div>
 
 <div class="results-feed-container">
-    <article class="feed fade results-tile" ng-repeat="post in category.posts track by post.ID" fpr-page-title="Category: {{::category.currentCategoryName}}">
+    <fpr-page-meta
+        meta-title="Category: {{::category.currentCategoryName}}"
+        meta-description="Category Archives | Category Term: {{::category.currentCategoryName}}"
+        >
+    </fpr-page-meta>
+    <article class="feed fade results-tile" ng-repeat="post in category.posts track by post.ID">
         <header class="post-header" fpr-preload-bg="{{::post.acf['featured_image']}}">
             <div fpr-post-date="{{::post.date}}"></div>
 

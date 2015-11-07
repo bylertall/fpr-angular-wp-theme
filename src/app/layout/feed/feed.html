@@ -1,24 +1,30 @@
-<article class="feed fade" ng-repeat="post in feed.posts track by $index" fpr-page-title>
+<article class="feed fade" ng-repeat="post in feed.posts track by $index">
+    <fpr-page-meta></fpr-page-meta>
+    
     <header class="post-header" fpr-preload-bg="{{::post.acf['featured_image']}}">
         <a class="post-title-link" ng-href="{{::post.link}}">
             <h2 class="post-title" ng-bind-html="::post.title | uppercase"></h2>
 
-            <button type="button" class="fpr-btn read-more" ng-if="::!post.acf['is_featured']">
+            <!--  add below to button when ready to show full post for featured posts -->
+            <!--  ng-if="::!post.acf['is_featured']" -->
+            <button type="button" class="fpr-btn read-more">
                 <h4>Read More</h4>
             </button>
         </a>
+
         <!-- show shop button if rewardstyle id is set for this post -->
-        <div ng-if="::post.acf['rewardstyle_id']" ng-click="feed.rsWidget.toggle(post.acf['rewardstyle_id'])" class="shop-btn">
+        <div ng-click="feed.rsWidget.toggle(post.acf['rewardstyle_id'])" class="shop-btn">
             <i class="flaticon-clothes17" alt="Shop the Post"></i>
         </div>
     </header>
 
+    <!-- reward style widget -->
     <div ng-if="post.acf['rewardstyle_id'] === feed.rsWidget.activeId" class="rs-widget-container am-fade-and-scale">
         <reward-style rs-id="{{::post.acf['rewardstyle_id']}}" class="rs-widget"></reward-style>
     </div>
 
     <!-- if FEATURED post -->
-    <section ng-if="::post.acf['is_featured']" class="post-content featured-post">
+    <!-- <section ng-if="::post.acf['is_featured']" class="post-content featured-post">
         <div class="post-images" ng-bind-html="::feed.trustPostContent(post.content)"></div>
 
         <div class="blog-lovin">
@@ -26,7 +32,7 @@
                 <img src="/wp-content/uploads/2014/11/bloglovin-button.jpg" alt="The Fancy Pants Report on Bloglovin'"/>
             </a>
         </div>
-    </section>
+    </section> -->
 </article>
 
 <!-- load more articles -->

@@ -1,4 +1,11 @@
-<article class="single-post fade" fpr-page-title="{{::content.post.title}}" ng-if="content.contentLoaded">
+<article class="single-post fade" ng-if="content.contentLoaded">
+    <fpr-page-meta
+        meta-description="{{::content.post.excerpt | htmlToPlaintext}}"
+        meta-title="{{::content.post.title}}"
+        meta-img="{{::content.post.acf['featured_image']}}"
+        >
+    </fpr-page-meta>
+
     <header class="post-header" fpr-preload-bg="{{::content.post.acf['featured_image']}}">
         <h1 class="post-title" ng-bind-html="::content.post.title | uppercase"></h1>
     </header>

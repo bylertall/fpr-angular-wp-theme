@@ -1,4 +1,9 @@
-<div id="search-outer" fpr-page-title="Search">
+<div id="search-outer">
+    <fpr-page-meta
+        meta-title="Search the FPR"
+        meta-description="Search Page"
+        >
+    </fpr-page-meta>
     <div class="search-inner">
         <form role="search" class="search-form">
             <label>Search:</label>
@@ -14,7 +19,7 @@
             <div class="results-error" ng-if="search.showError">No posts found for: <span>{{search.currentSearchString}}</span></div>
 
             <div class="results-feed-container">
-                <article class="feed fade results-tile" ng-repeat="post in search.posts track by post.ID" fpr-page-title="Search FPR">
+                <article class="feed fade results-tile" ng-repeat="post in search.posts track by post.ID">
                     <header class="post-header" fpr-preload-bg="{{::post.acf['featured_image']}}">
                         <div fpr-post-date="{{::post.date}}"></div>
 

@@ -8,7 +8,7 @@ angular
 function fprPreloadBg() {
     var directive = {
         scope: {
-          fprPreloadBg: '@'
+            fprPreloadBg: '@'
         },
         link: link
     };
@@ -22,12 +22,14 @@ function fprPreloadBg() {
         if (imgUrl && imgUrl !== 'false') {
             preLoader(imgUrl, function() {
                 elem.css({
-                    'background-image': 'url(' + imgUrl + ')'
+                    'background-image': 'url(' + imgUrl + ')',
+                    'opacity': '1'
                 });
             });
         } else {
             elem.css({
-                'background-color': '#EEBACC'
+                'background-color': '#EEBACC',
+                'opacity': '1'
             });
         }
 

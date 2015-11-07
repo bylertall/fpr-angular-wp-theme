@@ -11,6 +11,8 @@
   background-size: cover;
   background-position: center;
   position: relative;
+  opacity: 0;
+  transition: all 550ms linear;
 
   @include media(min-width 768px) {
       background-position: 25% 30%;

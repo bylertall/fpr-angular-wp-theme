@@ -6,7 +6,12 @@
 <div class="results-error" ng-if="tag.showError">No posts found for the tag: <span>{{::tag.currentTagName}}</span></div>
 
 <div class="results-feed-container">
-    <article class="feed fade results-tile" ng-repeat="post in tag.posts track by post.ID" fpr-page-title="Tag: {{::tag.currentTagName}}">
+    <fpr-page-meta
+        meta-title="Tag: {{::tag.currentTagName}}"
+        meta-description="Tag Archives | Tag Term: {{::tag.currentTagName}}"
+        >
+    </fpr-page-meta>
+    <article class="feed fade results-tile" ng-repeat="post in tag.posts track by post.ID">
         <header class="post-header" fpr-preload-bg="{{::post.acf['featured_image']}}">
             <div fpr-post-date="{{::post.date}}"></div>
 
