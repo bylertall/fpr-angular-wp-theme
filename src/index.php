@@ -20,7 +20,7 @@
 		<?php wp_head(); ?>
 	</head>
 
-	<body class="no-scroll">
+	<body class="no-scroll app-loading">
 		<div class="angular-wrapper" ng-app="fprApp" ng-controller="mainController as main">
 			<fpr-loading-panel></fpr-loading-panel>
 

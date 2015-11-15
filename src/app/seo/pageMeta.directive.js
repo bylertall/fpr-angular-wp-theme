@@ -9,7 +9,8 @@ function fprPageMeta($document, $location) {
             metaTitle: '@',
             metaDescription: '@',
             metaUrl: '@',
-            metaImg: '@'
+            metaImg: '@',
+            metaTerms: '@'
         },
         link: link
     };
@@ -19,12 +20,17 @@ function fprPageMeta($document, $location) {
     function link(scope, elem, attr) {
         var metaTags = $document.find('meta'),
             metaEls = {},
+            headEl = $document.find('head'),
             defaultDescription = 'A San Francisco Style Blog by Kate Ogata',
             defaultTitle = 'The Fancy Pants Report | A San Francisco Style Blog by Kate Ogata',
-            defaultUrl = $location.absUrl();
+            defaultUrl = $location.absUrl(),
+            termMetaTags = [];
 
         //////////////////
         // TODO: setup default single post description, or use specific one (ACF) if provided
+        // TODO: loop tags, add meta tags for each (property="article:tag`")
+        //      >> Adding tag to head is done, need to:
+        //          > on destroy, remove article:tag meta tags
         // TODO: twitter card
         /////////////////
 
@@ -50,10 +56,35 @@ function fprPageMeta($document, $location) {
         // for page title tag
         metaEls.title[0].innerHTML = scope.metaTitle !== undefined ? (scope.metaTitle + ' | The Fancy Pants Report') : defaultTitle;
 
+        // for single post tags (terms)
+        // creates a new article:tag meta element for each tag
+        if (scope.metaTerms) {
+            _.forEach(JSON.parse(scope.metaTerms), function(tag) {
+                var metaTag = createMetaTag('article:tag', tag.name);
+                termMetaTags.push(metaTag);
+                headEl.append(metaTag);
+            });
+        }
+
+        scope.$on('$destroy', function() {
+            removeArticleTags();
+        });
+
+        function removeArticleTags() {
+            _.forEach(termMetaTags, function(tag) {
+                tag.remove();
+            });
+        }
+
         function getOgTag(tagName) {
             return _.find(metaTags, function(tag) {
                 return tag.attributes[0].nodeValue === tagName;
             });
+        }
+
+        function createMetaTag(property, contents) {
+            var buildMeta = '<meta property="' + property + '" content="' + contents + '">';
+            return angular.element(buildMeta);
         }
     }
 }
