@@ -41,6 +41,7 @@
 			</main>
 
 			<footer class="main-footer">
+				<script id="shopthepost-script" type="text/javascript" src="http://widgets.rewardstyle.com/js/shopthepost.js"></script>
 			    <div class="bottom-insta-widget">
 			        <div class="insta-widget-header"><h3>More From Instagram</h3></div>
 			        <fpr-insta-widget tile-count="15"></fpr-insta-widget>

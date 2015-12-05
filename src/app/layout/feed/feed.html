@@ -13,13 +13,17 @@
         </a>
 
         <!-- show shop button if rewardstyle id is set for this post -->
-        <div ng-click="feed.rsWidget.toggle(post.acf['rewardstyle_id'])" class="shop-btn">
-            <i class="flaticon-clothes17" alt="Shop the Post"></i>
+        <div ng-if="post.acf['rewardstyle_id'] !== undefined"
+             ng-click="feed.rsWidget.toggle(post.acf['rewardstyle_id'])"
+             class="shop-btn">
+
+             <i class="flaticon-clothes17" alt="Shop the Post"></i>
         </div>
     </header>
 
     <!-- reward style widget -->
-    <div ng-if="post.acf['rewardstyle_id'] === feed.rsWidget.activeId" class="rs-widget-container am-fade-and-scale">
+    <div ng-if="post.acf['rewardstyle_id'] !== undefined && post.acf['rewardstyle_id'] === feed.rsWidget.activeId"
+         class="rs-widget-container am-fade-and-scale">
         <reward-style rs-id="{{::post.acf['rewardstyle_id']}}" class="rs-widget"></reward-style>
     </div>
 
