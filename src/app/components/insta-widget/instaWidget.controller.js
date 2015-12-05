@@ -7,11 +7,9 @@ InstaWidget.$inject = ['$scope', 'instaService'];
 function InstaWidget($scope, instaService) {
     var vm = this;
 
-    $scope.$on('$stateChangeStart', function() {
-        if (+vm.tileCount === 6) {
-            init();
-        }
-    });
+    if (+vm.tileCount === 6) {
+        init();
+    }
 
     $scope.$on('instafeedLoaded', function() {
         if (+vm.tileCount === 6) {
@@ -22,17 +20,14 @@ function InstaWidget($scope, instaService) {
             vm.feed = instaService.feed.slice(6);
         }
     });
-    //
-    // init().then(function () {
-    //     // header is set to show 6 tiles (most recent)
-    //     if (+vm.tileCount === 6) {
-    //         vm.feed = instaService.feed;
-    //     } else {
-    //         // for bottom widget (set to different tileCount)
-    //         // show remaining photos (do not include ones shown at the top)
-    //         vm.feed = instaService.feed.slice(6);
-    //     }
-    // });
+
+    // TODO: use lodash to get collection and merge to current collection on state change
+    // if (+vm.tileCount === 6) {
+    //     $scope.$on('$stateChangeStart', function() {
+    //          TODO: instaService.getFreshFeed
+    //          getFreshFeed should make another get request, find way to compare/merge new feed w/ old
+    //     });
+    // }
 
     function init() {
         return instaService.getInstaFeed();

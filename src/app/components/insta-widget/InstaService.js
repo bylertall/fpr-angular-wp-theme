@@ -19,7 +19,6 @@ function instaService ($http, $rootScope) {
             }
         }).success(function(res) {
             factory.feed = res.data;
-
             $rootScope.$broadcast('instafeedLoaded');
         }).error(function() {
             console.log('Unable to get Instagram feed!');

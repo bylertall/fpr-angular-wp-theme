@@ -3,7 +3,6 @@
   flex-flow: row nowrap;
 
   .insta-tile {
-    @include calc(height, 100% / 6);
     position: relative;
     flex: 1 1 auto;
     min-width: 50px;
@@ -16,17 +15,12 @@
       bottom: 0;
       left: 0;
     }
-
-    .insta-image {
-      opacity: 0;
-      display: block;
-      @include transition(opacity, 350ms, ease);
-    }
   }
 }
 
 .insta-image img {
   @include fill-parent;
+  vertical-align: text-bottom;
 }
 
 .insta-caption-container {

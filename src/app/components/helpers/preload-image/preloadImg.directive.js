@@ -21,7 +21,6 @@ function fprPreloadImg() {
         // otherwise, just emit ready to  remove loading
         preLoader(imgUrl, function(img) {
             elem.append(img);
-            elem.css({'opacity': '1'});
         });
     }
 
