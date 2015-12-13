@@ -68,12 +68,14 @@ a {
     .nav-list li {
         @include span-columns(1.2 of 6);
         text-transform: uppercase;
-        font-size: modular-scale(0);
+        font-size: modular-scale(1, 0.8em, $minor-third);
     }
 }
 
 .nav-social {
-    @include span-columns(2.7);
+    @include span-columns(2.5);
+    float: right;
+    margin-right: rem(20)!important;
     height: 100%;
 
     li {
@@ -82,11 +84,12 @@ a {
 
     .social-icon {
         color: #000;
-        padding: rem(13);
+        padding: rem(12) rem(10);
         @include transition(all 250ms ease);
 
         &:before {
             margin: 0;
+            font-size: rem(18);
         }
 
         &:hover {
@@ -131,18 +134,18 @@ a {
 .modal.top {
     z-index: 9999;
     @include center-x-align(fixed);
-    top: rem(25);
+    top: rem(11);
     width: 100%;
     max-width: rem(500);
     margin: 0 auto;
 
     @include media(min-height 600px) {
-        top: 15%;
+        top: 5%;
     }
 
     .modal-header {
         text-align: right;
-        margin: 0 rem(10) rem(15) 0;
+        margin: 0 rem(10) rem(12) 0;
 
         .close-icon {
             cursor: pointer;
@@ -166,8 +169,8 @@ a {
             transform: translate(0,0);
             float: none;
             width: 100%;
-            margin: rem(8) 0;
-            padding: rem(20) rem(5);
+            margin: rem(7) 0;
+            padding: rem(18) rem(5);
             font-size: modular-scale(2.5);
             text-align: center;
             border: 1px solid #000;
@@ -176,6 +179,12 @@ a {
 
     .modal-footer .nav-social-container {
         padding: 0;
+    }
+}
+
+@include media(min-width 768px) {
+    .modal-backdrop, .modal-open {
+        display: none;
     }
 }
 
@@ -203,7 +212,7 @@ a {
         .connect.nav-list {
             height: rem(67);
             margin-bottom: rem(40);
-            padding: rem(10);
+            padding: rem(7) rem(10);
             border: rem(1) solid #000;
         }
     }

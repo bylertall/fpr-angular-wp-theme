@@ -2,8 +2,8 @@
     <h2 class="results-header">Category Archives: {{::category.currentCategoryName}}</h2>
 </div>
 
-<div class="results-num-posts" ng-if="!category.showError">Number of posts found: {{::category.numPosts}}</div>
-<div class="results-error" ng-if="category.showError">No posts found for the tag: <span>{{::category.currentCategoryName}}</span></div>
+<div class="results-num-posts" ng-if="!category.showError">Number of posts: {{::category.numPosts}}</div>
+<div class="results-error" ng-if="category.showError">No posts found for that tag (<span>{{::category.currentCategoryName}}</span>)</div>
 
 <div class="results-feed-container">
     <fpr-page-meta
