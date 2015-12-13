@@ -4,8 +4,9 @@ var gulp = require('gulp'),
     config = require('./gulp.config')(),
     del = require('del');
 
-// ***
-// Assets
+////////////////////////////////////////////////////////
+// ASSET TASKS  ////////////////////////////////////////
+////////////////////////////////////////////////////////
 gulp.task('copy-assets', ['clean-assets'], function() {
     log('Copying assets to theme folder');
 
@@ -21,8 +22,9 @@ gulp.task('clean-assets', function(done) {
     clean(config.wp_assets, options, done);
 });
 
-// ***
-// Bower tasks
+////////////////////////////////////////////////////////
+// WATCH TASKS  ////////////////////////////////////////
+////////////////////////////////////////////////////////
 gulp.task('copy-bower', ['clean-bower'], function() {
     log('Copying bower components to theme folder');
 
@@ -38,8 +40,9 @@ gulp.task('clean-bower', function(done) {
     clean(config.wp_bower, options, done);
 });
 
-// ***
-// PHP tasks
+////////////////////////////////////////////////////////
+// PHP TASKS  //////////////////////////////////////////
+////////////////////////////////////////////////////////
 gulp.task('copy-php', ['clean-php'], function() {
     log('Copying PHP files to theme folder');
 
@@ -56,12 +59,9 @@ gulp.task('clean-php', function(done) {
     clean(files,options, done);
 });
 
-gulp.task('php-watcher', function() {
-    gulp.watch([config.all_php], ['copy-php']);
-});
-
-// ***
-// Style tasks
+////////////////////////////////////////////////////////
+// STYLE TASKS  ////////////////////////////////////////
+////////////////////////////////////////////////////////
 gulp.task('style', ['clean-style'], function() {
     log('Compiling Sass --> CSS');
 
@@ -79,13 +79,9 @@ gulp.task('clean-style', function(done) {
     clean(files, options, done);
 });
 
-gulp.task('style-watcher', function() {
-    gulp.watch([config.all_style], ['style']);
-});
-
-// ***
-// JS tasks
-
+////////////////////////////////////////////////////////
+// JAVASCRIPT TASKS  ///////////////////////////////////
+////////////////////////////////////////////////////////
 gulp.task('js', ['clean-js', 'templatecache'], function() {
     log('Building app.js');
 
@@ -94,8 +90,9 @@ gulp.task('js', ['clean-js', 'templatecache'], function() {
         .pipe($.iife({
             prependSemicolon: false
         }))
-        .pipe($.jshint())
-        //.pipe($.jscs()) ********************************* ADD jscs back *****
+        //TODO: add linting & style check somewhere else
+        // .pipe($.jshint())
+        // .pipe($.jscs())
         .pipe($.concat('app.js'))
         .pipe(gulp.dest(config.wp_js));
 });
@@ -108,12 +105,9 @@ gulp.task('clean-js', function(done) {
     clean(files, options, done);
 });
 
-gulp.task('js-watcher', function() {
-    gulp.watch([config.all_js], ['js']);
-});
-
-// ***
-// Html tasks
+////////////////////////////////////////////////////////
+// HTML TASKS  /////////////////////////////////////////
+////////////////////////////////////////////////////////
 gulp.task('templatecache', ['clean-templatecache'], function() {
     log('Creating an AngularJS $templateCache');
 
@@ -139,10 +133,6 @@ gulp.task('clean-templatecache', function(done) {
     clean(file, done);
 });
 
-gulp.task('html-watcher', function() {
-    gulp.watch([config.htmltemplates], ['js', 'copy-partials']);
-});
-
 gulp.task('copy-partials', ['clean-partials'], function() {
     log('Copying partials to theme folder');
 
@@ -159,25 +149,64 @@ gulp.task('clean-partials', function(done) {
     clean(files, options, done);
 });
 
-// Build tasks
-gulp.task('dev', ['copy-assets', 'copy-bower', 'copy-php', 'style', 'js', 'copy-partials', 'style-watcher', 'html-watcher', 'js-watcher'], function() {
-    log('Dev Build Complete, watching js, css, html...');
+////////////////////////////////////////////////////////
+// WATCH TASKS  ////////////////////////////////////////
+////////////////////////////////////////////////////////
+gulp.task('php-watcher', function() {
+    gulp.watch([config.all_php], ['copy-php']);
 });
+
+gulp.task('style-watcher', function() {
+    gulp.watch([config.all_style], ['style']);
+});
+
+gulp.task('js-watcher', function() {
+    gulp.watch([config.all_js], ['js']);
+});
+
+gulp.task('html-watcher', function() {
+    gulp.watch([config.htmltemplates], ['js', 'copy-partials']);
+});
+
+////////////////////////////////////////////////////////
+// BUILD TASKS  ////////////////////////////////////////
+////////////////////////////////////////////////////////
+gulp.task('serve', [
+        'copy-assets',
+        'copy-bower',
+        'copy-php',
+        'style',
+        'js',
+        'copy-partials',
+        'style-watcher',
+        'php-watcher',
+        'html-watcher',
+        'js-watcher'
+    ],
+    function() {
+        startBrowserSync().init();
+        log('Dev Build Complete, watching js, css, html...');
+    });
 
 //////////////////////////////////////////
 
-/**
- * browser sync
- */
+////////////////////////////////////////////////////////
+// BROWSER SYNC  ///////////////////////////////////////
+////////////////////////////////////////////////////////
+gulp.task('browserSync', function() {
+    startBrowserSync().init()
+});
+
 function startBrowserSync() {
-    if(browserSync.active) {
+    var port = 8888;
+
+    if (browserSync.active) {
         return;
     }
 
     log('Starting browser-sync on port: ' + port);
 
     var options = {
-        proxy: 'localhost:' + port,
         port: 8888,
         files: [
             config.wp_theme
@@ -199,9 +228,9 @@ function startBrowserSync() {
     browserSync(options);
 }
 
-/**
- * logging
- */
+////////////////////////////////////////////////////////
+// LOGGING  ////////////////////////////////////////////
+////////////////////////////////////////////////////////
 function log(msg) {
     if (typeof(msg) === 'object') {
         for (var item in msg) {
@@ -214,9 +243,9 @@ function log(msg) {
     }
 }
 
-/**
- * clean
- */
+////////////////////////////////////////////////////////
+// CLEAN  //////////////////////////////////////////////
+////////////////////////////////////////////////////////
 function clean(path, options, done) {
     log('Cleaning: ' + $.util.colors.blue(path));
 
