@@ -20,6 +20,9 @@ function fprPreloadImg() {
         // if background img url is NOT false or empty string, set background img url, then emit ready
         // otherwise, just emit ready to  remove loading
         preLoader(imgUrl, function(img) {
+            if (attrs.nopin === 'nopin') {
+                img.attr('nopin', 'nopin');
+            }
             elem.append(img);
         });
     }
