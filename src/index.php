@@ -20,7 +20,7 @@
 		<?php wp_head(); ?>
 	</head>
 
-	<body class="no-scroll app-loading">
+	<body class="no-scroll">
 		<div class="angular-wrapper" ng-app="fprApp" ng-controller="mainController as main">
 			<fpr-loading-panel></fpr-loading-panel>
 
@@ -35,12 +35,12 @@
 				<!-- Share buttons -->
 				<fpr-share-buttons ng-show="main.singlePostView"></fpr-share-buttons>
 
-			    <a href="#" title="Scroll to Top" class="scroll-top" fpr-affix offset-top="1250" offset-unpin="1500">
+			    <a ng-cloak href="#" title="Scroll to Top" class="scroll-top" fpr-affix offset-top="1250" offset-unpin="1500">
 			        <i class="flaticon-chevron10" scroll-to="main-header"></i>
 			    </a>
 			</main>
 
-			<footer class="main-footer">
+			<footer class="main-footer app-loading">
 				<script id="shopthepost-script" type="text/javascript" src="http://widgets.rewardstyle.com/js/shopthepost.js"></script>
 			    <div class="bottom-insta-widget">
 			        <div class="insta-widget-header"><h3>More From Instagram</h3></div>

@@ -3,9 +3,9 @@
   flex-flow: row nowrap;
 
   .insta-tile {
-    position: relative;
-    flex: 1 1 auto;
-    min-width: 50px;
+      position: relative;
+      flex: 1 1 auto;
+      vertical-align: middle;
 
     a {
       color: #000;
@@ -14,13 +14,20 @@
       right: 0;
       bottom: 0;
       left: 0;
+
+      @include media(max-width 768px) {
+          display: none;
+      }
     }
   }
 }
 
+.insta-image {
+    overflow: hidden;
+}
+
 .insta-image img {
-  @include fill-parent;
-  vertical-align: text-bottom;
+    width: 100%;
 }
 
 .insta-caption-container {
@@ -58,8 +65,8 @@
     span {
       display: block;
       text-align: center;
-      font-family: $font-oswald;
-      font-size: modular-scale(3);
+      font-family: $font-lato;
+      font-size: modular-scale(0);
       font-weight: 300;
     }
   }

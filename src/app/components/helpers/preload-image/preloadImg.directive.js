@@ -17,12 +17,21 @@ function fprPreloadImg() {
 
     function link(scope, elem, attrs) {
         var imgUrl = scope.fprPreloadImg;
-        // if background img url is NOT false or empty string, set background img url, then emit ready
-        // otherwise, just emit ready to  remove loading
+
         preLoader(imgUrl, function(img) {
-            if (attrs.nopin === 'nopin') {
+            img.addClass('post-image');
+
+            if (!!attrs.nopin) {
                 img.attr('nopin', 'nopin');
             }
+            if (!attrs.title) {
+                img.attr('title', attrs.title);
+            }
+
+            if (!attrs.alt) {
+                img.attr('alt', attrs.alt);
+            }
+
             elem.append(img);
         });
     }

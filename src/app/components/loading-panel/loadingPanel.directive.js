@@ -2,9 +2,9 @@ angular
     .module('fprApp')
     .directive('fprLoadingPanel', fprLoadingPanel);
 
-fprLoadingPanel.$inject = ['$rootScope', 'wpService'];
+fprLoadingPanel.$inject = ['$rootScope', '$timeout', 'wpService'];
 
-function fprLoadingPanel($rootScope, wpService) {
+function fprLoadingPanel($rootScope, $timeout, wpService) {
     var directive = {
         restrict: 'AE',
         templateUrl: 'components/loading-panel/loading-panel.html',
@@ -15,7 +15,7 @@ function fprLoadingPanel($rootScope, wpService) {
     return directive;
 
     function link(scope, elem, attrs) {
-        var bodyEl = angular.element(document.body),
+        var bodyEl = angular.element(document.getElementsByClassName('main-footer')),
             currentState = '';
 
         scope.viewIsLoading = true;

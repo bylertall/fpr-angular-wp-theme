@@ -9,6 +9,8 @@ function InstaWidget($scope, instaService) {
 
     if (+vm.tileCount === 6) {
         init();
+    } else {
+        vm.isBottom = true;
     }
 
     $scope.$on('instafeedLoaded', function() {
@@ -18,6 +20,7 @@ function InstaWidget($scope, instaService) {
             // for bottom widget (set to different tileCount)
             // show remaining photos (do not include ones shown at the top)
             vm.feed = instaService.feed.slice(6);
+            vm.margin = 50;
         }
     });
 

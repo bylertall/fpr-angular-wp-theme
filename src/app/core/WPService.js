@@ -60,6 +60,7 @@ function wpService($http, $sce) {
             for (i = 0; i < postArrayLength; i++) {
                 if (factory.feed[i].slug === slug) {
                     factory.post = factory.feed[i];
+                    factory.trustedPostContent = $sce.trustAsHtml(factory.post.content);
                     _isFormatted(factory.feed[i]);
                 }
             }
@@ -69,6 +70,7 @@ function wpService($http, $sce) {
             .success(function(res, status, headers) {
                 // filter returns an array of posts, only 1 should return
                 factory.post = res[0];
+                factory.trustedPostContent = $sce.trustAsHtml(factory.post.content);
                 _isFormatted(res[0]);
             });
     }
@@ -132,12 +134,7 @@ function wpService($http, $sce) {
     // determine is post is in new format w/ custom fields
     // if not, run post.content through $sce.trustAsHtml
     function _isFormatted(post) {
-        if (post.acf['main_copy'] !== '') {
-            factory.isFormatted = true;
-        }
-
-        factory.trustedPostContent = $sce.trustAsHtml(post.content);
-        factory.isFormatted = false;
+        factory.isFormatted = (post.acf['main_copy'] !== undefined) ? true : false;
     }
 
     // get category taxonomy info

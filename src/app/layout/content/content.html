@@ -13,13 +13,17 @@
 
     <section class="post-content">
         <!-- if OLD post format -->
-        <div ng-if="::!content.isFormatted" class="old-post-content" ng-bind-html="::content.oldFormatContent"></div>
+        <div ng-if="::!content.isFormatted" class="old-post-content" ng-bind-html="::content.wpContent"></div>
 
         <!-- if NEW post format -->
         <div ng-if="::content.isFormatted">
-            <div class="post-images" ng-bind-html="::content.post.content"></div>
-            <div class="outfit-details" ng-bind-html="::content.post.acf['outfit_details']"></div>
-            <div class="main-copy" ng-bind-html="::content.post.acf['main_copy']"></div>
+            <div class="post-images" ng-repeat="image in content.post.acf.images">
+                <div ng-if="!content.isMobile" class="post-image-container" fpr-preload-img="{{image.url}}" alt="{{image.alt}}" title="{{image.title}}"></div>
+
+                <div ng-if="content.isMobile" class="post-image-container" fpr-preload-img="{{image.sizes.large}}" alt="{{image.alt}}" title="{{image.title}}"></div>
+            </div>
+            <div class="outfit-details" ng-bind-html="::content.outfitDetails"></div>
+            <div class="main-copy" ng-bind-html="::content.mainCopy"></div>
         </div>
 
         <!-- Reward style widget -->

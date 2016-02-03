@@ -11,6 +11,16 @@
   }
 }
 
+.post-images {
+    min-height: 300px;
+}
+
+.old-post-content p img{
+    padding: rem(10);
+    max-width: rem(750);
+    margin: 0 auto;
+}
+
 .post-content {
   padding: rem(10);
   max-width: rem(750);
@@ -19,11 +29,15 @@
   p {
     font-size: modular-scale(1, rem(16), $minor-second);
     margin: 0;
+  }
 
-    img {
-      @include size(100%);
-      margin-bottom: rem(5);
-    }
+  .post-image-container {
+
+  }
+
+  .post-image {
+    @include size(100%);
+    margin-bottom: rem(5);
   }
 
   .outfit-details {
