@@ -7,7 +7,7 @@
     <div class="search-inner">
         <form role="search" class="search-form">
             <label>Search:</label>
-            <input id="search" class="search-input" type="text" name="search" ng-model="search.filter.s" ng-keypress="search.getInitialResults($event)">
+            <input id="search" class="search-input" type="text" autocomplete="off" name="search" ng-model="search.filter.s" ng-keypress="search.getInitialResults($event)">
         </form>
 
         <div class="results-container" ng-if="search.resultsActive">

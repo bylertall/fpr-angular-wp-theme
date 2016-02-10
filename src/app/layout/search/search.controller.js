@@ -31,8 +31,7 @@ function searchController(wpService) {
             if (vm.filter.s === '') {
                 vm.resultsActive = false;
                 vm.posts = [];
-
-                return vm.posts;
+                return;
             }
 
             // reset vars if new search
