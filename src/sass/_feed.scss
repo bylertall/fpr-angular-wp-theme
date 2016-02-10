@@ -102,6 +102,10 @@
         margin: 0;
         font-size: modular-scale(2.5);
     }
+
+    @include media(max-width 768px) {
+        padding: modular-scale(1, 1em, $golden) modular-scale(1, 1.05em, $golden);
+    }
 }
 
 // NEED BETTER TRANSITION FOR SHOW/HIDE RSWIDGET

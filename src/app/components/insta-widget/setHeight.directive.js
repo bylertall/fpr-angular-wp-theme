@@ -12,16 +12,17 @@ function fprSetHeight($window) {
 
     function link(scope, elem, attr) {
         var w = angular.element($window);
-        var bottomInstaEl = angular.element(document.querySelector('.bottom-insta-widget'));
 
         elem.css('height', calcHeight(w[0].innerWidth, !!attr.bottom) + 'px');
 
         w.bind('resize', function () {
-            calcHeight(w[0].outerWidth, attr.margin)
+            calcHeight(w[0].outerWidth, attr.margin);
             elem.css('height', calcHeight(w[0].innerWidth, !!attr.bottom) + 'px');
         });
 
         function calcHeight(width, isBottom) {
+            var bottomInstaEl = angular.element(document.querySelector('.bottom-insta-widget'));
+
             if (width > 768) {
                 if (isBottom) {
                     return bottomInstaEl[0].offsetWidth / 5;
