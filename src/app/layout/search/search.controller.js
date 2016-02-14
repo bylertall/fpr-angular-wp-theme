@@ -2,9 +2,9 @@ angular
     .module('fprApp')
     .controller('searchController', searchController);
 
-searchController.$inject = ['wpService'];
+searchController.$inject = ['wpService', 'smoothScroll', '$window'];
 
-function searchController(wpService) {
+function searchController(wpService, smoothScroll, $window) {
     var vm = this,
         elInput = angular.element(document.getElementById('search'));
 
@@ -43,6 +43,13 @@ function searchController(wpService) {
             _getSearchResults(vm.filter.s)
                 .then(function(res) {
                     if (res) {
+                        var options = {
+                            duration: 400,
+                            easing: 'ease'
+                        }
+
+                        smoothScroll(document.getElementsByClassName('main-nav')[0], options);
+
                         vm.currentSearchString = vm.filter.s;
                         vm.posts = wpService.searchResults;
                         vm.resultsActive = true;
